@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Getting Started</title>
+	<style>
+		.header{font: bold 14pt;}
+		.subheader{font: bold 12pt}
+		.text{font: 12pt; margin-left: 15px; margin-top:5px; margin-bottom:15px}
+	</style>
+</head>
+<body>
+<div class="header"><h1>Responsibilities View</h1></div>
+<div class="text">This tutorial will help you to understand the responsibilities view and the related functionalities.</div>
+<div class="subheader">In This Section</div>
+
+<div class="text">
+	<a href="#newrespo">Add a new responsibility.</a>
+</div>
+<div class="text">
+	<a href="#editrespo">Edit a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#delrespo">Delete a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#mappedscen">View scenarios mapped to a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#mappedfunc">View functions mapped to a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#editrespoparam">Edit a parameter of a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#delrespo">Delete a parameter of a responsibility.</a>
+</div>
+<div class="text">
+	<a href="#conc">Conclusion</a>
+</div>
+
+<div class="header"><a name="newrespo"></a>Add a new responsibility</div>
+<div class="text">
+Right click in the view and select New from the context menu options.
+</div>
+<div class="text">
+<img src="../images/responsibilities.jpg">
+</div>
+<div class="text">
+A dialog box for adding a new responsibility should open up. The user can then specify the responsibility description. Cancel closes this dialog box. 
+After specifying description of the responsibility, clicking OK sends the responsibility to the Core and the updated fact base (with the new responsibility) is reflected in the view (in the previously selected ordering).
+</div>
+<div class="text">
+<img src="../images/newrespo.jpg">
+</div>
+
+<div class="header"><a name="editrespo"></a>Edit a responsibility</div>
+<div class="text">
+Select a responsibility in the view. Right click and select Edit from the context menu options.
+</div>
+<div class="text">
+A dialog box for editing a responsibility should open up. The user can then specify the responsibility description. Cancel closes this dialog box. 
+After specifying description of the responsibility, clicking OK sends the updated responsibility to the Core and the updated fact base (with the new responsibility) is reflected in the view (in the previously selected ordering).
+</div>
+<div class="text">
+<img src="../images/editrespo.jpg">
+</div>
+<div class="text">
+<img src="../images/editrespopopup.jpg">
+</div>
+
+<div class="header"><a name="delrespo"></a>Delete a responsibility</div>
+<div class="text">
+Select a responsibility in the view. Right click and select Delete from the context menu options.
+</div>
+<div class="text">
+<img src="../images/delrespo.jpg">
+</div>
+
+<div class="header"><a name="mappedscen"></a>View scenarios mapped to a responsibility</div>
+<div class="text">
+Select a responsibility in the view. Right click and select Mapped scenarios from the context menu options.
+The Scenario-Responsibility Mapping View should open up with the selected responsibility's description in the dynamic filter text box. The view will display the scenario-responsibility mappings that exist between scenarios and responsibilities (both) that contain the text of the selected responsibility.
+</div>
+<div class="text">
+<img src="../images/mappedscen.jpg">
+</div>
+
+<div class="header"><a name="mappedfunc"></a>View functions mapped to a responsibility</div>
+<div class="text">
+Select a responsibility in the view. Right click and select Mapped functions from the context menu options.
+The Function-Responsibility Mapping View should open up with the selected responsibility's description in the dynamic filter text box. The view will display the function-responsibility mappings that exist between functions and responsibilities (both) that contain the text of the selected responsibility.
+</div>
+<div class="text">
+<img src="../images/mappedfunc.jpg">
+</div>
+
+<div class="header"><a name="editrespoparam"></a>Edit a parameter of a responsibility</div>
+<div class="text">
+Left click on the cell (containing the parameter value) that you want to edit. Make the changes and press Enter for the change(s) to be committed to the Core. The edited value must be of the correct datatype (the datatype that is expected by the Core for that parameter value).
+</div>
+<div class="text">
+<img src="../images/editresponsibilityparam.jpg">
+</div>
+
+<div class="header"><a name="delrespoparam"></a>Delete a paramter of a responsibility</div>
+<div class="text">
+Left click on the cell (containing the parameter value) that you want to delete. Press Backspace and then press Enter for the change(s) to be committed to the Core. If the correct datatype (the datatype that is expected by the Core for that parameter value) is a string then the value of the parameter is set to a blank string (""). If the datatype expected is a double or a boolean then the value is set to the default value (as expected by the Core). In most cases where the datatype is double, this default value is 0.0 and in cases where the datatype is boolean, the default value is false.
+</div>
+
+<div class="header"><a name="conc"></a>Conclusion</div>
+<div class="text">
+This tutorial briefly introduced you to all functionalities related to the ArchE Responsibilities View.
+</div>
+</body>
+</html>

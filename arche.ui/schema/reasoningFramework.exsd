@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="SEI.ArchE.UI" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="SEI.ArchE.UI" id="reasoningFramework" name="ArchE Reasoning Framework"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to define a reasoning framework plug-in for ArchE.
+A reasoning framework definition consists of: 
+&lt;ul&gt;
+&lt;li&gt; scenario types, including the definitions for the scenario parts
+&lt;li&gt; parameter types
+&lt;li&gt; parameter types that are required by responsibilities
+&lt;li&gt; relationship types
+&lt;li&gt; parameter types that are required by each relationship type
+&lt;li&gt; model element types
+&lt;li&gt; model relation types
+&lt;/ul&gt;
+&lt;p&gt;
+
+A reasoning framework plug-in will typically contain the following files (example):
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;plugin.xml&lt;/i&gt;: using the reasoningFramework extension point
+&lt;li&gt;&lt;i&gt;build.properties&lt;/i&gt;: standard Eclipse PDE build.properties including all files
+&lt;li&gt;&lt;i&gt;rfconfig.xml&lt;/i&gt;: central piece of the reasoning framework plug-in is the configuration xml file. This file can be produced using ArchE Configurator
+&lt;li&gt;&lt;i&gt;LoadAllRules.clp&lt;/i&gt;: file indicated in the clpFile attribute of the extension point. It is loaded in Jess when ArchE UI finds this reasoning framework plug-in.
+&lt;li&gt;&lt;i&gt;AdditionalRules.clp&lt;/i&gt;: there can be zero or more other clp files that are loaded by the clp file indicated in the clpFile attribute.
+&lt;li&gt;other files used by the rules can also be packaged
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;br&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="rfconfigFile"/>
+            <element ref="clpFile"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  An optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  An optional name of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="description" type="string">
+      <annotation>
+         <documentation>
+            An optional subelement whose body should contain text providing short description of the reasoning framework.
+         </documentation>
+      </annotation>
+   </element>
+
+   <element name="clpFile">
+      <complexType>
+         <attribute name="fileName" type="string">
+            <annotation>
+               <documentation>
+                  Pathname to the &quot;.clp&quot; file to be loaded for this reasoning framework. Path must be relative within this plug-in. If this reasoning framework uses several clp files, then the one indicated in this attribute should load all the others.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="rfconfigFile">
+      <complexType>
+         <attribute name="fileName" type="string" use="default" value="rfconfig.xml">
+            <annotation>
+               <documentation>
+                  Pathname to the xml file that has the RF configuration. Path must be relative within this plug-in.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of the extension point: 
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension 
+       point=&quot;SEI.ArchE.UI.reasoningFramework&quot;&gt; 
+      &lt;rfconfigFile fileName=&quot;rfconfig.xml&quot;/&gt;
+      &lt;clpFile fileName=&quot;LoadModifRF.clp&quot;/&gt;
+   &lt;/extension&gt;    
+&lt;/pre&gt;
+&lt;/p&gt;
+
+As indicated, the example reasoning framework plug-in must contain two files at the root level: 
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;rfconfig.xml&lt;/i&gt;: created using ArchE Configurator
+&lt;li&gt;&lt;i&gt;LoadModifRF.clp&lt;/i&gt;: Jess clp file that loads the rules that are specific to this reasoning framework.
+ &lt;ul&gt;
+ &lt;li&gt;This clp file can assume the generic core rules will be loaded first.
+ &lt;li&gt;This clp file can assume a variable &lt;b&gt;*dir*&lt;/b&gt; will be defined in Jess pointing to folder where this file is located. 
+ &lt;li&gt;This clp file may load other clp files, if necessary.
+ &lt;/ul&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;br&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         This plug-in is not for Java classes in this version.
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         ArchE
+Copyright (c) 2012 Carnegie Mellon University.
+All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following acknowledgments and disclaimers.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+3. All advertising materials for third-party software mentioning features or
+use of this software must display the following disclaimer:
+
+“Neither Carnegie Mellon University nor its Software Engineering Institute
+have reviewed or endorsed this software”
+
+4. The names “Carnegie Mellon University,” and/or “Software Engineering
+Institute&quot; shall not be used to endorse or promote products derived from
+this software without prior written permission. For written permission,
+please contact permission@sei.cmu.edu.
+
+5. Redistributions of any form whatsoever must retain the following
+acknowledgment:
+
+Copyright 2012 Carnegie Mellon University.
+
+This material is based upon work funded and supported by the United States
+Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie
+Mellon University for the operation of the Software Engineering Institute, a
+federally funded research and development center.
+
+NO WARRANTY
+
+THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL
+IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO
+WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER
+INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR
+MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL.
+CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH
+RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+      </documentation>
+   </annotation>
+
+</schema>

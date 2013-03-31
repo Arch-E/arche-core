@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Getting Started</title>
+	<style>
+		.header{font: bold 14pt;}
+		.subheader{font: bold 12pt}
+		.text{font: 12pt; margin-left: 15px; margin-top:5px; margin-bottom:15px}
+	</style>
+</head>
+<body>
+<div class="header"><h1>Introduction</h1></div>
+<div class="text">
+Architecture Expert (ArchE) is a tool to help software architects and designers create architectural models. ArchE provides the means to represent scenarios in a format that is tractable by an algorithm.  The algorithm examines the codified rules and scenarios, and generates an architectural design. ArchE is a GUI application that allows the designer to interact with ArchE in a user-friendly way. The designer inputs requirements, defines responsibilities, parameters and other data, views the results of processing the model, and eventually exports the produced design to Rational Rose. ArchE interacts with the ArchE Core in the process of transforming requirements to design. The Dumbledore team (MSE Studio 2004, Carnegie Mellon) is responsible for the development of ArchE.  
+</div>
+<div class="text">
+The designer is the user that interacts with the tool to input requirements (scenarios, functions) and derive information (responsibilities, relationships, parameters). The ArchE Configurator provides all the definitions and metadata regarding reasoning frameworks. 
+ArchE interacts with the ArchE Core, which resides in the Jess rule engine, to add elements to the fact base (new scenarios, responsibilities, relationships, etc.). The core also notifies the UI about actions and the overall state of the fact base. For example, if the core decides to create a responsibility automatically or apply a tactic to solve a problem, the information has to be reflected in the UI.
+Also, ArchE renders its interface using a Reasoning Framework configuration that is provided by the ArchE Configurator. ArchE exports the design to an external design tool (like Rational Rose or AcmeStudio) for visualization.
+</div>
+</body>
+</html>

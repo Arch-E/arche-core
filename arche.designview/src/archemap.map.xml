@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	ArchE
+	Copyright (c) 2012 Carnegie Mellon University.
+	All Rights Reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	this list of conditions and the following acknowledgments and disclaimers.
+
+	2. Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+
+	3. All advertising materials for third-party software mentioning features or
+	use of this software must display the following disclaimer:
+
+	“Neither Carnegie Mellon University nor its Software Engineering Institute
+	have reviewed or endorsed this software”
+
+	4. The names “Carnegie Mellon University,” and/or “Software Engineering
+	Institute" shall not be used to endorse or promote products derived from
+	this software without prior written permission. For written permission,
+	please contact permission@sei.cmu.edu.
+
+	5. Redistributions of any form whatsoever must retain the following
+	acknowledgment:
+
+	Copyright 2012 Carnegie Mellon University.
+
+	This material is based upon work funded and supported by the United States
+	Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie
+	Mellon University for the operation of the Software Engineering Institute, a
+	federally funded research and development center.
+
+	NO WARRANTY
+
+	THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL
+	IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO
+	WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER
+	INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR
+	MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL.
+	CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH
+	RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+-->
+<data-map project-version="1.1">
+	<property name="defaultPackage" value="edu.cmu.sei.ORM.model"/>
+	<property name="defaultSchema" value="arche"/>
+	<db-entity name="__factsets__" schema="arche" catalog="arche">
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="factType" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="group" type="TINYINT" isMandatory="true" length="3"/>
+		<db-attribute name="setName" type="VARCHAR" isMandatory="true" length="45"/>
+	</db-entity>
+	<db-entity name="__versions__" schema="arche" catalog="arche">
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="date_created" type="TIMESTAMP" length="19"/>
+		<db-attribute name="factSet" type="VARCHAR" isMandatory="true" length="45"/>
+		<db-attribute name="parent" type="INTEGER" length="10"/>
+		<db-attribute name="storage_type" type="VARCHAR" isMandatory="true" length="45"/>
+		<db-attribute name="version_name" type="VARCHAR" isMandatory="true" length="45"/>
+	</db-entity>
+	<db-entity name="auctionitem" schema="arche" catalog="arche">
+		<db-attribute name="CONDITION" type="INTEGER" length="11"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="ends" type="TIMESTAMP" length="19"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="20"/>
+		<db-attribute name="seller" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="shortDescription" type="VARCHAR" isMandatory="true" length="200"/>
+		<db-attribute name="successfulBid" type="BIGINT" length="20"/>
+	</db-entity>
+	<db-entity name="auctionuser" schema="arche" catalog="arche">
+		<db-attribute name="email" type="VARCHAR" length="255"/>
+		<db-attribute name="firstName" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="20"/>
+		<db-attribute name="initial" type="CHAR" length="1"/>
+		<db-attribute name="lastName" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="password" type="VARCHAR" isMandatory="true" length="15"/>
+		<db-attribute name="userName" type="VARCHAR" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="bid" schema="arche" catalog="arche">
+		<db-attribute name="amount" type="REAL" isMandatory="true" length="12"/>
+		<db-attribute name="bidder" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="datetime" type="TIMESTAMP" isMandatory="true" length="19"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="20"/>
+		<db-attribute name="isBuyNow" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="item" type="BIGINT" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="design_module" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="complexity" type="DOUBLE" length="22"/>
+		<db-attribute name="costOfChange" type="DOUBLE" length="22"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_moduledependencyrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="probability" type="DOUBLE" length="22"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_moduleinterface" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="costOfChange" type="DOUBLE"/>
+		<db-attribute name="encapsulationLevel" type="DOUBLE" length="22"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_modulerefinementrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_realizerelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="childType" type="VARCHAR" length="200"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_responsibility" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_responsibilitytomodulerelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_sharedresource" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_sharedresourcerelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_variationpoint" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="alternatives" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="condition" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="cost" type="DOUBLE" length="22"/>
+		<db-attribute name="howTo" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="mechanism" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_vpinputvalue" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="design_wrapper" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="encapsulationLevel" type="DOUBLE" length="22"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_function" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_functionrefinementrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_responsibilities" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_responsibilityrefinementrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_responsibilitytoresponsibilityrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_scenariorefinementrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_scenarios" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="artifactText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="artifactType" type="VARCHAR" length="200"/>
+		<db-attribute name="artifactUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="artifactValue" type="DOUBLE" length="22"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="environmentText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="environmentType" type="VARCHAR" length="200"/>
+		<db-attribute name="environmentUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="environmentValue" type="DOUBLE" length="22"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="measureText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="measureType" type="VARCHAR" length="200"/>
+		<db-attribute name="measureUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="measureValue" type="DOUBLE" length="22"/>
+		<db-attribute name="quality" type="VARCHAR" length="200"/>
+		<db-attribute name="responseText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="responseType" type="VARCHAR" length="200"/>
+		<db-attribute name="responseUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="responseValue" type="DOUBLE" length="22"/>
+		<db-attribute name="sourceText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="sourceType" type="VARCHAR" length="200"/>
+		<db-attribute name="sourceUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="sourceValue" type="DOUBLE" length="22"/>
+		<db-attribute name="state" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="stimulusText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="stimulusType" type="VARCHAR" length="200"/>
+		<db-attribute name="stimulusUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="stimulusValue" type="DOUBLE" length="22"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_sequencerelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="scenario" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="main_translationrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="parentType" type="VARCHAR" length="200"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="modifiabilityreasoningframeworks_p_costofchange" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="modifiabilityreasoningframeworks_p_encapsulationlevel" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="modifiabilityreasoningframeworks_p_preparedforchange" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="VARCHAR" length="200"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="modifiabilityreasoningframeworks_p_probabilityincoming" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="modifiabilityreasoningframeworks_p_probabilityoutgoing" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_dependency" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_interfacerealization" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_isarelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_pattern" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="group" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_patternconnector" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="type" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="valueAbs" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="valueFactor" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_patterncontainer" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_patternelement" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_patternelementinterface" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_patternitemproperty" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="valueAbs" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="valueFactor" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="patterns_refinement" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="pattern" type="VARBINARY" length="100"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="performancereasoningframeworks_p_executiontime" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="performancereasoningframeworks_p_mutualexclusion" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="performancereasoningframeworks_p_sharedresourceasked" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="owner" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="status" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" length="22"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="planner_c_addfunction" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="functionID" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="state" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="planner_c_addresponsibilityrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="state" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="type" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="planner_c_addscenario" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="artifactText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="artifactType" type="VARCHAR" length="200"/>
+		<db-attribute name="artifactUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="artifactValue" type="DOUBLE" length="22"/>
+		<db-attribute name="description" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="environmentText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="environmentType" type="VARCHAR" length="200"/>
+		<db-attribute name="environmentUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="environmentValue" type="DOUBLE" length="22"/>
+		<db-attribute name="measureText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="measureType" type="VARCHAR" length="200"/>
+		<db-attribute name="measureUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="measureValue" type="DOUBLE" length="22"/>
+		<db-attribute name="quality" type="VARCHAR" length="200"/>
+		<db-attribute name="responseText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="responseType" type="VARCHAR" length="200"/>
+		<db-attribute name="responseUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="responseValue" type="DOUBLE" length="22"/>
+		<db-attribute name="sourceText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="sourceType" type="VARCHAR" length="200"/>
+		<db-attribute name="sourceUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="sourceValue" type="DOUBLE" length="22"/>
+		<db-attribute name="state" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="stimulusText" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="stimulusType" type="VARCHAR" length="200"/>
+		<db-attribute name="stimulusUnit" type="VARCHAR" length="200"/>
+		<db-attribute name="stimulusValue" type="DOUBLE" length="22"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="planner_c_addtranslationrelation" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="state" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="type" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="variabilityreasoningframework_variabilitymechanismresponsibility" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="child" type="VARBINARY" length="100"/>
+		<db-attribute name="id" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="parent" type="VARBINARY" length="100"/>
+		<db-attribute name="source" type="VARCHAR" length="200"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="variabilityreasoningframework_vpconfiguration" schema="arche" catalog="arche">
+		<db-attribute name="`fact-id`" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="inputs" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="name" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="uid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="version" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<obj-entity name="Auctionitem" className="edu.cmu.sei.ORM.model.Auctionitem" clientClassName="Auctionitem" dbEntityName="auctionitem">
+		<obj-attribute name="condition" type="java.lang.Integer" db-attribute-path="CONDITION"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="ends" type="java.util.Date" db-attribute-path="ends"/>
+		<obj-attribute name="shortDescription" type="java.lang.String" db-attribute-path="shortDescription"/>
+	</obj-entity>
+	<obj-entity name="Auctionuser" className="edu.cmu.sei.ORM.model.Auctionuser" clientClassName="Auctionuser" dbEntityName="auctionuser">
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="firstName"/>
+		<obj-attribute name="initial" type="java.lang.String" db-attribute-path="initial"/>
+		<obj-attribute name="lastName" type="java.lang.String" db-attribute-path="lastName"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="password"/>
+		<obj-attribute name="userName" type="java.lang.String" db-attribute-path="userName"/>
+	</obj-entity>
+	<obj-entity name="Bid" className="edu.cmu.sei.ORM.model.Bid" clientClassName="Bid" dbEntityName="bid">
+		<obj-attribute name="amount" type="java.lang.Float" db-attribute-path="amount"/>
+		<obj-attribute name="datetime" type="java.util.Date" db-attribute-path="datetime"/>
+		<obj-attribute name="isBuyNow" type="java.lang.String" db-attribute-path="isBuyNow"/>
+	</obj-entity>
+	<obj-entity name="DesignModule" className="edu.cmu.sei.ORM.model.DesignModule" clientClassName="DesignModule" dbEntityName="design_module">
+		<obj-attribute name="complexity" type="java.lang.Double" db-attribute-path="complexity"/>
+		<obj-attribute name="costOfChange" type="java.lang.Double" db-attribute-path="costOfChange"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignModuledependencyrelation" className="edu.cmu.sei.ORM.model.DesignModuledependencyrelation" clientClassName="DesignModuledependencyrelation" dbEntityName="design_moduledependencyrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="probability" type="java.lang.Double" db-attribute-path="probability"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignModuleinterface" className="edu.cmu.sei.ORM.model.DesignModuleinterface" clientClassName="DesignModuleinterface" dbEntityName="design_moduleinterface">
+		<obj-attribute name="costOfChange" type="java.lang.Double" db-attribute-path="costOfChange"/>
+		<obj-attribute name="encapsulationLevel" type="java.lang.Double" db-attribute-path="encapsulationLevel"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignModulerefinementrelation" className="edu.cmu.sei.ORM.model.DesignModulerefinementrelation" clientClassName="DesignModulerefinementrelation" dbEntityName="design_modulerefinementrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignRealizerelation" className="edu.cmu.sei.ORM.model.DesignRealizerelation" clientClassName="DesignRealizerelation" dbEntityName="design_realizerelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="childType" type="java.lang.String" db-attribute-path="childType"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignResponsibility" className="edu.cmu.sei.ORM.model.DesignResponsibility" clientClassName="DesignResponsibility" dbEntityName="design_responsibility">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+	</obj-entity>
+	<obj-entity name="DesignResponsibilitytomodulerelation" className="edu.cmu.sei.ORM.model.DesignResponsibilitytomodulerelation" clientClassName="DesignResponsibilitytomodulerelation" dbEntityName="design_responsibilitytomodulerelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignSharedresource" className="edu.cmu.sei.ORM.model.DesignSharedresource" clientClassName="DesignSharedresource" dbEntityName="design_sharedresource">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="DesignSharedresourcerelation" className="edu.cmu.sei.ORM.model.DesignSharedresourcerelation" clientClassName="DesignSharedresourcerelation" dbEntityName="design_sharedresourcerelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="DesignVariationpoint" className="edu.cmu.sei.ORM.model.DesignVariationpoint" clientClassName="DesignVariationpoint" dbEntityName="design_variationpoint">
+		<obj-attribute name="alternatives" type="java.lang.String" db-attribute-path="alternatives"/>
+		<obj-attribute name="condition" type="java.lang.String" db-attribute-path="condition"/>
+		<obj-attribute name="cost" type="java.lang.Double" db-attribute-path="cost"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="howTo" type="java.lang.String" db-attribute-path="howTo"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="mechanism" type="java.lang.String" db-attribute-path="mechanism"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="DesignVpinputvalue" className="edu.cmu.sei.ORM.model.DesignVpinputvalue" clientClassName="DesignVpinputvalue" dbEntityName="design_vpinputvalue">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="DesignWrapper" className="edu.cmu.sei.ORM.model.DesignWrapper" clientClassName="DesignWrapper" dbEntityName="design_wrapper">
+		<obj-attribute name="encapsulationLevel" type="java.lang.Double" db-attribute-path="encapsulationLevel"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="Factsets" className="edu.cmu.sei.ORM.model.Factsets" clientClassName="Factsets" dbEntityName="__factsets__">
+		<obj-attribute name="factType" type="java.lang.String" db-attribute-path="factType"/>
+		<obj-attribute name="group" type="java.lang.Byte" db-attribute-path="group"/>
+		<obj-attribute name="setName" type="java.lang.String" db-attribute-path="setName"/>
+	</obj-entity>
+	<obj-entity name="MainFunction" className="edu.cmu.sei.ORM.model.MainFunction" clientClassName="MainFunction" dbEntityName="main_function">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+	</obj-entity>
+	<obj-entity name="MainFunctionrefinementrelation" className="edu.cmu.sei.ORM.model.MainFunctionrefinementrelation" clientClassName="MainFunctionrefinementrelation" dbEntityName="main_functionrefinementrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainResponsibilities" className="edu.cmu.sei.ORM.model.MainResponsibilities" clientClassName="MainResponsibilities" dbEntityName="main_responsibilities">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainResponsibilityrefinementrelation" className="edu.cmu.sei.ORM.model.MainResponsibilityrefinementrelation" clientClassName="MainResponsibilityrefinementrelation" dbEntityName="main_responsibilityrefinementrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainResponsibilitytoresponsibilityrelation" className="edu.cmu.sei.ORM.model.MainResponsibilitytoresponsibilityrelation" clientClassName="MainResponsibilitytoresponsibilityrelation" dbEntityName="main_responsibilitytoresponsibilityrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainScenariorefinementrelation" className="edu.cmu.sei.ORM.model.MainScenariorefinementrelation" clientClassName="MainScenariorefinementrelation" dbEntityName="main_scenariorefinementrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainScenarios" className="edu.cmu.sei.ORM.model.MainScenarios" clientClassName="MainScenarios" dbEntityName="main_scenarios">
+		<obj-attribute name="artifactText" type="java.lang.String" db-attribute-path="artifactText"/>
+		<obj-attribute name="artifactType" type="java.lang.String" db-attribute-path="artifactType"/>
+		<obj-attribute name="artifactUnit" type="java.lang.String" db-attribute-path="artifactUnit"/>
+		<obj-attribute name="artifactValue" type="java.lang.Double" db-attribute-path="artifactValue"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="environmentText" type="java.lang.String" db-attribute-path="environmentText"/>
+		<obj-attribute name="environmentType" type="java.lang.String" db-attribute-path="environmentType"/>
+		<obj-attribute name="environmentUnit" type="java.lang.String" db-attribute-path="environmentUnit"/>
+		<obj-attribute name="environmentValue" type="java.lang.Double" db-attribute-path="environmentValue"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="measureText" type="java.lang.String" db-attribute-path="measureText"/>
+		<obj-attribute name="measureType" type="java.lang.String" db-attribute-path="measureType"/>
+		<obj-attribute name="measureUnit" type="java.lang.String" db-attribute-path="measureUnit"/>
+		<obj-attribute name="measureValue" type="java.lang.Double" db-attribute-path="measureValue"/>
+		<obj-attribute name="quality" type="java.lang.String" db-attribute-path="quality"/>
+		<obj-attribute name="responseText" type="java.lang.String" db-attribute-path="responseText"/>
+		<obj-attribute name="responseType" type="java.lang.String" db-attribute-path="responseType"/>
+		<obj-attribute name="responseUnit" type="java.lang.String" db-attribute-path="responseUnit"/>
+		<obj-attribute name="responseValue" type="java.lang.Double" db-attribute-path="responseValue"/>
+		<obj-attribute name="sourceText" type="java.lang.String" db-attribute-path="sourceText"/>
+		<obj-attribute name="sourceType" type="java.lang.String" db-attribute-path="sourceType"/>
+		<obj-attribute name="sourceUnit" type="java.lang.String" db-attribute-path="sourceUnit"/>
+		<obj-attribute name="sourceValue" type="java.lang.Double" db-attribute-path="sourceValue"/>
+		<obj-attribute name="state" type="java.lang.String" db-attribute-path="state"/>
+		<obj-attribute name="stimulusText" type="java.lang.String" db-attribute-path="stimulusText"/>
+		<obj-attribute name="stimulusType" type="java.lang.String" db-attribute-path="stimulusType"/>
+		<obj-attribute name="stimulusUnit" type="java.lang.String" db-attribute-path="stimulusUnit"/>
+		<obj-attribute name="stimulusValue" type="java.lang.Double" db-attribute-path="stimulusValue"/>
+	</obj-entity>
+	<obj-entity name="MainSequencerelation" className="edu.cmu.sei.ORM.model.MainSequencerelation" clientClassName="MainSequencerelation" dbEntityName="main_sequencerelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="scenario" type="byte[]" db-attribute-path="scenario"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="MainTranslationrelation" className="edu.cmu.sei.ORM.model.MainTranslationrelation" clientClassName="MainTranslationrelation" dbEntityName="main_translationrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="parentType" type="java.lang.String" db-attribute-path="parentType"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="ModifiabilityreasoningframeworksPCostofchange" className="edu.cmu.sei.ORM.model.ModifiabilityreasoningframeworksPCostofchange" clientClassName="ModifiabilityreasoningframeworksPCostofchange" dbEntityName="modifiabilityreasoningframeworks_p_costofchange">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="ModifiabilityreasoningframeworksPEncapsulationlevel" className="edu.cmu.sei.ORM.model.ModifiabilityreasoningframeworksPEncapsulationlevel" clientClassName="ModifiabilityreasoningframeworksPEncapsulationlevel" dbEntityName="modifiabilityreasoningframeworks_p_encapsulationlevel">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="ModifiabilityreasoningframeworksPPreparedforchange" className="edu.cmu.sei.ORM.model.ModifiabilityreasoningframeworksPPreparedforchange" clientClassName="ModifiabilityreasoningframeworksPPreparedforchange" dbEntityName="modifiabilityreasoningframeworks_p_preparedforchange">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="ModifiabilityreasoningframeworksPProbabilityincoming" className="edu.cmu.sei.ORM.model.ModifiabilityreasoningframeworksPProbabilityincoming" clientClassName="ModifiabilityreasoningframeworksPProbabilityincoming" dbEntityName="modifiabilityreasoningframeworks_p_probabilityincoming">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="ModifiabilityreasoningframeworksPProbabilityoutgoing" className="edu.cmu.sei.ORM.model.ModifiabilityreasoningframeworksPProbabilityoutgoing" clientClassName="ModifiabilityreasoningframeworksPProbabilityoutgoing" dbEntityName="modifiabilityreasoningframeworks_p_probabilityoutgoing">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="PatternsDependency" className="edu.cmu.sei.ORM.model.PatternsDependency" clientClassName="PatternsDependency" dbEntityName="patterns_dependency">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsInterfacerealization" className="edu.cmu.sei.ORM.model.PatternsInterfacerealization" clientClassName="PatternsInterfacerealization" dbEntityName="patterns_interfacerealization">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsIsarelation" className="edu.cmu.sei.ORM.model.PatternsIsarelation" clientClassName="PatternsIsarelation" dbEntityName="patterns_isarelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsPattern" className="edu.cmu.sei.ORM.model.PatternsPattern" clientClassName="PatternsPattern" dbEntityName="patterns_pattern">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="group" type="java.lang.String" db-attribute-path="group"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="PatternsPatternconnector" className="edu.cmu.sei.ORM.model.PatternsPatternconnector" clientClassName="PatternsPatternconnector" dbEntityName="patterns_patternconnector">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+		<obj-attribute name="type" type="java.lang.String" db-attribute-path="type"/>
+		<obj-attribute name="valueAbs" type="java.lang.String" db-attribute-path="valueAbs"/>
+		<obj-attribute name="valueFactor" type="java.lang.String" db-attribute-path="valueFactor"/>
+	</obj-entity>
+	<obj-entity name="PatternsPatterncontainer" className="edu.cmu.sei.ORM.model.PatternsPatterncontainer" clientClassName="PatternsPatterncontainer" dbEntityName="patterns_patterncontainer">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsPatternelement" className="edu.cmu.sei.ORM.model.PatternsPatternelement" clientClassName="PatternsPatternelement" dbEntityName="patterns_patternelement">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsPatternelementinterface" className="edu.cmu.sei.ORM.model.PatternsPatternelementinterface" clientClassName="PatternsPatternelementinterface" dbEntityName="patterns_patternelementinterface">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PatternsPatternitemproperty" className="edu.cmu.sei.ORM.model.PatternsPatternitemproperty" clientClassName="PatternsPatternitemproperty" dbEntityName="patterns_patternitemproperty">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+		<obj-attribute name="valueAbs" type="java.lang.String" db-attribute-path="valueAbs"/>
+		<obj-attribute name="valueFactor" type="java.lang.String" db-attribute-path="valueFactor"/>
+	</obj-entity>
+	<obj-entity name="PatternsRefinement" className="edu.cmu.sei.ORM.model.PatternsRefinement" clientClassName="PatternsRefinement" dbEntityName="patterns_refinement">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="pattern" type="byte[]" db-attribute-path="pattern"/>
+	</obj-entity>
+	<obj-entity name="PerformancereasoningframeworksPExecutiontime" className="edu.cmu.sei.ORM.model.PerformancereasoningframeworksPExecutiontime" clientClassName="PerformancereasoningframeworksPExecutiontime" dbEntityName="performancereasoningframeworks_p_executiontime">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="PerformancereasoningframeworksPMutualexclusion" className="edu.cmu.sei.ORM.model.PerformancereasoningframeworksPMutualexclusion" clientClassName="PerformancereasoningframeworksPMutualexclusion" dbEntityName="performancereasoningframeworks_p_mutualexclusion">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="PerformancereasoningframeworksPSharedresourceasked" className="edu.cmu.sei.ORM.model.PerformancereasoningframeworksPSharedresourceasked" clientClassName="PerformancereasoningframeworksPSharedresourceasked" dbEntityName="performancereasoningframeworks_p_sharedresourceasked">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="owner" type="byte[]" db-attribute-path="owner"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="PlannerCAddfunction" className="edu.cmu.sei.ORM.model.PlannerCAddfunction" clientClassName="PlannerCAddfunction" dbEntityName="planner_c_addfunction">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="functionID" type="java.lang.String" db-attribute-path="functionID"/>
+		<obj-attribute name="state" type="java.lang.String" db-attribute-path="state"/>
+	</obj-entity>
+	<obj-entity name="PlannerCAddresponsibilityrelation" className="edu.cmu.sei.ORM.model.PlannerCAddresponsibilityrelation" clientClassName="PlannerCAddresponsibilityrelation" dbEntityName="planner_c_addresponsibilityrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="state" type="java.lang.String" db-attribute-path="state"/>
+		<obj-attribute name="type" type="java.lang.String" db-attribute-path="type"/>
+	</obj-entity>
+	<obj-entity name="PlannerCAddscenario" className="edu.cmu.sei.ORM.model.PlannerCAddscenario" clientClassName="PlannerCAddscenario" dbEntityName="planner_c_addscenario">
+		<obj-attribute name="artifactText" type="java.lang.String" db-attribute-path="artifactText"/>
+		<obj-attribute name="artifactType" type="java.lang.String" db-attribute-path="artifactType"/>
+		<obj-attribute name="artifactUnit" type="java.lang.String" db-attribute-path="artifactUnit"/>
+		<obj-attribute name="artifactValue" type="java.lang.Double" db-attribute-path="artifactValue"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="environmentText" type="java.lang.String" db-attribute-path="environmentText"/>
+		<obj-attribute name="environmentType" type="java.lang.String" db-attribute-path="environmentType"/>
+		<obj-attribute name="environmentUnit" type="java.lang.String" db-attribute-path="environmentUnit"/>
+		<obj-attribute name="environmentValue" type="java.lang.Double" db-attribute-path="environmentValue"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="measureText" type="java.lang.String" db-attribute-path="measureText"/>
+		<obj-attribute name="measureType" type="java.lang.String" db-attribute-path="measureType"/>
+		<obj-attribute name="measureUnit" type="java.lang.String" db-attribute-path="measureUnit"/>
+		<obj-attribute name="measureValue" type="java.lang.Double" db-attribute-path="measureValue"/>
+		<obj-attribute name="quality" type="java.lang.String" db-attribute-path="quality"/>
+		<obj-attribute name="responseText" type="java.lang.String" db-attribute-path="responseText"/>
+		<obj-attribute name="responseType" type="java.lang.String" db-attribute-path="responseType"/>
+		<obj-attribute name="responseUnit" type="java.lang.String" db-attribute-path="responseUnit"/>
+		<obj-attribute name="responseValue" type="java.lang.Double" db-attribute-path="responseValue"/>
+		<obj-attribute name="sourceText" type="java.lang.String" db-attribute-path="sourceText"/>
+		<obj-attribute name="sourceType" type="java.lang.String" db-attribute-path="sourceType"/>
+		<obj-attribute name="sourceUnit" type="java.lang.String" db-attribute-path="sourceUnit"/>
+		<obj-attribute name="sourceValue" type="java.lang.Double" db-attribute-path="sourceValue"/>
+		<obj-attribute name="state" type="java.lang.String" db-attribute-path="state"/>
+		<obj-attribute name="stimulusText" type="java.lang.String" db-attribute-path="stimulusText"/>
+		<obj-attribute name="stimulusType" type="java.lang.String" db-attribute-path="stimulusType"/>
+		<obj-attribute name="stimulusUnit" type="java.lang.String" db-attribute-path="stimulusUnit"/>
+		<obj-attribute name="stimulusValue" type="java.lang.Double" db-attribute-path="stimulusValue"/>
+	</obj-entity>
+	<obj-entity name="PlannerCAddtranslationrelation" className="edu.cmu.sei.ORM.model.PlannerCAddtranslationrelation" clientClassName="PlannerCAddtranslationrelation" dbEntityName="planner_c_addtranslationrelation">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="state" type="java.lang.String" db-attribute-path="state"/>
+		<obj-attribute name="type" type="java.lang.String" db-attribute-path="type"/>
+	</obj-entity>
+	<obj-entity name="VariabilityreasoningframeworkVariabilitymechanismresponsibility" className="edu.cmu.sei.ORM.model.VariabilityreasoningframeworkVariabilitymechanismresponsibility" clientClassName="VariabilityreasoningframeworkVariabilitymechanismresponsibility" dbEntityName="variabilityreasoningframework_variabilitymechanismresponsibility">
+		<obj-attribute name="child" type="byte[]" db-attribute-path="child"/>
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="id" type="java.lang.String" db-attribute-path="id"/>
+		<obj-attribute name="parent" type="byte[]" db-attribute-path="parent"/>
+		<obj-attribute name="source" type="java.lang.String" db-attribute-path="source"/>
+	</obj-entity>
+	<obj-entity name="VariabilityreasoningframeworkVpconfiguration" className="edu.cmu.sei.ORM.model.VariabilityreasoningframeworkVpconfiguration" clientClassName="VariabilityreasoningframeworkVpconfiguration" dbEntityName="variabilityreasoningframework_vpconfiguration">
+		<obj-attribute name="factid" type="java.lang.String" db-attribute-path="`fact-id`"/>
+		<obj-attribute name="inputs" type="java.lang.String" db-attribute-path="inputs"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Versions" className="edu.cmu.sei.ORM.model.Versions" clientClassName="Versions" dbEntityName="__versions__">
+		<obj-attribute name="ID" type="java.lang.Integer" db-attribute-path="ID"/>
+		<obj-attribute name="dateCreated" type="java.util.Date" db-attribute-path="date_created"/>
+		<obj-attribute name="factSet" type="java.lang.String" db-attribute-path="factSet"/>
+		<obj-attribute name="parent" type="java.lang.Integer" db-attribute-path="parent"/>
+		<obj-attribute name="storageType" type="java.lang.String" db-attribute-path="storage_type"/>
+		<obj-attribute name="versionName" type="java.lang.String" db-attribute-path="version_name"/>
+	</obj-entity>
+	<db-relationship name="designModuleArray" source="__versions__" target="design_module" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designModuledependencyrelationArray" source="__versions__" target="design_moduledependencyrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designModuleinterfaceArray" source="__versions__" target="design_moduleinterface" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designModulerefinementrelationArray" source="__versions__" target="design_modulerefinementrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designRealizerelationArray" source="__versions__" target="design_realizerelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designResponsibilityArray" source="__versions__" target="design_responsibility" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designResponsibilitytomodulerelationArray" source="__versions__" target="design_responsibilitytomodulerelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designSharedresourceArray" source="__versions__" target="design_sharedresource" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designSharedresourcerelationArray" source="__versions__" target="design_sharedresourcerelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designVariationpointArray" source="__versions__" target="design_variationpoint" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designVpinputvalueArray" source="__versions__" target="design_vpinputvalue" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="designWrapperArray" source="__versions__" target="design_wrapper" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainFunctionArray" source="__versions__" target="main_function" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainFunctionrefinementrelationArray" source="__versions__" target="main_functionrefinementrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainResponsibilitiesArray" source="__versions__" target="main_responsibilities" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainResponsibilityrefinementrelationArray" source="__versions__" target="main_responsibilityrefinementrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainResponsibilitytoresponsibilityrelationArray" source="__versions__" target="main_responsibilitytoresponsibilityrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainScenariorefinementrelationArray" source="__versions__" target="main_scenariorefinementrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainScenariosArray" source="__versions__" target="main_scenarios" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainSequencerelationArray" source="__versions__" target="main_sequencerelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="mainTranslationrelationArray" source="__versions__" target="main_translationrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="modifiabilityreasoningframeworksPCostofchangeArray" source="__versions__" target="modifiabilityreasoningframeworks_p_costofchange" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="modifiabilityreasoningframeworksPEncapsulationlevelArray" source="__versions__" target="modifiabilityreasoningframeworks_p_encapsulationlevel" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="modifiabilityreasoningframeworksPPreparedforchangeArray" source="__versions__" target="modifiabilityreasoningframeworks_p_preparedforchange" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="modifiabilityreasoningframeworksPProbabilityincomingArray" source="__versions__" target="modifiabilityreasoningframeworks_p_probabilityincoming" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="modifiabilityreasoningframeworksPProbabilityoutgoingArray" source="__versions__" target="modifiabilityreasoningframeworks_p_probabilityoutgoing" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsDependencyArray" source="__versions__" target="patterns_dependency" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsInterfacerealizationArray" source="__versions__" target="patterns_interfacerealization" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsIsarelationArray" source="__versions__" target="patterns_isarelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatternArray" source="__versions__" target="patterns_pattern" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatternconnectorArray" source="__versions__" target="patterns_patternconnector" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatterncontainerArray" source="__versions__" target="patterns_patterncontainer" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatternelementArray" source="__versions__" target="patterns_patternelement" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatternelementinterfaceArray" source="__versions__" target="patterns_patternelementinterface" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsPatternitempropertyArray" source="__versions__" target="patterns_patternitemproperty" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="patternsRefinementArray" source="__versions__" target="patterns_refinement" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="performancereasoningframeworksPExecutiontimeArray" source="__versions__" target="performancereasoningframeworks_p_executiontime" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="performancereasoningframeworksPMutualexclusionArray" source="__versions__" target="performancereasoningframeworks_p_mutualexclusion" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="performancereasoningframeworksPSharedresourceaskedArray" source="__versions__" target="performancereasoningframeworks_p_sharedresourceasked" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="plannerCAddfunctionArray" source="__versions__" target="planner_c_addfunction" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="plannerCAddresponsibilityrelationArray" source="__versions__" target="planner_c_addresponsibilityrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="plannerCAddscenarioArray" source="__versions__" target="planner_c_addscenario" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="plannerCAddtranslationrelationArray" source="__versions__" target="planner_c_addtranslationrelation" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="variabilityreasoningframeworkVariabilitymechanismresponsibilityArray" source="__versions__" target="variabilityreasoningframework_variabilitymechanismresponsibility" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="variabilityreasoningframeworkVpconfigurationArray" source="__versions__" target="variabilityreasoningframework_vpconfiguration" toMany="true">
+		<db-attribute-pair source="ID" target="version"/>
+	</db-relationship>
+	<db-relationship name="bidArray" source="auctionitem" target="bid" toMany="true">
+		<db-attribute-pair source="id" target="item"/>
+	</db-relationship>
+	<db-relationship name="toAuctionuser" source="auctionitem" target="auctionuser" toMany="false">
+		<db-attribute-pair source="seller" target="id"/>
+	</db-relationship>
+	<db-relationship name="toBid" source="auctionitem" target="bid" toMany="false">
+		<db-attribute-pair source="successfulBid" target="id"/>
+	</db-relationship>
+	<db-relationship name="auctionitemArray" source="auctionuser" target="auctionitem" toMany="true">
+		<db-attribute-pair source="id" target="seller"/>
+	</db-relationship>
+	<db-relationship name="bidArray" source="auctionuser" target="bid" toMany="true">
+		<db-attribute-pair source="id" target="bidder"/>
+	</db-relationship>
+	<db-relationship name="auctionitemArray" source="bid" target="auctionitem" toMany="true">
+		<db-attribute-pair source="id" target="successfulBid"/>
+	</db-relationship>
+	<db-relationship name="toAuctionitem" source="bid" target="auctionitem" toMany="false">
+		<db-attribute-pair source="item" target="id"/>
+	</db-relationship>
+	<db-relationship name="toAuctionuser" source="bid" target="auctionuser" toMany="false">
+		<db-attribute-pair source="bidder" target="id"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_module" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_moduledependencyrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_moduleinterface" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_modulerefinementrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_realizerelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_responsibility" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_responsibilitytomodulerelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_sharedresource" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_sharedresourcerelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_variationpoint" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_vpinputvalue" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="design_wrapper" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_function" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_functionrefinementrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_responsibilities" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_responsibilityrefinementrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_responsibilitytoresponsibilityrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_scenariorefinementrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_scenarios" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_sequencerelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="main_translationrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="modifiabilityreasoningframeworks_p_costofchange" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="modifiabilityreasoningframeworks_p_encapsulationlevel" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="modifiabilityreasoningframeworks_p_preparedforchange" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="modifiabilityreasoningframeworks_p_probabilityincoming" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="modifiabilityreasoningframeworks_p_probabilityoutgoing" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_dependency" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_interfacerealization" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_isarelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_pattern" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_patternconnector" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_patterncontainer" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_patternelement" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_patternelementinterface" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_patternitemproperty" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="patterns_refinement" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="performancereasoningframeworks_p_executiontime" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="performancereasoningframeworks_p_mutualexclusion" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="performancereasoningframeworks_p_sharedresourceasked" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="planner_c_addfunction" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="planner_c_addresponsibilityrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="planner_c_addscenario" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="planner_c_addtranslationrelation" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="variabilityreasoningframework_variabilitymechanismresponsibility" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toVersions" source="variabilityreasoningframework_vpconfiguration" target="__versions__" toMany="false">
+		<db-attribute-pair source="version" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="bidArray" source="Auctionitem" target="Bid" db-relationship-path="bidArray"/>
+	<obj-relationship name="toAuctionuser" source="Auctionitem" target="Auctionuser" db-relationship-path="toAuctionuser"/>
+	<obj-relationship name="toBid" source="Auctionitem" target="Bid" db-relationship-path="toBid"/>
+	<obj-relationship name="auctionitemArray" source="Auctionuser" target="Auctionitem" db-relationship-path="auctionitemArray"/>
+	<obj-relationship name="bidArray" source="Auctionuser" target="Bid" db-relationship-path="bidArray"/>
+	<obj-relationship name="auctionitemArray" source="Bid" target="Auctionitem" db-relationship-path="auctionitemArray"/>
+	<obj-relationship name="toAuctionitem" source="Bid" target="Auctionitem" db-relationship-path="toAuctionitem"/>
+	<obj-relationship name="toAuctionuser" source="Bid" target="Auctionuser" db-relationship-path="toAuctionuser"/>
+	<obj-relationship name="toVersions" source="DesignModule" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignModuledependencyrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignModuleinterface" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignModulerefinementrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignRealizerelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignResponsibility" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignResponsibilitytomodulerelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignSharedresource" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignSharedresourcerelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignVariationpoint" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignVpinputvalue" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="DesignWrapper" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainFunction" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainFunctionrefinementrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainResponsibilities" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainResponsibilityrefinementrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainResponsibilitytoresponsibilityrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainScenariorefinementrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainScenarios" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainSequencerelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="MainTranslationrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="ModifiabilityreasoningframeworksPCostofchange" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="ModifiabilityreasoningframeworksPEncapsulationlevel" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="ModifiabilityreasoningframeworksPPreparedforchange" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="ModifiabilityreasoningframeworksPProbabilityincoming" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="ModifiabilityreasoningframeworksPProbabilityoutgoing" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsDependency" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsInterfacerealization" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsIsarelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPattern" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPatternconnector" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPatterncontainer" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPatternelement" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPatternelementinterface" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsPatternitemproperty" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PatternsRefinement" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PerformancereasoningframeworksPExecutiontime" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PerformancereasoningframeworksPMutualexclusion" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PerformancereasoningframeworksPSharedresourceasked" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PlannerCAddfunction" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PlannerCAddresponsibilityrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PlannerCAddscenario" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="PlannerCAddtranslationrelation" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="VariabilityreasoningframeworkVariabilitymechanismresponsibility" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="toVersions" source="VariabilityreasoningframeworkVpconfiguration" target="Versions" db-relationship-path="toVersions"/>
+	<obj-relationship name="designModuleArray" source="Versions" target="DesignModule" db-relationship-path="designModuleArray"/>
+	<obj-relationship name="designModuledependencyrelationArray" source="Versions" target="DesignModuledependencyrelation" db-relationship-path="designModuledependencyrelationArray"/>
+	<obj-relationship name="designModuleinterfaceArray" source="Versions" target="DesignModuleinterface" db-relationship-path="designModuleinterfaceArray"/>
+	<obj-relationship name="designModulerefinementrelationArray" source="Versions" target="DesignModulerefinementrelation" db-relationship-path="designModulerefinementrelationArray"/>
+	<obj-relationship name="designRealizerelationArray" source="Versions" target="DesignRealizerelation" db-relationship-path="designRealizerelationArray"/>
+	<obj-relationship name="designResponsibilityArray" source="Versions" target="DesignResponsibility" db-relationship-path="designResponsibilityArray"/>
+	<obj-relationship name="designResponsibilitytomodulerelationArray" source="Versions" target="DesignResponsibilitytomodulerelation" db-relationship-path="designResponsibilitytomodulerelationArray"/>
+	<obj-relationship name="designSharedresourceArray" source="Versions" target="DesignSharedresource" db-relationship-path="designSharedresourceArray"/>
+	<obj-relationship name="designSharedresourcerelationArray" source="Versions" target="DesignSharedresourcerelation" db-relationship-path="designSharedresourcerelationArray"/>
+	<obj-relationship name="designVariationpointArray" source="Versions" target="DesignVariationpoint" db-relationship-path="designVariationpointArray"/>
+	<obj-relationship name="designVpinputvalueArray" source="Versions" target="DesignVpinputvalue" db-relationship-path="designVpinputvalueArray"/>
+	<obj-relationship name="designWrapperArray" source="Versions" target="DesignWrapper" db-relationship-path="designWrapperArray"/>
+	<obj-relationship name="mainFunctionArray" source="Versions" target="MainFunction" db-relationship-path="mainFunctionArray"/>
+	<obj-relationship name="mainFunctionrefinementrelationArray" source="Versions" target="MainFunctionrefinementrelation" db-relationship-path="mainFunctionrefinementrelationArray"/>
+	<obj-relationship name="mainResponsibilitiesArray" source="Versions" target="MainResponsibilities" db-relationship-path="mainResponsibilitiesArray"/>
+	<obj-relationship name="mainResponsibilityrefinementrelationArray" source="Versions" target="MainResponsibilityrefinementrelation" db-relationship-path="mainResponsibilityrefinementrelationArray"/>
+	<obj-relationship name="mainResponsibilitytoresponsibilityrelationArray" source="Versions" target="MainResponsibilitytoresponsibilityrelation" db-relationship-path="mainResponsibilitytoresponsibilityrelationArray"/>
+	<obj-relationship name="mainScenariorefinementrelationArray" source="Versions" target="MainScenariorefinementrelation" db-relationship-path="mainScenariorefinementrelationArray"/>
+	<obj-relationship name="mainScenariosArray" source="Versions" target="MainScenarios" db-relationship-path="mainScenariosArray"/>
+	<obj-relationship name="mainSequencerelationArray" source="Versions" target="MainSequencerelation" db-relationship-path="mainSequencerelationArray"/>
+	<obj-relationship name="mainTranslationrelationArray" source="Versions" target="MainTranslationrelation" db-relationship-path="mainTranslationrelationArray"/>
+	<obj-relationship name="modifiabilityreasoningframeworksPCostofchangeArray" source="Versions" target="ModifiabilityreasoningframeworksPCostofchange" db-relationship-path="modifiabilityreasoningframeworksPCostofchangeArray"/>
+	<obj-relationship name="modifiabilityreasoningframeworksPEncapsulationlevelArray" source="Versions" target="ModifiabilityreasoningframeworksPEncapsulationlevel" db-relationship-path="modifiabilityreasoningframeworksPEncapsulationlevelArray"/>
+	<obj-relationship name="modifiabilityreasoningframeworksPPreparedforchangeArray" source="Versions" target="ModifiabilityreasoningframeworksPPreparedforchange" db-relationship-path="modifiabilityreasoningframeworksPPreparedforchangeArray"/>
+	<obj-relationship name="modifiabilityreasoningframeworksPProbabilityincomingArray" source="Versions" target="ModifiabilityreasoningframeworksPProbabilityincoming" db-relationship-path="modifiabilityreasoningframeworksPProbabilityincomingArray"/>
+	<obj-relationship name="modifiabilityreasoningframeworksPProbabilityoutgoingArray" source="Versions" target="ModifiabilityreasoningframeworksPProbabilityoutgoing" db-relationship-path="modifiabilityreasoningframeworksPProbabilityoutgoingArray"/>
+	<obj-relationship name="patternsDependencyArray" source="Versions" target="PatternsDependency" db-relationship-path="patternsDependencyArray"/>
+	<obj-relationship name="patternsInterfacerealizationArray" source="Versions" target="PatternsInterfacerealization" db-relationship-path="patternsInterfacerealizationArray"/>
+	<obj-relationship name="patternsIsarelationArray" source="Versions" target="PatternsIsarelation" db-relationship-path="patternsIsarelationArray"/>
+	<obj-relationship name="patternsPatternArray" source="Versions" target="PatternsPattern" db-relationship-path="patternsPatternArray"/>
+	<obj-relationship name="patternsPatternconnectorArray" source="Versions" target="PatternsPatternconnector" db-relationship-path="patternsPatternconnectorArray"/>
+	<obj-relationship name="patternsPatterncontainerArray" source="Versions" target="PatternsPatterncontainer" db-relationship-path="patternsPatterncontainerArray"/>
+	<obj-relationship name="patternsPatternelementArray" source="Versions" target="PatternsPatternelement" db-relationship-path="patternsPatternelementArray"/>
+	<obj-relationship name="patternsPatternelementinterfaceArray" source="Versions" target="PatternsPatternelementinterface" db-relationship-path="patternsPatternelementinterfaceArray"/>
+	<obj-relationship name="patternsPatternitempropertyArray" source="Versions" target="PatternsPatternitemproperty" db-relationship-path="patternsPatternitempropertyArray"/>
+	<obj-relationship name="patternsRefinementArray" source="Versions" target="PatternsRefinement" db-relationship-path="patternsRefinementArray"/>
+	<obj-relationship name="performancereasoningframeworksPExecutiontimeArray" source="Versions" target="PerformancereasoningframeworksPExecutiontime" db-relationship-path="performancereasoningframeworksPExecutiontimeArray"/>
+	<obj-relationship name="performancereasoningframeworksPMutualexclusionArray" source="Versions" target="PerformancereasoningframeworksPMutualexclusion" db-relationship-path="performancereasoningframeworksPMutualexclusionArray"/>
+	<obj-relationship name="performancereasoningframeworksPSharedresourceaskedArray" source="Versions" target="PerformancereasoningframeworksPSharedresourceasked" db-relationship-path="performancereasoningframeworksPSharedresourceaskedArray"/>
+	<obj-relationship name="plannerCAddfunctionArray" source="Versions" target="PlannerCAddfunction" db-relationship-path="plannerCAddfunctionArray"/>
+	<obj-relationship name="plannerCAddresponsibilityrelationArray" source="Versions" target="PlannerCAddresponsibilityrelation" db-relationship-path="plannerCAddresponsibilityrelationArray"/>
+	<obj-relationship name="plannerCAddscenarioArray" source="Versions" target="PlannerCAddscenario" db-relationship-path="plannerCAddscenarioArray"/>
+	<obj-relationship name="plannerCAddtranslationrelationArray" source="Versions" target="PlannerCAddtranslationrelation" db-relationship-path="plannerCAddtranslationrelationArray"/>
+	<obj-relationship name="variabilityreasoningframeworkVariabilitymechanismresponsibilityArray" source="Versions" target="VariabilityreasoningframeworkVariabilitymechanismresponsibility" db-relationship-path="variabilityreasoningframeworkVariabilitymechanismresponsibilityArray"/>
+	<obj-relationship name="variabilityreasoningframeworkVpconfigurationArray" source="Versions" target="VariabilityreasoningframeworkVpconfiguration" db-relationship-path="variabilityreasoningframeworkVpconfigurationArray"/>
+	<query name="DecompositionQueryOnInterface" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModuleinterface">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT i.* FROM
+  	design_moduleinterface i
+  	JOIN design_realizerelation r ON i.`fact-id`=r.child AND i.version=r.version
+  	JOIN __versions__ v ON i.version=v.id
+ 	WHERE version_name=$VersionName AND r.parent=$ParentFactId]]></sql>
+	</query>
+	<query name="DecompositionQueryOnModule" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModule">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+  	design_module m
+  	JOIN design_modulerefinementrelation d ON m.`fact-id`=d.child AND m.version=d.version
+  	JOIN __versions__ v ON m.version=v.id
+	WHERE version_name=$VersionName AND d.parent=$ParentFactId]]></sql>
+	</query>
+	<query name="DecompositionRelationQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModulerefinementrelation">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT d.* FROM
+	design_modulerefinementrelation d
+	JOIN __versions__ v ON d.version=v.id
+	WHERE version_name=$VersionName AND d.parent=$ParentFactId AND d.child=$ChildFactId]]></sql>
+	</query>
+	<query name="DependencyQueryOnInterface" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModuleinterface">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT i.* FROM
+	design_moduleinterface i
+	JOIN design_moduledependencyrelation d ON i.`fact-id`=d.child AND i.version=d.version
+	JOIN __versions__ v ON i.version=v.id
+	WHERE version_name=$VersionName AND d.parent=$ParentFactId]]></sql>
+	</query>
+	<query name="ReverseDependencyQueryOnInterface" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModuleinterface">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT i.* FROM
+	design_moduleinterface i
+	JOIN design_moduledependencyrelation d ON i.`fact-id`=d.parent AND i.version=d.version
+	JOIN __versions__ v ON i.version=v.id
+	WHERE version_name=$VersionName AND d.child=$ChildFactId]]></sql>
+	</query>
+	<query name="DependencyQueryOnModule" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModule">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+	design_module m
+	JOIN design_moduledependencyrelation d ON m.`fact-id`=d.child AND m.version=d.version
+	JOIN __versions__ v ON m.version=v.id
+	WHERE version_name=$VersionName AND d.parent=$ParentFactId]]></sql>
+	</query>
+	<query name="ReverseDependencyQueryOnModule" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModule">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+	design_module m
+	JOIN design_moduledependencyrelation d ON m.`fact-id`=d.parent AND m.version=d.version
+	JOIN __versions__ v ON m.version=v.id
+	WHERE version_name=$VersionName AND d.child=$ChildFactId]]></sql>
+	</query>	
+	<query name="DependencyRelationQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModuledependencyrelation">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT d.* FROM
+	design_moduledependencyrelation d
+	JOIN __versions__ v ON d.version=v.id
+	WHERE version_name=$VersionName AND d.parent=$ParentFactId AND d.child=$ChildFactId]]></sql>
+	</query>
+	<query name="ModuleFactIDsQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModule">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+  	design_module m JOIN __versions__ v ON m.version=v.id
+  	WHERE version_name=$VersionName]]></sql>
+	</query>
+	<query name="RealizationRelationQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignRealizerelation">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT r.* FROM
+	design_realizerelation r
+	JOIN __versions__ v ON r.version=v.id
+	WHERE version_name=$VersionName AND r.parent=$ParentFactId AND r.child=$ChildFactId]]></sql>
+	</query>
+	<query name="RootModuleInterfaceQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModuleinterface">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+  	design_moduleinterface m JOIN __versions__ v ON m.version=v.id
+  	WHERE version_name=$VersionName AND `fact-id`=$ParentFactId]]></sql>
+	</query>
+	<query name="RootModuleQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="DesignModule">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT m.* FROM
+  	design_module m JOIN __versions__ v ON m.version=v.id
+  	WHERE version_name=$VersionName AND `fact-id`=$ParentFactId]]></sql>
+	</query>
+	<query name="VersionIDQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="Versions">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT v.ID FROM __versions__ v WHERE v.version_name=$VersionName]]></sql>
+	</query>
+	<query name="VersionNamesQuery" factory="org.objectstyle.cayenne.map.SQLTemplateBuilder" root="obj-entity" root-name="Versions">
+		<sql adapter-class="org.objectstyle.cayenne.dba.mysql.MySQLAdapter"><![CDATA[SELECT v.ID, v.version_name, v.date_created, v.storage_type, v.factSet, v.parent FROM __versions__ v]]></sql>
+	</query>
+</data-map>

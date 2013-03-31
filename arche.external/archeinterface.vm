@@ -1,0 +1,50 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$relationshipVO
+## 		$parameters
+## 		$operands
+## 		$getter
+## 		$setter
+
+package $packagename;
+
+// This code skeleton was generated with Velocity-1.5 [Template: archeinterface.vm]
+
+import edu.cmu.sei.arche.external.reasoningframework.ArchERelationship;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEResponsibility;
+
+// ArchERelationshipType: $relationshipVO.Name
+// Description: $relationshipVO.Description
+public interface $utility.convertArchEInterfaceJavaName($relationshipVO.Id) extends ArchERelationship {
+
+	// Parameters of this relationship
+#foreach($att in $parameters)      
+#if($getter)
+	// Parameter: $att.Name
+#set($type = $utility.convertBasicType($att.DataType))	
+	public $type get$utility.convertParameterJavaName($att.Id)();
+#end
+#if($setter)
+	public void set$utility.convertParameterJavaName($att.Id)($type param);
+#end
+#end
+
+	// Operands of this relationship
+#foreach($att in $operands)      
+	public boolean isBidirectional();
+#set($typeLhs = $utility.convertArchERFType($att.Lhs))
+#set($typeRhs = $utility.convertArchERFType($att.Rhs))
+#if($getter)
+	public $typeLhs getParent();
+	public $typeRhs getChild();
+#end
+#if($setter)
+	public void setParent($typeLhs op);
+	public void setChild($typeRhs op);
+#end
+#end
+	
+}
+

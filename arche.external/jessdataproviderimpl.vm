@@ -1,0 +1,133 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$model
+## 		$listArchETypes
+## 		$listModelTypes
+## 		$jessImpl
+
+package $packagename;
+
+import java.util.List;
+
+// This code skeleton was generated with Velocity-1.5 [Template: jessdataprovider.vm]
+
+import edu.cmu.sei.arche.external.reasoningframework.ArchEAnalysisResult;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEScenario;
+import edu.cmu.sei.arche.external.reasoningframework.ArchERelationship;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEParameter;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEResponsibility;
+import edu.cmu.sei.arche.external.reasoningframework.ExternalReasoningFramework;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEEvaluationResult;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEAnalysisResult;
+import edu.cmu.sei.arche.external.reasoningframework.ArchETryTacticResult;
+import edu.cmu.sei.arche.external.reasoningframework.RFDesignModel;
+import edu.cmu.sei.arche.external.RFCommand;
+
+import java.util.ArrayList;
+
+import jess.Fact;
+
+#set($provider = $utility.convertRFDataProviderJavaName($model))
+#if($jessimpl)
+import jess.Rete;
+import edu.cmu.sei.arche.external.reasoningframework.JessDataProvider;
+
+public class Jess$provider extends JessDataProvider implements $provider {
+
+	public Jess$provider() {
+		super();
+	}
+
+	public Jess$provider(Rete engine) {
+		super(engine);
+	}
+	
+	// List of ArchE types defined by the reasoning framework
+
+#foreach($voArchEType in $listArchETypes)
+#set($voName = $utility.convertArchEInterfaceJavaName($voArchEType.Id))
+	// public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)List();
+	public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)ListFor(ArchEScenario scenario) {
+		return (super.getRelationsForScenario(scenario,"$voName"));
+	}	
+#end
+
+}
+#else
+
+public class Default$provider implements $provider {
+
+#foreach($voArchEType in $listArchETypes)
+	// public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)List();
+	public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)ListFor(ArchEScenario scenario) {
+		// TODO: Provide an implementation for this method
+		ArrayList result = null;
+		return (result);
+	}	
+#end
+	public List getRelationsForScenario(ArchEScenario scenario, String relationName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+//	public List getResponsibilities() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	public List getResponsibilitiesForScenario(ArchEScenario scenario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	//public List getScenarios() {
+	//	// TODO Auto-generated method stub
+	//	return null;
+	//}
+	public List getScenariosForReasoningFramework(ExternalReasoningFramework rfwk) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void initializeData(RFCommand command) {
+		// TODO Auto-generated method stub
+		
+	}	
+	public ArchEEvaluationResult constructEvaluationResult(ArchEScenario scenario, double result, ExternalReasoningFramework rf) {
+		// TODO Auto-generated method stub		
+		return (null);
+	}
+	public ArchEAnalysisResult constructAnalysisResult(ArchEScenario scenario, 
+			double result, ExternalReasoningFramework rf) {
+		// TODO Auto-generated method stub
+		return (null);
+	}
+	public ArchETryTacticResult constructTryTacticResult(ArchEScenario scenario, 
+			double result, Object tactic, ExternalReasoningFramework rf) {
+		// TODO Auto-generated method stub
+		return (null);
+		
+	}
+	public void createDesignModel(String name, RFDesignModel model) {
+		// TODO Auto-generated method stub
+		
+	}
+	public RFDesignModel getDesignModel(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArchEParameter getParameter(ArchEResponsibility responsibility, String parameter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public List getParametersForRelationship(ArchERelationship relationship) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public List getParametersForResponsibility(ArchEResponsibility responsibility) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+#end
+

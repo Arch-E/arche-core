@@ -1,0 +1,15 @@
+edu.cmu.sei.arche
+edu.cmu.sei.arche.actions
+edu.cmu.sei.arche.corebridge
+edu.cmu.sei.arche.corebridge.facade
+edu.cmu.sei.arche.corebridge.interactions
+edu.cmu.sei.arche.corebridge.listener
+edu.cmu.sei.arche.designconfig
+edu.cmu.sei.arche.export
+edu.cmu.sei.arche.rfconfig
+edu.cmu.sei.arche.ui
+edu.cmu.sei.arche.ui.dialog
+edu.cmu.sei.arche.ui.prefs
+edu.cmu.sei.arche.ui.views
+edu.cmu.sei.arche.ui.wizards
+edu.cmu.sei.arche.vo

@@ -1,0 +1,153 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$relationshipVO
+## 		$parameters
+## 		$operands
+## 		$getter
+## 		$setter
+##		$jessimpl
+
+package $packagename;
+
+// This code skeleton was generated with Velocity-1.5 [Template: jessinterfaceimpl.vm]
+
+import edu.cmu.sei.arche.external.reasoningframework.ArchEScenario;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEResponsibility;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEObject;
+import edu.cmu.sei.arche.external.reasoningframework.ArchERelationship;
+
+
+#set($relName = $utility.convertArchEInterfaceJavaName($relationshipVO.Id))
+#if($jessimpl)
+import jess.Fact;
+import jess.Rete;
+import jess.JessException;
+
+import edu.cmu.sei.arche.external.reasoningframework.ArchEJessImplementation;
+import edu..sei.arche.external.reasoningframework.JessDataProvider;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEScenarioJessImpl;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEResponsibilityJessImpl;
+
+// ArchERelationshipType: $relationshipVO.Name
+// Description: $relationshipVO.Description
+public class JessImpl$relName implements $relName, ArchEJessImplementation {
+
+	private Fact factJessImpl$relName = null;
+	private Rete myEngine = null;
+	
+	// Default constructor
+	public JessImpl$relName(Fact fact, Rete engine) {
+		factJessImpl$relName = fact;
+		myEngine = engine;
+	}
+		
+	public Fact asJessFact() {
+		return (factJessImpl$relName);
+	}
+#else
+public class AnyImpl$relName implements $relName {
+	
+	// Default constructor
+	public AnyImpl$relName() {
+		// TODO: Provide the code for this constructor
+	}
+#end
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArchEScenario getScenario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getSource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	// Parameters of this relationship
+#foreach($att in $parameters)      
+#if($getter)
+	// Parameter: $att.Name
+#set($type = $utility.convertBasicType($att.DataType))	
+	public $type get$utility.convertParameterJavaName($att.Id)() {
+		// TODO: Provide the code for this method
+		return ($utility.convertBasicTypeValue($att.DataType));
+	}
+#end
+#if($setter)
+	public void set$utility.convertParameterJavaName($att.Id)($type param) {
+		// TODO: Provide the code for this method
+		return;
+	}
+#end
+#end
+
+	// Operands of this relationship
+#foreach($att in $operands)      
+	public boolean isBidirectional() {
+		// TODO: Provide the code for this method
+		return (true);
+	}
+
+#set($typeLhs = $utility.convertArchERFType($att.Lhs))
+#set($typeRhs = $utility.convertArchERFType($att.Rhs))
+#if($getter)
+	public $typeLhs getParent() {
+#if($jessimpl)
+		Fact parentFact = null;
+	    try {
+	       	parentFact = factJessImpl${relName}.getSlotValue("parent").factValue(myEngine.getGlobalContext());
+		} catch (JessException e) {
+			e.printStackTrace();
+		}
+		return (new ArchEResponsibilityJessImpl(parentFact,myEngine));
+#else
+		// TODO: Provide the code for this method
+		return (null);
+#end
+	}
+	public $typeRhs getChild() {
+#if($jessimpl)
+		Fact childFact = null;
+	    try {
+	       	childFact = factJessImpl${relName}.getSlotValue("child").factValue(myEngine.getGlobalContext());
+		} catch (JessException e) {
+			e.printStackTrace();
+		}
+		return (new ArchEResponsibilityJessImpl(childFact,myEngine));
+#else
+		// TODO: Provide the code for this method
+		return (null);
+#end
+	}
+#end
+#if($setter)
+	public void setParent($typeLhs op) {
+		// TODO: Provide the code for this method
+		return;
+	}
+	public void setChild($typeRhs op) {
+		// TODO: Provide the code for this method
+		return;
+	}
+#end
+#end
+	
+}
+

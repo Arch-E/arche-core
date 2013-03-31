@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	ArchE
+	Copyright (c) 2012 Carnegie Mellon University.
+	All Rights Reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	this list of conditions and the following acknowledgments and disclaimers.
+
+	2. Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+
+	3. All advertising materials for third-party software mentioning features or
+	use of this software must display the following disclaimer:
+
+	“Neither Carnegie Mellon University nor its Software Engineering Institute
+	have reviewed or endorsed this software”
+
+	4. The names “Carnegie Mellon University,” and/or “Software Engineering
+	Institute" shall not be used to endorse or promote products derived from
+	this software without prior written permission. For written permission,
+	please contact permission@sei.cmu.edu.
+
+	5. Redistributions of any form whatsoever must retain the following
+	acknowledgment:
+
+	Copyright 2012 Carnegie Mellon University.
+
+	This material is based upon work funded and supported by the United States
+	Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie
+	Mellon University for the operation of the Software Engineering Institute, a
+	federally funded research and development center.
+
+	NO WARRANTY
+
+	THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL
+	IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO
+	WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER
+	INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR
+	MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL.
+	CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH
+	RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+-->
+<rf id="RMAPerformanceRF" quality="Performance" name="RMA Performance RF v0.1" version="0.1">
+    <scenarioTypes>
+        <scenarioType desc="Tooltip/help for performance scenario type"
+            name="RMA Performance" tID="RMAPerformance">
+            <parts>
+                <part defaultText="Type stimulus here"
+                    defaultTypeId="periodic"
+                    defaultUnitId="milliseconds" defaultValue="9.999" partType="STIMULUS">
+                    <types>
+                        <type name="Periodic" tID="periodic"/>
+                        <type name="Stochastic" tID="stochastic"/>
+                        <type name="Sporadic" tID="sporadic"/>
+                    </types>
+                    <units>
+                        <unit name="milliseconds" tID="milliseconds"/>
+<!--                        <unit name="seconds" tID="seconds"/> -->
+                    </units>
+                </part>
+                <part defaultText="Type source of stimulus here"
+                    defaultTypeId="System" defaultUnitId=""
+                    defaultValue="" partType="SOURCE_OF_STIMULUS">
+                    <types>
+                        <type name="System" tID="System"/>
+                        <type name="External" tID="External"/>
+                        <type name="Time" tID="Time"/>
+                    </types>
+                    <units/>
+                </part>
+                <part defaultText="Type environment here"
+                    defaultTypeId="NormalCondition" defaultUnitId=""
+                    defaultValue="" partType="ENVIRONMENT">
+                    <types>
+                        <type name="Normal Condition" tID="NormalCondition"/>
+                        <type name="Faulty Condition" tID="FaultyCondition"/>
+                    </types>
+                    <units/>
+                </part>
+                <part defaultText="Type artifact here"
+                    defaultTypeId="System" defaultUnitId=""
+                    defaultValue="" partType="ARTIFACT">
+                    <types>
+                        <type name="System" tID="System"/>
+                        <type name="Process" tID="Process"/>
+                        <type name="Module(s)" tID="Module"/>
+                    </types>
+                    <units/>
+                </part>
+                <part defaultText="Type response here"
+                    defaultTypeId="ProcessStimuli" defaultUnitId=""
+                    defaultValue="" partType="RESPONSE">
+                    <types>
+                        <type name="Process Stimuli" tID="ProcessStimuli"/>
+                    </types>
+                    <units/>
+                </part>
+                <part defaultText="Type response measure here"
+                    defaultTypeId="HardDeadline"
+                    defaultUnitId="msec" defaultValue="9.999" partType="RESPONSE_MEASURE">
+                    <types>
+                        <type name="Hard Deadline" tID="HardDeadline"/>
+<!--                        <type name="Priority" tID="Priority"/> -->
+                    </types>
+                    <units>
+                        <unit name="milliseconds" tID="msec"/>
+<!--                        <unit name="seconds" tID="sec"/> -->
+                    </units>
+                </part>
+            </parts>
+        </scenarioType>
+    </scenarioTypes>
+    <relationshipTypes/>
+    <parameterTypes>
+        <parameterType dataType="double" defaultValue="10" desc="Tooltip/help for exec. time" name="Exec.time (ms)" tID="PerformanceReasoningFrameworks::P_ExecutionTime" /> 
+        <parameterType dataType="boolean" defaultValue="FALSE" desc="Tooltip/Does this responsibility require mutually exclusive access to a shared resource?" name="Mutual Exclusion" tID="PerformanceReasoningFrameworks::P_MutualExclusion" /> 
+  </parameterTypes>
+  <responsibilityParameters>
+        <parameterType tID="PerformanceReasoningFrameworks::P_ExecutionTime" /> 
+        <parameterType tID="PerformanceReasoningFrameworks::P_MutualExclusion" /> 
+  </responsibilityParameters>
+
+    <model>
+        <modelElementType factType="RMAModel::Task" nameSlotName="name">
+            <paramSlots>
+                <paramSlot name="stimulusType"/>
+                <paramSlot name="stimulusValue"/>
+                <paramSlot name="taskType"/>
+                <paramSlot name="taskValue"/>
+                <paramSlot name="executionTime"/>
+                <paramSlot name="time_blocked"/>
+                <paramSlot name="latency"/>
+                <paramSlot name="priority"/>
+            </paramSlots>
+        </modelElementType>
+        <modelElementType factType="RMAModel::SubTask" nameSlotName="name">
+            <paramSlots>
+                <paramSlot name="taskType"/>
+                <paramSlot name="taskValue"/>
+                <paramSlot name="executionTime"/>
+                <paramSlot name="priority"/>
+            </paramSlots>
+        </modelElementType>
+        <!-- this RF does not have model relations yet -->
+    </model>
+</rf>

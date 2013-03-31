@@ -1,0 +1,27 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$parameter
+## 		$getter
+## 		$setter
+
+package $packagename;
+
+import edu.cmu.sei.arche.external.reasoningframework.ArchEParameter;
+
+// This code skeleton was generated with Velocity-1.5 [Template: archeparameter.vm]
+
+#set($type = $utility.convertBasicType($parameter.DataType))	
+// ArchEParameterType: $utility.convertArchEParameterJavaName($parameter.Id)
+public interface $utility.convertArchEParameterJavaName($parameter.Id) extends ArchEParameter {
+
+#if($getter)
+	public $type getPValue();
+#end
+
+#if($setter)
+	public void setPValue($type value);
+#end
+	
+}

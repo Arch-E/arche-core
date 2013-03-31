@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>Getting Started</title>
+  <style>
+		.header{font: bold 14pt;}
+		.subheader{font: bold 12pt}
+		.text{font: 12pt; margin-left: 15px; margin-top:5px; margin-bottom:15px}
+	</style>
+</head>
+<body>
+<div class="header">
+<h1>ArchE Project</h1>
+</div>
+<div class="text">This tutorial will help you to understand project
+related functionalities of the ArchE perspective.</div>
+<div class="subheader">
+<h3>In This Section</h3>
+</div>
+<div class="text"> <a href="#newproj">Create a new project</a><br>
+<a href="#Copying_a_Project">Copy a project</a><br>
+<a href="#openproj">Close a project</a><br>
+<a href="#openproj">Open a project</a><br>
+<a href="#delproj">Delete a project</a><br>
+<a href="#exportproj">Export a design to Rational Rose</a><br>
+<a href="#conc">Conclusion</a><br>
+<br>
+</div>
+<div class="header">
+<h3><a name="newproj"></a>Create a new project</h3>
+</div>
+<div class="text">To create a new ArchE project :<br>
+<ul>
+  <li>Select File | New | ArchE Project&nbsp; from the main menu</li>
+  <li>or go to the Navigator view, right click (on the mouse) and
+select New | ArchE Project.&nbsp;<br>
+  </li>
+</ul>
+</div>
+<div class="text">
+The dialog box to create a New ArchE Project will pop up.<br>
+</div>
+<div class="text">
+Give the project a name. You have the choice of creating a blank
+project (no scenarios, functions, responsibilities, etc.) or a project
+pre-populated with sample data. <br>
+If you select sample data, you have to specify a data file from which a
+prepopulated fact base is loaded into the fact base of the Core. Sample
+files are provided as options. In the case of creating a project with
+sample data, please ensure integrity of the data file.
+<br>
+The new project created should have a design folder (where the exported
+design files are stored by default) and a FactBase.dat file (this file
+will contain the persistent facts for a project).
+</div>
+<div class="text">
+<img src="../images/projtypes.jpg"></div>
+<div class="header">
+<h3><a name="Copying_a_Project"></a>Copy a Project</h3>
+You can create a new project with the same contents of an existing one
+in two different ways:<br>
+<ul>
+  <li>Select File | New | ArchE Project to create a new project, select
+sample data and click browse to pick the FactBase.dat file for the
+source project. <br>
+  </li>
+  <li>Copy &amp; Paste a project in the Navigator view<br>
+  </li>
+</ul>
+<h3><a name="closeproj"></a>Close a project</h3>
+</div>
+<div class="text">
+You can close an ArchE project by right clicking on the project and
+selecting Close Project from the context menu. The contents of the
+views will be refreshed. Instead of the data of the project that was
+closed, they will display a warning asking the user to open or create a
+project.&nbsp;<br>
+</div>
+<div class="header">
+<h3><a name="openproj"></a>Open a project</h3>
+</div>
+<div class="text">
+You can open a (closed) ArchE project by right clicking on the project
+and selecting Open Project from the context menu. The views will
+refresh automatically to display the facts for that project.
+</div>
+<div class="text">If there is more than one ArchE project in the
+Navigator view, the user can switch between these projects. However,
+only one project should remain open at any given time.&nbsp;<br>
+</div>
+<div class="header">
+<h3><a name="delproj"></a>Delete a project</h3>
+</div>
+<div class="text">
+You can delete an ArchE project by right clicking on the project and
+selecting Delete from the context menu. The contents of the views will
+be refreshed. Instead of the data of the
+project that was closed, they will display a warning asking the user to
+open or create a project.
+</div>
+<div class="header">
+<h3><a name="exportproj"></a>Export a design to Rational Rose</h3>
+</div>
+<div class="text">
+You can export an ArchE design to Rational Rose by clicking export 
+in the file menu, selecting an export designation as Export Design 
+To Rose(UML) and clicking Next. And then you need to choose target file 
+and click Finish and the design will be exported to the chosen file.
+</div>
+<div class="text">
+<img src="../images/exportDesign1.jpg"></div>
+<div class="text">
+<img src="../images/exportDesign2.jpg"></div>
+<div class="text">
+Before opening the exported XMI file to Rational Rose, you need to install
+an add-in file (<a href="http://dogbert.mse.cs.cmu.edu/mse2004/projects/Dumbledore/download/RoseXMLTools1.3.6.01.zip">add-in file For Rational Rose</a>) first.
+After installation, you can import ArchE design file by clicking menu 
+'tools | UML 1.3 XMI Addin | UML 1.3 XMI Import'
+</div>
+<img src="../images/exportDesign3.jpg"></div>
+<div class="header">
+<h3><a name="conc"></a>Conclusion</h3>
+</div>
+<div class="text">
+This tutorial briefly introduced you to all functionalities related to
+ArchE projects.
+</div>
+</body>
+</html>

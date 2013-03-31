@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+	ArchE
+	Copyright (c) 2012 Carnegie Mellon University.
+	All Rights Reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	this list of conditions and the following acknowledgments and disclaimers.
+
+	2. Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+
+	3. All advertising materials for third-party software mentioning features or
+	use of this software must display the following disclaimer:
+
+	“Neither Carnegie Mellon University nor its Software Engineering Institute
+	have reviewed or endorsed this software”
+
+	4. The names “Carnegie Mellon University,” and/or “Software Engineering
+	Institute" shall not be used to endorse or promote products derived from
+	this software without prior written permission. For written permission,
+	please contact permission@sei.cmu.edu.
+
+	5. Redistributions of any form whatsoever must retain the following
+	acknowledgment:
+
+	Copyright 2012 Carnegie Mellon University.
+
+	This material is based upon work funded and supported by the United States
+	Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie
+	Mellon University for the operation of the Software Engineering Institute, a
+	federally funded research and development center.
+
+	NO WARRANTY
+
+	THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL
+	IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO
+	WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER
+	INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR
+	MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL.
+	CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH
+	RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+-->
+<plugin
+   id="SEI.ArchE.UI"
+   name="ArchE UI"
+   version="2.1.0"
+   provider-name="Software Engineering Institute"
+   class="edu.cmu.sei.arche.ArchEUIPlugin">
+
+   <runtime>
+      <library name="ArchEUI.jar">
+         <packages prefixes="edu.cmu.sei.arche"/>
+         <export name="*"/>
+      </library>
+      <library name="lib/jgrapht-jdk1.6.jar">
+         <export
+               name="*">
+         </export>
+      </library>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="gov.sandia.jess"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="SEI.ArchE.Lib"/>
+      <import plugin="SEI.ArchE.DesignView"/>
+   </requires>
+
+
+   <!-- EXTENSION-POINT FOR REASONING FRAMEWORK CONTRIBUTIONS -->
+   <extension-point id="reasoningFramework" name="Reasoning Framework" schema="schema/reasoningFramework.exsd"/>
+
+   <!-- Define product  -->
+   <extension id="ArchE" point="org.eclipse.core.runtime.products">
+   		<product name="%productName" application="org.eclipse.ui.ide.workbench" description="%productBlurb">
+                        <property name="windowImages" value="ArchE_app_16.gif,eclipse32.gif"/> 
+                        
+			<property name="aboutImage" value="ArchE_app_lg.gif"/>    		        
+   			<property name="aboutText" value="%productBlurb"/>
+   			<property name="appName" value="ArchE UI"/>
+   			<property name="preferenceCustomization" value="plugin_customization.ini"/>		
+   		</product>
+   </extension> 
+
+   <!-- Define new perspective -->
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="ArchE"
+            icon="icons/arche-logo.ico"
+            class="edu.cmu.sei.arche.ui.ArchEPerspective"
+            id="SEI.ArchE.UI.ArchEPerspective">
+      </perspective>
+   </extension>
+   
+   <!-- Define table of contents of help text for this plugin -->
+   <!--
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="tocconcepts.xml">
+      </toc>
+      <toc
+            file="tocgettingstarted.xml">
+      </toc>
+      <toc
+            file="tocrfplugins.xml">
+      </toc>
+   </extension>
+	-->
+	   
+   <!-- Preferences page for configuring ArchE specific user options -->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="ArchE"
+            class="edu.cmu.sei.arche.ui.prefs.GlobalPreferences"
+            id="SEI.ArchE.UI.GlobalPrefs">
+      </page>
+      <page
+            name="Reasoning Frameworks"
+            category="SEI.ArchE.UI.GlobalPrefs"
+            class="edu.cmu.sei.arche.ui.prefs.ReasoningFrameworks"
+            id="SEI.ArchE.UI.ReasoningFrameworksPrefs">
+      </page>
+      
+   </extension>
+   
+   <!-- ArchE VIEWS -->
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="ArchE"
+            id="SEI.ArchE.UI">
+      </category>
+      <view
+            name="Scenarios"
+            icon="icons/scenario.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.ScenariosView"
+            id="SEI.ArchE.UI.ScenariosView">
+      </view>
+      <!--
+        <view
+            name="TrafficLight"
+            icon="icons/scenario.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.TrafficLightView"
+            id="SEI.ArchE.UI.TrafficLightView">
+      </view>
+      -->
+      <view
+            name="Responsibilities"
+            icon="icons/responsibility.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.ResponsibilitiesView"
+            id="SEI.ArchE.UI.ResponsibilitiesView">
+      </view>
+      <view
+            name="Functions"
+            icon="icons/function.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.FunctionsView"
+            id="SEI.ArchE.UI.FunctionsView">
+      </view>
+      <view
+            name="Relationships"
+            icon="icons/relationship.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.RelationshipsView"
+            id="SEI.ArchE.UI.RelationshipsView">
+      </view>
+      <view
+            name="Scenario-Responsibility Mapping"
+            icon="icons/scenarioResp.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.ScenarioRespMappingView"
+            id="SEI.ArchE.UI.ScenarioRespMappingView">
+      </view>
+      <view
+            name="Function-Responsibility Mapping"
+            icon="icons/functionResp.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.FunctionRespMappingView"
+            id="SEI.ArchE.UI.FunctionRespMappingView">
+      </view>
+      <view
+            name="Jess Console"
+            icon="icons/jessConsole.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.JessConsole"
+            id="SEI.ArchE.UI.JessConsole">
+      </view>
+      <view
+            name="Questions and Alerts"
+            icon="icons/question.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.QuestionsView"
+            id="SEI.ArchE.UI.QuestionsView">
+      </view>      
+
+      <view
+            name="Model Elements"
+            icon="icons/modelElems.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.ModelElementsView"
+            id="SEI.ArchE.UI.ModelElementsView">
+      </view>  
+      <view
+            name="Model Relations View"
+            icon="icons/modelRels.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.ModelRelationsView"
+            id="SEI.ArchE.UI.ModelRelationsView">
+      </view>  
+      <view
+            name="Design Elements"
+            icon="icons/designElems.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.DesignElementsView"
+            id="SEI.ArchE.UI.DesignElementsView">
+      </view>  
+      <view
+            name="Design Relations View"
+            icon="icons/designRels.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.views.DesignRelationsView"
+            id="SEI.ArchE.UI.DesignRelationsView">
+      </view>  
+	  <view
+	        name="Design Tree View"
+  	        icon="icons/designview/movingBox.gif"
+            category="SEI.ArchE.UI"
+	        class="edu.cmu.sei.arche.ui.views.designtree.ui.DesignTreeView"
+	        id="SEI.ArchE.UI.DesignTreeView">
+	  </view>
+      <view
+        category="SEI.ArchE.UI"
+        class="edu.cmu.sei.arche.ui.views.EvaluationResultsView"
+        icon="icons/scenario.gif"
+        id="SEI.ArchE.UI.EvaluationResultsView"
+        name="Evaluation Results"> 
+       </view>  
+   </extension>
+   
+   <!-- PROJECT NATURE -->
+   <extension
+         id="ArchENature"
+         name="ArchE Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="edu.cmu.sei.arche.ArchEUINature">
+         </run>
+      </runtime>
+      <options
+            allowLinking="false">
+      </options>
+   </extension>
+   
+   <!-- PROJECT NATURE IMAGE - LITTLE 'A' DECORATION TO ARCHE PROJECT ICON -->
+   <extension point="org.eclipse.ui.ide.projectNatureImages">
+      <image 
+         id="SEI.ArchE.UI.ArchENatureImage"
+         natureId="SEI.ArchE.UI.ArchENature"
+         icon="icons/ArchENature.gif">
+      </image>
+ </extension>
+   
+   
+<!-- Popup menu of Scenarios view  -->
+<!--
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            targetID="SEI.ArchE.UI.ScenariosView"
+            id="SEI.ArchE.UI.ScenariosView.popupMenu">
+         <action
+               label="New Scenario"
+               class="edu.cmu.sei.arche.actions.NewScenarioActionDelegate"
+               menubarPath="additions"
+               enablesFor="*"
+               id="SEI.ArchE.UI.ScenariosView.popupMenu.New">
+         </action>
+         <action
+               label="Edit"
+               class="edu.cmu.sei.arche.actions.EditScenarioActionDelegate"
+               menubarPath="additions"
+               enablesFor="*"
+               id="SEI.ArchE.UI.ScenariosView.popupMenu.Edit">
+         </action>
+      </viewerContribution>
+   </extension>
+    -->
+    
+   <!-- WIZARD: New ArchE project (things under "File | New" are wizards) -->
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="ArchE"
+            id="SEI.ArchE.UI">
+      </category>
+      <wizard
+            name="ArchE Project"
+            icon="icons/arche_project.gif"
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.wizards.ArchENewProjectWizard"
+            project="true"
+            finalPerspective="SEI.ArchE.UI.ArchEPerspective"
+            id="SEI.ArchE.UI.NewProjectWizard">
+         <description>
+            Create a new ArchE project
+         </description>
+         <selection
+               name="Generic resource"
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+   
+   <!-- EXPORT DESIGN MENU OPTION -->
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <category
+            id="SEI.ArchE.UI"
+            name="ArchE"/>
+      <wizard
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.wizards.ExportToSQLWizard"
+            icon="icons/Rose1.ico"
+            id="SEI.ArchE.UI.ExportToSQL"
+            name="Export design to SQL">
+         <description>
+            Export the design to a SQL backup file that is readable by MySQL.
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IProject">
+         </selection>
+      </wizard>
+<!--
+      <wizard
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.wizards.ExportToRoseWizard"
+            icon="icons/Rose1.ico"
+            id="SEI.ArchE.UI.ExportToRose"
+            name="Export design to Rose (UML)">
+         <description>
+            Export the design to an xmi file that is readable by Rational Rose.
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IProject">
+         </selection>
+      </wizard>
+-->
+   </extension>
+   
+   <!-- HOOK UP HELP MESSAGES THAT ARE STORED IN ArchEHelpContexts.xml -->
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="ArchEHelpContexts.xml">
+      </contexts>
+   </extension>
+
+   <!-- POPUP MENU OPTION FOR ArchE PROJECTS: PERSIST FACT BASE -->
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="SEI.ArchE.UI.Export"
+            objectClass="org.eclipse.core.resources.IProject">
+         <filter name="nature" value="SEI.ArchE.UI.ArchENature"/>
+         <action
+               id="SEI.ArchE.UI.PersistFactBaseAction"
+               label="Persist architecture to database"
+               menubarPath="additions"
+               icon="icons/persist.gif"
+               class="edu.cmu.sei.arche.actions.PersistFactBaseAction"
+               enablesFor="1">
+         </action>
+         <action
+               class="edu.cmu.sei.arche.actions.DeleteFactBaseAction"
+               enablesFor="1"
+               icon="icons/designview/remove.gif"
+               id="SEI.ArchE.UI.DeleteFactBaseAction"
+               label="Delete architecture database"
+               menubarPath="additions"/>
+         <action
+               class="edu.cmu.sei.arche.actions.UndoLastTactic"
+               enablesFor="1"
+               icon="icons/undo.gif"
+               id="SEI.ArchE.UI.UndoLastTactic"
+               label="Undo last changes"
+               menubarPath="additions">
+               <enablement>
+                    <systemProperty name="CanUndoArchitecture" value="true"/> 
+               </enablement>
+         </action>
+         <action
+               class="edu.cmu.sei.arche.actions.TakeSnapshot"
+               enablesFor="1"
+               icon="icons/camera.jpg"
+               id="SEI.ArchE.UI.TakeSnapshot"
+               label="Take architecture snapshot"
+               menubarPath="additions">
+         </action>
+         <action
+               class="edu.cmu.sei.arche.actions.HoldArchitectureState"
+               enablesFor="1"
+               icon="icons/pin.jpg"
+               id="SEI.ArchE.UI.HoldArchitectureState"
+               label="Hold architecture state"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   
+   <!-- MAIN MENU SUB-OPTION: Project | Persist fact base -->
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Fact base actions"
+            visible="true"
+            id="SEI.ArchE.UI.FactBaseActionSet">
+         <action
+               id="SEI.ArchE.UI.PersistFactBaseAction"
+               label="Persist fact base"
+               menubarPath="project/additions"
+               icon="icons/persist.gif"
+               class="edu.cmu.sei.arche.actions.PersistFactBaseAction"
+               tooltip="Persist the fact base of the project to the ArchE database">
+         </action>
+         <action
+               class="edu.cmu.sei.arche.actions.DeleteFactBaseAction"
+               icon="icons/designview/remove.gif"
+               id="SEI.ArchE.UI.DeleteFactBaseAction"
+               label="Delete fact base"
+               menubarPath="project/additions"
+               style="push"
+               tooltip="Delete the fact base of the project in the ArchE database"/>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="SEI.ArchE.UI"
+            name="ArchE"/>
+      <wizard
+            category="SEI.ArchE.UI"
+            class="edu.cmu.sei.arche.ui.wizards.ImportFromSQLWizard"
+            icon="icons/Rose1.ico"
+            id="SEI.ArchE.UI.ImportFromSQL"
+            name="Import design from SQL">
+         <description>
+            Import the design from a SQL backup file that is readable by MySQL.
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IProject"/>
+      </wizard>
+   </extension>
+   
+   <!-- MENU ITEM ADDED TO MAIN MENU -->
+   <!--
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="ArchE Action Set"
+            visible="true"
+            id="SEI.ArchE.UI.actionSet">
+         <menu
+               id="ArchEMenu"
+               label="&amp;ArchE">
+            <separator
+                  name="ArchEGroup">
+            </separator>
+         </menu>
+         <action
+               id="SEI.ArchE.UI.EnableDisableRFAction"
+               label="Filter Reasoning Frameworks"
+               class="edu.cmu.sei.arche.actions.EnableDisableRFAction"
+               tooltip="Creates columns in a table view dynamically"
+               menubarPath="ArchEMenu/ArchEGroup">
+         </action>
+      </actionSet>
+   </extension>
+   -->
+   
+   <!-- Dialog boxes that are called via Properties option of popup menus -->
+   <!--
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            objectClass="org.eclipse.core.resources.IFile"
+            name="Quality Attribute Scenario"
+            class="edu.cmu.sei.arche.ui.dialog.ScenarioDialog"
+            nameFilter="*.*"
+            id="SEI.ArchE.UI.ScenarioDialog">
+      </page>
+   </extension>
+   -->
+</plugin>

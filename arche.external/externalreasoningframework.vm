@@ -1,0 +1,62 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$quality
+## 		$model
+
+package $packagename;
+
+// This code skeleton was generated with Velocity-1.5 [Template: externalreasoningframework.vm]
+
+import edu.cmu.sei.arche.external.reasoningframework.AbstractExternalReasoningFramework;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEScenario;
+import edu.cmu.sei.arche.external.reasoningframework.RFDesignModel;
+
+#set($classname = $utility.convertExternalRFJavaName($model))
+public class $classname extends AbstractExternalReasoningFramework {
+    
+	    public $classname() {
+			super();
+
+	    	// set data provider
+	    	//Rete engine = new Rete();
+	    	//setDataProvider(new JessDataProvider());
+			//The generated dataprovider could be used instead of the standard one
+	    	//setDataProvider(new XXXRFDataProvider());
+	    	
+	    	// configure this RF with the configuration file 
+	    	//String rfconfigFullPath = "C:\\\\mytools\\\\eclipse\\\\workspacesvn\\\\ArchE External RF Examples\\\\bin\\\\arche\\\\example\\\\reasoningframeworks\\\\perficm-rfconfig.xml";	    	
+			//configure(rfconfigFullPath);	    
+		}   
+		
+//		public List createDesignModelInput(String quality) {
+//			// This method cannot report progress through  command.getInteractioAgent().
+//			ArrayList input = new ArrayList();
+//			List scenarios = this.getDataProvider().getScenariosForQuality(quality);
+//			Iterator iterScenario = scenarios.iterator();
+//			while(iterScenario.hasNext()){
+//				ArchEScenario scenario = (ArchEScenario)iterScenario.next(); 
+//				if(this.isScenarioOfInterest(scenario)){			
+//					// Create here the appropriate input
+//				}
+//			}
+//			return (response);
+//		}	
+	
+		public RFDesignModel buildDesignModel(Object input) {
+			// Get the model by accesing information from the input object
+			RFDesignModel myModel = null;	
+			return (myModel);
+		}
+	
+		public double runAnalysis(RFDesignModel model, ArchEScenario scenario) throws Exception {
+			// Perform the model analysis here
+			double result = 0.0;
+   	        return (result);
+		}	
+
+		// A template of the main method could be included here!
+}
+
+	

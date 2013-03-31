@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- default platform documentation stylesheets -->
+<style>@import url("book.css");</style>
+<!-- default schema documentation stylesheets -->
+<style>@import url("schema.css");</style>
+</HEAD>
+<HTML>
+<BODY>
+<H1><CENTER>ArchE Reasoning Framework</CENTER></H1>
+<p></p>
+<h6 class=CaptionFigColumn id=header>Identifier: </h6>SEI.ArchE.UI.reasoningFramework<p></p>
+<p>
+<h6 class=CaptionFigColumn id=header>Description: </h6>This extension point is used to define a reasoning framework plug-in for ArchE.
+A reasoning framework definition consists of: 
+<ul>
+<li> scenario types, including the definitions for the scenario parts
+<li> parameter types
+<li> parameter types that are required by responsibilities
+<li> relationship types
+<li> parameter types that are required by each relationship type
+<li> model element types
+<li> model relation types
+</ul>
+<p>
+
+A reasoning framework plug-in will typically contain the following files (example):
+<ul>
+<li><i>plugin.xml</i>: using the reasoningFramework extension point
+<li><i>build.properties</i>: standard Eclipse PDE build.properties including all files
+<li><i>rfconfig.xml</i>: central piece of the reasoning framework plug-in is the configuration xml file. This file can be produced using ArchE Configurator
+<li><i>LoadAllRules.clp</i>: file indicated in the clpFile attribute of the extension point. It is loaded in Jess when ArchE UI finds this reasoning framework plug-in.
+<li><i>AdditionalRules.clp</i>: there can be zero or more other clp files that are loaded by the clp file indicated in the clpFile attribute.
+<li>other files used by the rules can also be packaged
+</ul>
+<p>
+<br></p>
+<p><h6 class=CaptionFigColumn id=header>Configuration Markup:</h6></p>
+<p class=code id=dtd>&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.rfconfigFile">rfconfigFile</a> , <a href="#e.clpFile">clpFile</a>)&gt;</p>
+<p class=code id=dtd>&lt;!ATTLIST extension</p>
+<p class=code id=dtdAttlist>point&nbsp;CDATA #REQUIRED<p class=code id=dtdAttlist>id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED<p class=code id=dtdAttlist>name&nbsp;&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class=ConfigMarkup id=attlistDesc>
+<li><b>point</b> - A fully qualified identifier of the target extension point</li>
+<li><b>id</b> - An optional identifier of the extension instance</li>
+<li><b>name</b> - An optional name of the extension instance</li>
+</ul>
+<br><p class=code id=dtd>&lt;!ELEMENT <a name="e.description">description</a> (#CDATA)&gt;</p>
+<p></p>
+<p class=ConfigMarkup id=elementDesc>
+An optional subelement whose body should contain text providing short description of the reasoning framework.</p>
+<br><br>
+<p class=code id=dtd>&lt;!ELEMENT <a name="e.clpFile">clpFile</a> EMPTY&gt;</p>
+<p class=code id=dtd>&lt;!ATTLIST clpFile</p>
+<p class=code id=dtdAttlist>fileName&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class=ConfigMarkup id=attlistDesc>
+<li><b>fileName</b> - Pathname to the ".clp" file to be loaded for this reasoning framework. Path must be relative within this plug-in. If this reasoning framework uses several clp files, then the one indicated in this attribute should load all the others.</li>
+</ul>
+<br><p class=code id=dtd>&lt;!ELEMENT <a name="e.rfconfigFile">rfconfigFile</a> EMPTY&gt;</p>
+<p class=code id=dtd>&lt;!ATTLIST rfconfigFile</p>
+<p class=code id=dtdAttlist>fileName&nbsp;CDATA "rfconfig.xml"&gt;</p>
+<p></p>
+<ul class=ConfigMarkup id=attlistDesc>
+<li><b>fileName</b> - Pathname to the xml file that has the RF configuration. Path must be relative within this plug-in.</li>
+</ul>
+<br><h6 class=CaptionFigColumn id=header>Examples: </h6>The following is an example of the extension point: 
+<p>
+<pre>
+   <p class=code id=tag>&lt;extension 
+       point=<p class=code id=cstring>&quot;SEI.ArchE.UI.reasoningFramework&quot;</p><p class=code id=tag>&gt;</p> 
+      <p class=code id=tag>&lt;rfconfigFile fileName=<p class=code id=cstring>&quot;rfconfig.xml&quot;</p><p class=code id=tag>/&gt;</p>
+      <p class=code id=tag>&lt;clpFile fileName=<p class=code id=cstring>&quot;LoadModifRF.clp&quot;</p><p class=code id=tag>/&gt;</p>
+   <p class=code id=tag>&lt;/extension&gt;</p>    
+</pre>
+</p>
+
+As indicated, the example reasoning framework plug-in must contain two files at the root level: 
+<ul>
+<li><i>rfconfig.xml</i>: created using ArchE Configurator
+<li><i>LoadModifRF.clp</i>: Jess clp file that loads the rules that are specific to this reasoning framework.
+ <ul>
+ <li>This clp file can assume the generic core rules will be loaded first.
+ <li>This clp file can assume a variable <b>*dir*</b> will be defined in Jess pointing to folder where this file is located. 
+ <li>This clp file may load other clp files, if necessary.
+ </ul>
+</ul>
+<p>
+<br>
+<p></p>
+
+<h6 class=CaptionFigColumn id=header>API Information: </h6>This plug-in is not for Java classes in this version.
+<p></p>
+
+<br>
+<p class=note id=copyright>
+Copyright (c) 2004, Software Engineering Institute.
+All rights reserved. This program and the accompanying materials 
+are made available under the terms of the Common Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/cpl-v10.html
+<p></p>
+
+</p>
+</BODY>
+</HTML>

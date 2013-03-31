@@ -1,0 +1,37 @@
+## This is an the velocity template to generate a Java interface
+## External template paramters:
+## 		$packagename
+## 		$utility
+## 		$model
+## 		$listArchETypes
+## 		$listModelTypes
+
+package $packagename;
+
+import edu.cmu.sei.arche.external.reasoningframework.RFDataProvider;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEScenario;
+import edu.cmu.sei.arche.external.reasoningframework.ArchEResponsibility;
+import edu.cmu.sei.arche.external.reasoningframework.ArchERelationship;
+
+import java.util.List;
+
+// This code skeleton was generated with Velocity-1.5 [Template: archedataprovider.vm]
+
+public interface $utility.convertRFDataProviderJavaName($model) extends RFDataProvider {
+
+	// List of ArchE types defined by the reasoning framework
+
+#foreach($voArchEType in $listArchETypes)
+	// public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)();
+	public List get$utility.convertArchEInterfaceJavaName($voArchEType.Id)ListFor(ArchEScenario scenario);
+	
+#end
+
+	// List of model types defined by the reasoning framework
+#foreach($voModelType in $listModelTypes)
+	// public List get$utility.convertParameterJavaName($voModelType.FactType)();
+	// public List get$utility.convertParameterJavaName($voModelType.FactType)ListFor(ArchEScenario scenario);
+	
+#end
+
+}

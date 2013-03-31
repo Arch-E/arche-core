@@ -1,0 +1,161 @@
+<!--
+	ArchE
+	Copyright (c) 2012 Carnegie Mellon University.
+	All Rights Reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	this list of conditions and the following acknowledgments and disclaimers.
+
+	2. Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+
+	3. All advertising materials for third-party software mentioning features or
+	use of this software must display the following disclaimer:
+
+	“Neither Carnegie Mellon University nor its Software Engineering Institute
+	have reviewed or endorsed this software”
+
+	4. The names “Carnegie Mellon University,” and/or “Software Engineering
+	Institute" shall not be used to endorse or promote products derived from
+	this software without prior written permission. For written permission,
+	please contact permission@sei.cmu.edu.
+
+	5. Redistributions of any form whatsoever must retain the following
+	acknowledgment:
+
+	Copyright 2012 Carnegie Mellon University.
+
+	This material is based upon work funded and supported by the United States
+	Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie
+	Mellon University for the operation of the Software Engineering Institute, a
+	federally funded research and development center.
+
+	NO WARRANTY
+
+	THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL
+	IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO
+	WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER
+	INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR
+	MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL.
+	CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH
+	RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+-->
+<contexts>
+
+  <context id="scenarioDlgBox">
+    <description>Quality requirements of a system shape the architecture of that system. To be useful, quality requirements should be specified precisely. This dialog box allows you to specify a scenario consisting of the following parts:
+- a <b>stimulus</b>: a condition that needs to be considered when it arrives at a system
+- a <b>response</b>: the activity undertaken after the arrival of the stimulus
+- a <b>source of the stimulus</b>: the entity (e.g., a human or a computer system) that generated the stimulus
+- an <b>environment</b>: the conditions under which the stimulus occurs; for example, when the system is in an overload condition
+- a <b>stimulated artifact</b>: Some artifact is stimulated. It could be the whole system or pieces of it.
+- a <b>response measure</b>: the attribute-specific constraint that must be satisfied by the response
+    </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr004/03tr004app-a.html" label="Read more..."/>
+  </context>
+
+  <context id="functionDlgBox">
+    <description>A function represents a functional requirement that is not structured as a six-part scenario.
+    </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021/03tr021.html#chap05" label="See Section 5.2.1 in linked document for more..."/>
+  </context>
+  
+
+  <!-- HELP FOR ARCHE QUESTIONS -->
+
+  <context id="decomposedDependency">
+    <description>When a dependency exists to a decomposed responsibility the <b>ArchE</b> assumes that the dependency also applies to all the decomposed responsibilities. If that does not correctly describe your intent, then the dependency need to be moved to one or more of the decomposed responsibilities. You can either leave the dependency where it is and therefore make all decomposed responsibilities dependent or you can choose a subset of the decomposed responsibilities where the dependency applies to.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="costOfChange">
+    <description>To calculate if a specific change scenario can be fulfilled <b>ArchE</b> requires some estimation of the effort for changing related responsibilities. The number you provide should be an estimate of average cost of change of this responsibility in terms that is consistent with the response measure provided by the change scenarios.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="probabilityOfPropagation">
+    <description>To calculate if a specific change scenario can be fulfilled <b>ArchE</b> requires some estimation of the probability that changing one responsibility propagates to another. Provide a number between zero and one, where zero means no propagation at all and 1 means that changing one responsibility always requires a change in the other responsibility. </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="localize">
+    <description>A modifiability scenario that affects more than one place in the current design can not be satisfied with the design as it stands so far. One possibility to achieve a better solution is to localize the responsibilities affected by the scenario into one place. This enables you to easily encapsulate the resulting responsibility to minimize the possible ripple effect in the system.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="encapsulate">
+    <description>When multiple responsibilities have a strong dependency to a single responsibility then it most likely makes sense to encapsulate this responsibility. This reduces the dependencies and therefore make it easier to change. The level of encapsulation describes how many changes to the encapsulated responsibility will become visible outside this responsibility. Level 10 means complete encapsulation (100%), level 5 means every second change will be visible (50%), and level 0 means all changes will be visible (0%).</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="wrapper">
+    <description>When multiple responsibilities have a strong dependency to a single responsibility that is not intendet to be changed, it most likely makes sense to wrap this responsibility. This reduces the dependencies and therefore make it unlikely that the wrapped responsibility has to be changed too. The level of wrapping describes how many changes are allowed to affect the wrapped responsibility. Level 10 means completly independent (100%), level 5 means every second change will also affect the wrapped resposnibility (50%), and level 0 means all cahnges will affect the responsibility(0%).  </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="adjustResponsibilityNameAndCost">
+    <description>adjustResponsibilityNameAndCost = Applying the tactic typically changes some parts of a responsibility. You should take the time and check if the name of the listed responsibilities still correctly reflects their purpose. If not make some adjustments. Do the same for the associated cost of change. Changing the purpose of a responsibility most likely will also have an effect on how much effort is needed to change this responsibility. </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="moveDependency">
+    <description>When some functionality is move from one responsibility into another, then all the dependencies that other responsibilities have to the original responsibility might be affected by the move. The functionality that was move may either take the dependency with it or the protion that is moved was actually not affected by the dependency. In this case the dependency remains with the original responsibility. It could also be the case that the dependency now affects both responsibilities. You need to decide which of the mentioned cases actually applies here.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="wrongOutoutFilename">
+    <description>To store data into a file, <b>ArchE</b> requires the location where to store the data. The directory path to this location must exist. <b>ArchE</b> will not create missing directories.
+    </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="wrongInoutFilename">
+    <description>The file specified by the given name does not exists. You need to specify a correct, fully qualified filename pointing to an existing file.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="inconsistentData">
+    <description>The data you tried to restore was faulty. This can happen in case a) you edited the file manually and accedentally provided wrong information or b) a module specified in the data is not loaded. The faulty line was skipped and all correct data was processed.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="confirmCost">
+    <description>A responsibility can be implemented in a way that would make it easy to accomodate certain types of change. The scenario that affects this responsibility specifies such a class of changes. If you plan to accomodate those changes, you might be able to reduce the given cost of change.</description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+  <context id="executionTime">
+    <description>In order to execute the real-time performance model, <b>ArchE</b> requires the execution times of each responsibility to create the task model.  For the responsibilities listed, enter a positive number to indicate the amount of processing time (in milliseconds) the responsibility will need.</description>
+  </context>
+  
+  <context id="confirmReduceExecTime">
+  	<description><b>ArchE</b> has suggested that the execution time of a responsibility should be reduced in order to satisfy a real-time performance scenario.  Confirm that ArchE can reduce the execution time to the value it proposes, or enter a new value.</description>
+  </context>
+
+  <context id="confirmIncreasePeriod">
+  	<description><b>ArchE</b> has suggested that the period of a task should be increased in order to satisfy a real-time performance scenario.  Confirm that ArchE can increase the period to the value it proposes, or enter a new value.</description>
+  </context>
+
+  <context id="confirmLengthenDeadline">
+  	<description><b>ArchE</b> has suggested that the deadline of a task should be increased in order to satisfy a real-time performance scenario.  Confirm that ArchE can increase the deadline to the value it proposes, or enter a new value.</description>
+  </context>
+  
+  <context id="noRespForRMAScenario">
+  	<description>In order to construct and analyze a performance RMA model, all real-time performance scenarios must have at least one responsibility associated with them.  The responsiblity provides the execution time for the related task for the scenario in the RMA model.  <b>ArchE</b> can generate a new responsiblity automatically, or you can exit this dialog and manually associate an existing responsibility with this scenario.</description>
+  </context>
+
+  <context id="overUtilization">
+  	<description><b>ArchE</b> has determined that the utilization of the current system design is greater than 1.0.  This means that it is impossible for all tasks to meet their deadlines.  Check the performance tactics that <b>ArchE</b> suggests to solve this problem and correct the architecture design.</description>
+  </context>
+
+  <context id="variationPointCondition">
+    <description>Conditions for variation points must be specified if JESS syntact so that they can be evaluation by JESS. Example: (and (= I1 5) (exists VP1)) This means the condition becomes true if input I1 has the value 5 AND the variation point VP1 exists. You cannot specify a variation point that doesn't exist, but you can specify a non-existing input. If you do so, the a new input value is generated.  </description>
+    <topic href="http://www.sei.cmu.edu/publications/documents/03.reports/03tr021.html" label="Read more..."/>
+  </context>
+
+</contexts>
+

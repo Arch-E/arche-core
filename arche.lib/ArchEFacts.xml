@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ArchE>
+    <initial-fact factId="0" module="MAIN"/>
+    <PropertyModuleAssignment factId="1" module="MAIN">
+        <__data>PerformanceReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="2" module="MAIN">
+        <__data>SchedulingTheory</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="3" module="MAIN">
+        <__data>SchedulingTheory</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="4" module="MAIN">
+        <__data>SchedulingTheory</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="5" module="MAIN">
+        <__data>RMAModel</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="6" module="MAIN">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="7" module="MAIN">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="8" module="MAIN">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="9" module="MAIN">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="10" module="MAIN">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="11" module="MAIN">
+        <__data>MAIN</__data>
+    </PropertyModuleAssignment>
+    <PropertyModuleAssignment factId="12" module="MAIN">
+        <__data>MAIN</__data>
+    </PropertyModuleAssignment>
+    <StatusFlag factId="13" module="MAIN">
+        <__data>1</__data>
+    </StatusFlag>
+    <StatusFlag factId="14" module="MAIN">
+        <__data>2</__data>
+    </StatusFlag>
+    <HoursPerDay factId="15" module="Configuration">
+        <__data>8</__data>
+    </HoursPerDay>
+    <HoursPerWeek factId="16" module="Configuration">
+        <__data>40</__data>
+    </HoursPerWeek>
+    <HoursPerMonth factId="17" module="Configuration">
+        <__data>168</__data>
+    </HoursPerMonth>
+    <HoursPerYear factId="18" module="Configuration">
+        <__data>1848</__data>
+    </HoursPerYear>
+    <DecompositionProbability factId="19" module="Configuration">
+        <__data>0.8</__data>
+    </DecompositionProbability>
+    <DataflowOutgoingProbability factId="20" module="Configuration">
+        <__data>0.7</__data>
+    </DataflowOutgoingProbability>
+    <DataflowIncomingProbability factId="21" module="Configuration">
+        <__data>0.3</__data>
+    </DataflowIncomingProbability>
+    <BoundaryProbability factId="22" module="Configuration">
+        <__data>0.7</__data>
+    </BoundaryProbability>
+    <ContextSwitchingTime factId="23" module="Configuration">
+        <__data>10.0</__data>
+    </ContextSwitchingTime>
+    <StrongCohesion factId="24" module="Configuration">
+        <__data>0.7</__data>
+    </StrongCohesion>
+    <LooseCoupling factId="25" module="Configuration">
+        <__data>0.3</__data>
+    </LooseCoupling>
+    <InterfaceLimit factId="26" module="Configuration">
+        <__data>0.1</__data>
+    </InterfaceLimit>
+    <MediumPriority factId="27" module="Configuration">
+        <__data>500</__data>
+    </MediumPriority>
+    <BuilderSkills factId="28" module="VariabilityReasoningFrameworks">
+        <__data>1</__data>
+    </BuilderSkills>
+    <BuilderSkills factId="29" module="VariabilityReasoningFrameworks">
+        <__data>2</__data>
+    </BuilderSkills>
+    <BuilderSkills factId="30" module="VariabilityReasoningFrameworks">
+        <__data>3</__data>
+    </BuilderSkills>
+    <BuilderSkills factId="31" module="VariabilityReasoningFrameworks">
+        <__data>4</__data>
+    </BuilderSkills>
+    <BuilderSkills factId="32" module="VariabilityReasoningFrameworks">
+        <__data>5</__data>
+    </BuilderSkills>
+    <VariabilityMechanism factId="33" module="VariabilityReasoningFrameworks">
+        <name>ComponentSelection</name>
+        <description>Enables the selection of alternative components
+            which all comply to one interface</description>
+        <skills>ProductBuilder</skills>
+        <methode>Select</methode>
+        <automation>TRUE</automation>
+        <cost>5</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <VariabilityMechanism factId="34" module="VariabilityReasoningFrameworks">
+        <name>Framework</name>
+        <description>Provides an implementation framework to developers
+            to ease the creation of new components complying to a
+            specified interface</description>
+        <skills>Developer</skills>
+        <methode>New</methode>
+        <automation>FALSE</automation>
+        <cost>8</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <VariabilityMechanism factId="35" module="VariabilityReasoningFrameworks">
+        <name>UserPreference</name>
+        <description>Gives an end user the ability to define his/her own settings</description>
+        <skills>EndUser</skills>
+        <methode>Select</methode>
+        <automation>TRUE</automation>
+        <cost>7</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <VariabilityMechanism factId="36" module="VariabilityReasoningFrameworks">
+        <name>RunTimeConfigurationFile</name>
+        <description>Enables changing behavior of the system by setting
+            parameters in a configuration file. Requires file loading
+            and interpretation responsibilities in the system</description>
+        <skills>Admin</skills>
+        <methode>Select</methode>
+        <automation>TRUE</automation>
+        <cost>5</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <VariabilityMechanism factId="37" module="VariabilityReasoningFrameworks">
+        <name>DevelopmentTimeConfigurationFile</name>
+        <description>Enables changing behavior of the system by setting
+            parameters in a configuration file during development time.
+            Does not require file I/O capabilities.</description>
+        <skills>Integrator</skills>
+        <methode>Select</methode>
+        <automation>TRUE</automation>
+        <cost>3</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <VariabilityMechanism factId="38" module="VariabilityReasoningFrameworks">
+        <name>TableDriven</name>
+        <description>Enables changing behavior of the system by changing
+            the content of a table in the system.</description>
+        <skills>Integrator</skills>
+        <methode>Select</methode>
+        <automation>TRUE</automation>
+        <cost>2</cost>
+        <owner/>
+        <source>ArchE</source>
+        <status/>
+    </VariabilityMechanism>
+    <SchedulePlanner factId="39" module="Configuration">
+        <__data>(focus MySQL AquireRequirements ManageResponsibilities Seeker)</__data>
+    </SchedulePlanner>
+    <ActiveReasoningFrameworks factId="40" module="Configuration">
+        <__data>ModifiabilityReasoningFrameworks</__data>
+    </ActiveReasoningFrameworks>
+    <ActiveReasoningFrameworks factId="41" module="Configuration">
+        <__data>PerformanceReasoningFrameworks</__data>
+    </ActiveReasoningFrameworks>
+    <ActiveReasoningFrameworks factId="42" module="Configuration">
+        <__data>VariabilityReasoningFrameworks</__data>
+    </ActiveReasoningFrameworks>
+    <CaseSelection factId="43" module="Test">
+        <__data>TestInitialDesign</__data>
+    </CaseSelection>
+    <CaseSelection factId="44" module="Test">
+        <__data>TestAfterLocalizeCB</__data>
+    </CaseSelection>
+    <CaseSelection factId="45" module="Test">
+        <__data>TestEBBafterLocalizeE</__data>
+    </CaseSelection>
+    <CaseSelection factId="46" module="Test">
+        <__data>TestAfterEncapsulation</__data>
+    </CaseSelection>
+    <CaseSelection factId="47" module="Test">
+        <__data>TestLocalizeAfterEncapsulate</__data>
+    </CaseSelection>
+    <CaseSelection factId="48" module="Test">
+        <__data>TestLocalize2AfterEncapsulate</__data>
+    </CaseSelection>
+    <CaseSelection factId="49" module="Test">
+        <__data>TestAfterEncapsulationACB</__data>
+    </CaseSelection>
+    <DoDeepSearch factId="52" module="Seeker">
+        <levels>1</levels>
+        <maxTime>60</maxTime>
+    </DoDeepSearch>
+    <T_MakeAnotherRound factId="53" module="Planner"/>
+    <Pattern factId="55" module="Patterns">
+        <group>Framework</group>
+        <name>GenericFucntionsWithInterfaceCompliance</name>
+        <description>Provides generic functions for implementing new
+            features that also have to comply to a defined interface</description>
+    </Pattern>
+    <Pattern factId="56" module="Patterns">
+        <group>Framework</group>
+        <name>GenericFunctionsNoInterfaceCompliance</name>
+        <description>Provides generic functions for implementing new
+            features but the interface can be accessed from any included responsibility.</description>
+    </Pattern>
+    <PatternElement factId="57" module="Patterns">
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name>GenericPartFor&lt;name&gt;</name>
+        <description>This can be s set of classes that provide common services</description>
+    </PatternElement>
+    <PatternElement factId="58" module="Patterns">
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name>VariantPartFor&lt;name&gt;</name>
+        <description/>
+    </PatternElement>
+    <PatternElement factId="59" module="Patterns">
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name>GenericPartFor&lt;name&gt;</name>
+        <description>This can be s set of classes that provide common services</description>
+    </PatternElement>
+    <PatternElement factId="60" module="Patterns">
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name>VariantPartFor&lt;name&gt;</name>
+        <description/>
+    </PatternElement>
+    <PatternElementInterface factId="61" module="Patterns">
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name>Interfacefor&lt;name&gt;</name>
+        <description/>
+    </PatternElementInterface>
+    <PatternElementInterface factId="62" module="Patterns">
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name>InterfaceFor&lt;name&gt;</name>
+        <description/>
+    </PatternElementInterface>
+    <PatternConnector factId="63" module="Patterns">
+        <type>interface</type>
+        <owner>&lt;Fact-49&gt;</owner>
+        <valueAbs>UseForDependencies</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </PatternConnector>
+    <PatternConnector factId="64" module="Patterns">
+        <type>container</type>
+        <owner>&lt;Fact-55&gt;</owner>
+        <valueAbs>SubstituteResponsibility</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </PatternConnector>
+    <PatternConnector factId="65" module="Patterns">
+        <type>container</type>
+        <owner>&lt;Fact-89&gt;</owner>
+        <valueAbs>SubstituteResponsibility</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </PatternConnector>
+    <PatternConnector factId="66" module="Patterns">
+        <type>interface</type>
+        <owner>&lt;Fact-105&gt;</owner>
+        <valueAbs>UseForDependencies</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </PatternConnector>
+    <PatternContainer factId="67" module="Patterns">
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name>ComponentSubstitutionModuleFor&lt;name&gt;</name>
+        <description>Pattern that allows component subsitution and
+            ensures interface compliance</description>
+    </PatternContainer>
+    <PatternContainer factId="68" module="Patterns">
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name>ComponentSubstitutionModuleFor&lt;name&gt;</name>
+        <description>Pattern that allows component subsitution and
+            ensures interface compliance</description>
+    </PatternContainer>
+    <PatternItemProperty factId="69" module="Patterns">
+        <name>P_EncapsulationLevel</name>
+        <owner>&lt;Fact-49&gt;</owner>
+        <valueAbs>8</valueAbs>
+        <valueFactor>1.0</valueFactor>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="70" module="Patterns">
+        <name>P_CostOfChange</name>
+        <owner>&lt;Fact-59&gt;</owner>
+        <valueAbs>1.0</valueAbs>
+        <valueFactor>1.0</valueFactor>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="71" module="Patterns">
+        <name>P_ExecutionTime</name>
+        <owner>&lt;Fact-59&gt;</owner>
+        <valueAbs>100</valueAbs>
+        <valueFactor>1.0</valueFactor>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="72" module="Patterns">
+        <name>P_CostOfChange</name>
+        <owner>&lt;Fact-65&gt;</owner>
+        <valueAbs>0.4</valueAbs>
+        <valueFactor>0.4</valueFactor>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="73" module="Patterns">
+        <name>P_ExecutionTime</name>
+        <owner>&lt;Fact-65&gt;</owner>
+        <valueAbs>25</valueAbs>
+        <valueFactor>0.4</valueFactor>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="74" module="Patterns">
+        <name>P_ProbabilityIncoming</name>
+        <owner>&lt;Fact-75&gt;</owner>
+        <valueAbs>0.8</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="75" module="Patterns">
+        <name>P_ProbabilityOutgoing</name>
+        <owner>&lt;Fact-75&gt;</owner>
+        <valueAbs>0.1</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="76" module="Patterns">
+        <name>P_ProbabilityIncoming</name>
+        <owner>&lt;Fact-81&gt;</owner>
+        <valueAbs>0.8</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="77" module="Patterns">
+        <name>P_ProbabilityOutgoing</name>
+        <owner>&lt;Fact-81&gt;</owner>
+        <valueAbs>0.1</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="78" module="Patterns">
+        <name>P_CostOfChange</name>
+        <owner>&lt;Fact-93&gt;</owner>
+        <valueAbs>1.0</valueAbs>
+        <valueFactor>1.0</valueFactor>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="79" module="Patterns">
+        <name>P_ExecutionTime</name>
+        <owner>&lt;Fact-93&gt;</owner>
+        <valueAbs>100</valueAbs>
+        <valueFactor>1.0</valueFactor>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="80" module="Patterns">
+        <name>P_CostOfChange</name>
+        <owner>&lt;Fact-99&gt;</owner>
+        <valueAbs>0.4</valueAbs>
+        <valueFactor>0.4</valueFactor>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="81" module="Patterns">
+        <name>P_ExecutionTime</name>
+        <owner>&lt;Fact-99&gt;</owner>
+        <valueAbs>25</valueAbs>
+        <valueFactor>0.4</valueFactor>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="82" module="Patterns">
+        <name>P_ProbabilityIncoming</name>
+        <owner>&lt;Fact-105&gt;</owner>
+        <valueAbs>0.8</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="83" module="Patterns">
+        <name>P_ProbabilityOutgoing</name>
+        <owner>&lt;Fact-105&gt;</owner>
+        <valueAbs>0.1</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="84" module="Patterns">
+        <name>P_EncapsulationLevel</name>
+        <owner>&lt;Fact-105&gt;</owner>
+        <valueAbs>8</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="85" module="Patterns">
+        <name>P_ProbabilityIncoming</name>
+        <owner>&lt;Fact-119&gt;</owner>
+        <valueAbs>0.8</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <PatternItemProperty factId="86" module="Patterns">
+        <name>P_ProbabilityOutgoing</name>
+        <owner>&lt;Fact-119&gt;</owner>
+        <valueAbs>0.1</valueAbs>
+        <valueFactor/>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <description/>
+    </PatternItemProperty>
+    <InterfaceRealization factId="87" module="Patterns">
+        <parent>&lt;Fact-59&gt;</parent>
+        <child>&lt;Fact-49&gt;</child>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </InterfaceRealization>
+    <InterfaceRealization factId="88" module="Patterns">
+        <parent>&lt;Fact-89&gt;</parent>
+        <child>&lt;Fact-105&gt;</child>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </InterfaceRealization>
+    <Refinement factId="89" module="Patterns">
+        <parent>&lt;Fact-55&gt;</parent>
+        <child>&lt;Fact-59&gt;</child>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </Refinement>
+    <Refinement factId="90" module="Patterns">
+        <parent>&lt;Fact-55&gt;</parent>
+        <child>&lt;Fact-65&gt;</child>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </Refinement>
+    <Refinement factId="91" module="Patterns">
+        <parent>&lt;Fact-89&gt;</parent>
+        <child>&lt;Fact-93&gt;</child>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </Refinement>
+    <Refinement factId="92" module="Patterns">
+        <parent>&lt;Fact-89&gt;</parent>
+        <child>&lt;Fact-99&gt;</child>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </Refinement>
+    <Dependency factId="93" module="Patterns">
+        <parent>&lt;Fact-65&gt;</parent>
+        <child>&lt;Fact-59&gt;</child>
+        <pattern>&lt;Fact-47&gt;</pattern>
+        <name/>
+        <description/>
+    </Dependency>
+    <Dependency factId="94" module="Patterns">
+        <parent>&lt;Fact-99&gt;</parent>
+        <child>&lt;Fact-93&gt;</child>
+        <pattern>&lt;Fact-87&gt;</pattern>
+        <name/>
+        <description/>
+    </Dependency>
+    <Log factId="109" module="Logger">
+        <comment>No Tactics anymore for User</comment>
+        <from>MakeUserQuestionFromTactics</from>
+        <id>gen139</id>
+    </Log>
+    <Log factId="111" module="Logger">
+        <comment>(VariabilityReasoningFrameworks) Activate for questions</comment>
+        <from>ActivateRFsForQuestions</from>
+        <id>gen140</id>
+    </Log>
+    <Log factId="117" module="Logger">
+        <comment>(PerformanceReasoningFrameworks) Activate for questions</comment>
+        <from>ActivateRFsForQuestions</from>
+        <id>gen141</id>
+    </Log>
+    <ScenariosOfInterest factId="120" module="PerformanceReasoningFrameworks">
+        <quality>Performance</quality>
+        <measureType>HardDeadline</measureType>
+    </ScenariosOfInterest>
+    <Task factId="122" module="RMAModel">
+        <name>Task-Thread-Background</name>
+        <scenario/>
+        <stimulusType>periodic</stimulusType>
+        <stimulusValue>5000</stimulusValue>
+        <taskType>HardDeadline</taskType>
+        <taskValue>5000</taskValue>
+        <executionTime>90.0</executionTime>
+        <latency/>
+        <time_blocked/>
+        <priority>500</priority>
+        <source/>
+    </Task>
+    <Task factId="123" module="RMAModel">
+        <name>Task-Thread-Performance 1</name>
+        <scenario>99</scenario>
+        <stimulusType>periodic</stimulusType>
+        <stimulusValue>100.0</stimulusValue>
+        <taskType>HardDeadline</taskType>
+        <taskValue>120.0</taskValue>
+        <executionTime>10.0</executionTime>
+        <latency>60.0</latency>
+        <time_blocked>0.0</time_blocked>
+        <priority>499</priority>
+        <source/>
+    </Task>
+    <P_Latency factId="124" module="RMAModel">
+        <utilization>0.6</utilization>
+        <value>270.0</value>
+        <time_blocked>0.0</time_blocked>
+        <owner>122</owner>
+        <source/>
+        <status/>
+    </P_Latency>
+    <P_Latency factId="125" module="RMAModel">
+        <utilization>0.6</utilization>
+        <value>60.0</value>
+        <time_blocked>0.0</time_blocked>
+        <owner>123</owner>
+        <source/>
+        <status/>
+    </P_Latency>
+    <Log factId="126" module="Logger">
+        <comment>(ModifiabilityReasoningFrameworks) Activate for questions</comment>
+        <from>ActivateRFsForQuestions</from>
+        <id>gen142</id>
+    </Log>
+    <ScenariosOfInterest factId="129" module="ModifiabilityReasoningFrameworks">
+        <quality>Modifiability</quality>
+        <measureType>CostConstraint</measureType>
+    </ScenariosOfInterest>
+    <Node_Responsibility factId="131" module="ModifiabilityReasoningFrameworks">
+        <id>131</id>
+        <name>(M) I_C</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="132" module="ModifiabilityReasoningFrameworks">
+        <id>130</id>
+        <name>(M) I_B</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="133" module="ModifiabilityReasoningFrameworks">
+        <id>129</id>
+        <name>(M) I_A</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="134" module="ModifiabilityReasoningFrameworks">
+        <id>128</id>
+        <name>(M) S</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="135" module="ModifiabilityReasoningFrameworks">
+        <id>127</id>
+        <name>(M) Y</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="136" module="ModifiabilityReasoningFrameworks">
+        <id>126</id>
+        <name>(M) JJ</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="137" module="ModifiabilityReasoningFrameworks">
+        <id>125</id>
+        <name>(M) Z3</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="138" module="ModifiabilityReasoningFrameworks">
+        <id>124</id>
+        <name>(M) Z2</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="139" module="ModifiabilityReasoningFrameworks">
+        <id>123</id>
+        <name>(M) Z11</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="140" module="ModifiabilityReasoningFrameworks">
+        <id>122</id>
+        <name>(M) Z1</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="141" module="ModifiabilityReasoningFrameworks">
+        <id>121</id>
+        <name>(M) Z</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="142" module="ModifiabilityReasoningFrameworks">
+        <id>120</id>
+        <name>(M) O</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="143" module="ModifiabilityReasoningFrameworks">
+        <id>119</id>
+        <name>(M) J</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="144" module="ModifiabilityReasoningFrameworks">
+        <id>118</id>
+        <name>(M) F2</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="145" module="ModifiabilityReasoningFrameworks">
+        <id>117</id>
+        <name>(M) F1</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="146" module="ModifiabilityReasoningFrameworks">
+        <id>116</id>
+        <name>(M) F</name>
+        <cost>0.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="147" module="ModifiabilityReasoningFrameworks">
+        <id>115</id>
+        <name>(M) B</name>
+        <cost>2.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="148" module="ModifiabilityReasoningFrameworks">
+        <id>114</id>
+        <name>(M) C</name>
+        <cost>1.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="149" module="ModifiabilityReasoningFrameworks">
+        <id>113</id>
+        <name>(M) EA</name>
+        <cost>4.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="150" module="ModifiabilityReasoningFrameworks">
+        <id>112</id>
+        <name>(M) EBA</name>
+        <cost>2.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="151" module="ModifiabilityReasoningFrameworks">
+        <id>111</id>
+        <name>(M) EBB</name>
+        <cost>1.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="152" module="ModifiabilityReasoningFrameworks">
+        <id>110</id>
+        <name>(M) AB</name>
+        <cost>2.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="153" module="ModifiabilityReasoningFrameworks">
+        <id>109</id>
+        <name>(M) AAA</name>
+        <cost>6.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="154" module="ModifiabilityReasoningFrameworks">
+        <id>108</id>
+        <name>(M) AAB</name>
+        <cost>5.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="155" module="ModifiabilityReasoningFrameworks">
+        <id>107</id>
+        <name>(M) ACA</name>
+        <cost>4.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="156" module="ModifiabilityReasoningFrameworks">
+        <id>106</id>
+        <name>(M) ACB</name>
+        <cost>3.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Node_Responsibility factId="157" module="ModifiabilityReasoningFrameworks">
+        <id>105</id>
+        <name>(M) D</name>
+        <cost>6.0</cost>
+        <cumulativeprob/>
+    </Node_Responsibility>
+    <Arc_Relation factId="158" module="ModifiabilityReasoningFrameworks">
+        <source>147</source>
+        <target>148</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="159" module="ModifiabilityReasoningFrameworks">
+        <source>148</source>
+        <target>147</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="160" module="ModifiabilityReasoningFrameworks">
+        <source>149</source>
+        <target>153</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="161" module="ModifiabilityReasoningFrameworks">
+        <source>153</source>
+        <target>149</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="162" module="ModifiabilityReasoningFrameworks">
+        <source>152</source>
+        <target>154</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="163" module="ModifiabilityReasoningFrameworks">
+        <source>154</source>
+        <target>152</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="164" module="ModifiabilityReasoningFrameworks">
+        <source>152</source>
+        <target>155</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="165" module="ModifiabilityReasoningFrameworks">
+        <source>155</source>
+        <target>152</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="166" module="ModifiabilityReasoningFrameworks">
+        <source>147</source>
+        <target>155</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="167" module="ModifiabilityReasoningFrameworks">
+        <source>155</source>
+        <target>147</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="168" module="ModifiabilityReasoningFrameworks">
+        <source>149</source>
+        <target>156</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="169" module="ModifiabilityReasoningFrameworks">
+        <source>156</source>
+        <target>151</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="170" module="ModifiabilityReasoningFrameworks">
+        <source>156</source>
+        <target>150</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="171" module="ModifiabilityReasoningFrameworks">
+        <source>151</source>
+        <target>156</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="172" module="ModifiabilityReasoningFrameworks">
+        <source>150</source>
+        <target>156</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="173" module="ModifiabilityReasoningFrameworks">
+        <source>156</source>
+        <target>149</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="174" module="ModifiabilityReasoningFrameworks">
+        <source>147</source>
+        <target>156</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="175" module="ModifiabilityReasoningFrameworks">
+        <source>156</source>
+        <target>147</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="176" module="ModifiabilityReasoningFrameworks">
+        <source>151</source>
+        <target>157</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="177" module="ModifiabilityReasoningFrameworks">
+        <source>157</source>
+        <target>151</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="178" module="ModifiabilityReasoningFrameworks">
+        <source>148</source>
+        <target>157</target>
+        <probability>0.3</probability>
+    </Arc_Relation>
+    <Arc_Relation factId="179" module="ModifiabilityReasoningFrameworks">
+        <source>157</source>
+        <target>148</target>
+        <probability>0.7</probability>
+    </Arc_Relation>
+    <Response_Measures factId="180" module="ModifiabilityReasoningFrameworks">
+        <scenario>98</scenario>
+        <responseMeasure>6.0</responseMeasure>
+    </Response_Measures>
+    <SearchDuration factId="182" module="Seeker">
+        <__data>gen143</__data>
+    </SearchDuration>
+</ArchE>

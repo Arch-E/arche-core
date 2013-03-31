@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Getting Started</title>
+	<style>
+		.header{font: bold 14pt;}
+		.subheader{font: bold 12pt}
+		.text{font: 12pt; margin-left: 15px; margin-top:5px; margin-bottom:15px}
+	</style>
+</head>
+<body>
+<div class="header"><h1>Relationships View</h1></div>
+<div class="text">This tutorial will help you to understand the relationships view and the related functionalities.</div>
+<div class="text">The relationships view displays the relationships between responsibilities and the parameters (with their respective values) of these responsibility relationships.</div>
+<div class="subheader">In This Section</div>
+
+<div class="text">
+	<a href="#newrelation">Add a new relationship.</a>
+</div>
+<div class="text">
+	<a href="#editrelation">Edit a relationship.</a>
+</div>
+<div class="text">
+	<a href="#delrelation">Delete a relationship.</a>
+</div>
+<div class="text">
+	<a href="#newrelationparam">Add a parameter for a relationship.</a>
+</div>
+<div class="text">
+	<a href="#editrelationparam">Edit a parameter for a relationship.</a>
+</div>
+<div class="text">
+	<a href="#delrelationparam">Delete a parameter for a relationship.</a>
+</div>
+<div class="text">
+	<a href="#conc">Conclusion</a>
+</div>
+
+<div class="header"><a name="newrelation"></a>Add a new relationship</div>
+<div class="text">
+Right click in the view and select New from the context menu options.
+</div>
+<div class="text">
+<img src="../images/relationships.jpg">
+</div>
+<div class="text">
+A dialog box for adding a new relationship should open up. The user can then specify the parent (responsibility), the name of the relationship and the child (responsibility) of the relationship. Cancel closes this dialog box. 
+After specifying the parent and the child responsibilities and the name of the relationship, clicking OK sends the relationship to the Core and the updated fact base (with the new relationship) is reflected in the view (in the previously selected ordering).
+</div>
+<div class="text">
+<img src="../images/newrelationship.jpg">
+</div>
+
+<div class="header"><a name="editrelation"></a>Edit a relationship</div>
+<div class="text">
+Select a relationship in the view. Right click and select Edit from the context menu options.
+</div>
+<div class="text">
+<img src="../images/editrelationship.jpg">
+</div>
+<div class="text">
+A dialog box for editing a relationship should open up. The user can then specify the new parent (responsibility), the name of the relationship and the child (responsibility) of the mapping. Cancel closes this dialog box. 
+After specifying the parent and the child responsibilities and the name of the relationship, clicking OK sends the updated relationship to the Core and the updated fact base (with the updated relationship) is reflected in the view (in the previously selected ordering).
+</div>
+<div class="text">
+<img src="../images/editrelationshippopup.jpg">
+</div>
+<div class="header"><a name="delrelation"></a>Delete a relationship</div>
+<div class="text">
+Select a relationship in the view. Right click and select Delete from the context menu options.
+</div>
+<div class="text">
+<img src="../images/delrelationship.jpg">
+</div>
+<div class="header"><a name="newrelationparam"></a>Edit a parameter for a relationship</div>
+<div class="text">
+Left click on a cell (under any available ParameterName column) in the row of the relationship for which the parameter is to be created. The icon for a drop down list should become visible on the extreme right of the cell. Click on the icon to view all valid parameters that can be added for this relationship and select the one desired.
+Press Enter. This should create a parameter for the relationship with the default value as the value of the parameter.
+</div>
+<div class="text">
+<img src="../images/newrelationparam.jpg">
+</div>
+
+<div class="header"><a name="editrelationparam"></a>Edit a parameter for a relationship</div>
+<div class="text">
+Both the parameter name and the value can be edited. If the user wants to edit the parameter name, left click on the cell with the name and select another valid (if available) parameter to create for the relationship. This removes the old parameter from the Core and creates a new parameter for the relationship with the default value of the parameter. If the user wants to edit the value, left click on the cell with the value and edit it as desired. After editing in both these cases, the user should press Enter for the changes to be committed to the Core.
+</div>
+
+<div class="header"><a name="delrelationparam"></a>Delete a paramter for a relationship</div>
+<div class="text">
+Both the parameter name and the value can be deleted. If the user wants to delete the parameter name, left click on the cell with the name and select teh blank ("") parameter name from the drop down list. This removes the parameter from the Core. If the user wants to delete the value, left click on the cell with the value and press Backspace. If the correct datatype (the datatype that is expected by the Core for that parameter value) is a string then the value of the parameter is set to a blank string (""). If the datatype expected is a double or a boolean then the value is set to the default value (as expected by the Core). In most cases where the datatype is double, this default value is 0.0 and in cases where the datatype is boolean, the default value is false. After deleting in both these cases, the user should press Enter for the changes to be committed to the Core.
+</div>
+<div class="text">
+<img src="../images/delrelationparam.jpg">
+</div>
+
+<div class="header"><a name="conc"></a>Conclusion</div>
+<div class="text">
+This tutorial briefly introduced you to all functionalities related to the ArchE Relationships View.
+</div>
+
+
+</body>
+</html>
