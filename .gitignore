@@ -1,0 +1,9 @@
+# Compiled source #
+###################
+bin/
+.metadata
+
+# OS generated files #
+######################
+.DS_Store
+Thumbs.db
