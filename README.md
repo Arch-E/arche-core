@@ -22,19 +22,19 @@ http://www.xmlblaster.org/releases/xmlBlaster_REL_1_6_1.zip
 http://www.mysql.com/downloads/mysql/
 
 6 - Setup the database.
-Open mysql in a new command-line and login with the root.
-Execute the arche_db.sql script like this : 
-mysql> source C:/archesrc/arche-core/arche_db.sql. USE FORWARD SLASHES.
-You can optionally create a user named "arche" and grant it all rights on the ArchE database:
-mysql> CREATE USER 'arche'@'localhost' IDENTIFIED BY 'type_password_here';
-mysql> GRANT ALL PRIVILEGES ON arche.* TO 'arche'@'localhost' WITH GRANT OPTION;
+* Open mysql in a new command-line and login with the root.
+* Execute the arche_db.sql script like this:
+  * mysql> source C:/archesrc/arche-core/arche_db.sql (Note: USE FORWARD SLASHES)
+* You can optionally create a user named "arche" and grant it all rights on the ArchE database:
+  * mysql> CREATE USER 'arche'@'localhost' IDENTIFIED BY 'type_password_here';
+  * mysql> GRANT ALL PRIVILEGES ON arche.* TO 'arche'@'localhost' WITH GRANT OPTION;
 
 7 - Run Eclipse. 
-Go to Help -> Software Updates -> Find and Install.
-Select Search for new features to install.
-Select'The Eclipse Project Updates' site.
-In the features list, select Eclipse 3.3.2 and Eclipse 3.3.2 patches.
-Restart Eclipse.
+* Go to Help -> Software Updates -> Find and Install.
+* Select Search for new features to install.
+* Select'The Eclipse Project Updates' site.
+* In the features list, select Eclipse 3.3.2 and Eclipse 3.3.2 patches.
+* Restart Eclipse.
 
 8 - Import the ArchE projects into your workspace. A dedicated workspace is recommended.
 
@@ -43,11 +43,10 @@ Restart Eclipse.
 9 - Build all (Ctrl + b)
 
 10 - Make sure xmlBlaster is running by executing in a command-line:
-cd path/to/xml/blaster
-java -jar lib/xmlBlaster.jar
-You can create a batch file that executes those two commands. 
-Optionally, you can also start and stop mysql at the beginning and end
-of the batch file. Your file would look like:
+* cd path/to/xml/blaster
+* java -jar lib/xmlBlaster.jar
+* You can create a batch file that executes those two commands. 
+* Optionally, you can also start and stop mysql at the beginning and end of the batch file. Your file would look like:
 call net start mysql
 c:
 cd \xmlblaster
