@@ -1,3 +1,6 @@
 [submodule "arche.modifChangeImpact"]
 	path = arche.modifChangeImpact
 	url = https://github.com/Arch-E/arche.modifChangeImpact.git
+[submodule "arche.performance"]
+	path = arche.performance
+	url = https://github.com/Arch-E/arche.performance.git
