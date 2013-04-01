@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ArchE UI feature</name>
+	<name>arche.ui.feature</name>
 	<comment>ArchE feature</comment>
 	<projects>
 		<project>SEI.ArchE.UI</project>
