@@ -1,59 +1,58 @@
 ArchE-core
 ==========
 
-The core of ArchE
+To build
+--------
+Pre-requisites:
+* [Eclipse Europa Winter](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/europawinter)
+* [EMF 2.3.2 SDO SDK](http://www.eclipse.org/modeling/download.php?file=/modeling/emf/emf/downloads/drops/2.3.2/R200802051830/emf-sdo-SDK-2.3.2.zip)
+* [JESS 7.1](http://www.jessrules.com/jess/download.shtml)
+* [xmlBlaster 1.6.1] (http://www.xmlblaster.org/releases/xmlBlaster_REL_1_6_1.zip)
+* [MySQL Server 5.0](http://www.mysql.com/downloads/mysql/5.0.html)
 
---To setup a developpement environment--
 
-1 - Download and extract Eclipse Europa Winter. It is important that you use this specific version.
-http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/europawinter
+Steps:
 
-2 - Download the EMF 2.3.2 SDO SDK and extract its content at the parent of your eclipse folder. (e.g. Eclipse is in C:\eclipse, extract EMF at C:\).
-http://www.eclipse.org/modeling/download.php?file=/modeling/emf/emf/downloads/drops/2.3.2/R200802051830/emf-sdo-SDK-2.3.2.zip
+First clone a copy of the arche-core repo.
+```
+git clone https://github.com/Arch-E/arche-core.git
+```
+Extract the Eclipse zip file on your computer (e.g. C:\eclipse). You will have a new folder named eclipse.
 
-3 - Download and extract JESS 7.1. Extract each archive in its 'eclipse' folder into your eclipse folder.
-Note that JESS requires a licence after the trial expires.
-http://www.jessrules.com/jess/download.shtml
+Extract the EMF zip file at the same place you extracted eclipse (e.g. C:\eclipse). It should add the plugin files needed.
 
-4 - Download and extract xmlBlaster 1.6.1. (e.g. C:\xmlBlaster)
-http://www.xmlblaster.org/releases/xmlBlaster_REL_1_6_1.zip
+Extract JESS on your computer (e.g. C:\Jess71p2) and extract the content of each archive file inside the eclipse folder of JESS into your Eclipse folder.
 
-5 - Download and install MySQL Server.
-http://www.mysql.com/downloads/mysql/
+Extract xmlBlaster on your computer. (e.g. C:\xmlBlaster)
 
-6 - Setup the database.
-* Open mysql in a new command-line and login with the root.
-* Execute the arche_db.sql script like this:
-  * mysql> source C:/archesrc/arche-core/arche_db.sql (Note: USE FORWARD SLASHES)
-* You can optionally create a user named "arche" and grant it all rights on the ArchE database:
-  * mysql> CREATE USER 'arche'@'localhost' IDENTIFIED BY 'type_password_here';
-  * mysql> GRANT ALL PRIVILEGES ON arche.* TO 'arche'@'localhost' WITH GRANT OPTION;
+Install MySQL Server 5.0.
 
-7 - Run Eclipse. 
-* Go to Help -> Software Updates -> Find and Install.
+Login with root on your MySQL server and run the database creation script:
+
+```
+mysql> source C:/arche-core/arche_db.sql
+```
+
+Open Eclipse and Create an empty workspace.
+
+Install Eclipse update:
+* Go to Help > Software Updates > Find and Install.
 * Select Search for new features to install.
-* Select'The Eclipse Project Updates' site.
+* Select 'The Eclipse Project Updates' site.
 * In the features list, select Eclipse 3.3.2 and Eclipse 3.3.2 patches.
 * Restart Eclipse.
 
-8 - Import the ArchE projects into your workspace. A dedicated workspace is recommended.
+Import the content of your local repo into your eclipse workspace. Do not copy the projects in your workspace. Build All (Ctrl + B).
 
---To run the application--
+Make sure xmlBlaster is running by executing in a command-line:
 
-9 - Build all (Ctrl + b)
+```
+cd path/to/xmlBlaster
+java –jar lib/xmlBlaster.jar
+```
 
-10 - Make sure xmlBlaster is running by executing in a command-line:
-* cd path/to/xml/blaster
-* java -jar lib/xmlBlaster.jar
-* You can create a batch file that executes those two commands. 
-* Optionally, you can also start and stop mysql at the beginning and end of the batch file. Your file would look like:
-call net start mysql
-c:
-cd \xmlblaster
-call java -jar lib/xmlBlaster.jar
-call net stop mysql
+Right-click the arche.ui project. Run As > Eclipse Application.
 
-11 - Right-click the arche.ui project. Run As -> Eclipse Application.
+A new Eclipse instance should have started. Go to Window > Open Perspective > Other. Choose ArchE.
 
-12 - A new Eclipse instance should have started. Go to Window -> Open Perspective -> Other. Choose ArchE.
-Note that if you only have this project, you cannot do much until you attach a Reasoning Framework.
+Please note that the arche-core doesn’t do much. You need to get at least one reasoning framework.
