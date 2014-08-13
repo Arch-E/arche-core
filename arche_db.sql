@@ -1,8 +1,14 @@
--- MySQL dump 10.11
+CREATE DATABASE  IF NOT EXISTS `arche` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `arche`;
+
+CREATE USER 'ArchE'@'%' IDENTIFIED BY 'dumbledore';
+GRANT ALL PRIVILEGES ON *.* TO 'ArchE'@'%' WITH GRANT OPTION; 
+
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: arche
 -- ------------------------------------------------------
--- Server version	5.0.96-community-nt
+-- Server version	5.6.14
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,11 +29,11 @@ DROP TABLE IF EXISTS `__factsets__`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `__factsets__` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
-  `setName` varchar(45) NOT NULL default '',
-  `factType` varchar(255) NOT NULL default '',
-  `group` tinyint(3) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`ID`),
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `setName` varchar(45) NOT NULL DEFAULT '',
+  `factType` varchar(255) NOT NULL DEFAULT '',
+  `group` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`),
   KEY `setName` (`setName`),
   KEY `sort` (`group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
@@ -51,10 +57,10 @@ DROP TABLE IF EXISTS `__mod_solver_interface__`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `__mod_solver_interface__` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
-  `FactSet` varchar(100) NOT NULL default '',
-  `Version` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`ID`)
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `FactSet` varchar(100) NOT NULL DEFAULT '',
+  `Version` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -76,12 +82,12 @@ DROP TABLE IF EXISTS `__tool_command_interface__`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `__tool_command_interface__` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
-  `ToolName` varchar(100) NOT NULL default '',
-  `Direction` varchar(3) NOT NULL default '' COMMENT 'Content=out: Command is to the tool, content=in: Command to ArchE',
-  `FactSet` varchar(100) NOT NULL default '',
-  `Version` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`ID`)
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ToolName` varchar(100) NOT NULL DEFAULT '',
+  `Direction` varchar(3) NOT NULL DEFAULT '' COMMENT 'Content=out: Command is to the tool, content=in: Command to ArchE',
+  `FactSet` varchar(100) NOT NULL DEFAULT '',
+  `Version` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,16 +109,16 @@ DROP TABLE IF EXISTS `__versions__`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `__versions__` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
-  `version_name` varchar(200) NOT NULL default '',
-  `date_created` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `last_read` timestamp NOT NULL default '0000-00-00 00:00:00',
-  `storage_type` varchar(45) NOT NULL default '',
-  `factSet` varchar(45) NOT NULL default '',
-  `parent` int(10) unsigned default NULL,
-  `max_fact_id` int(10) unsigned default NULL,
-  PRIMARY KEY  (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15665 DEFAULT CHARSET=utf8;
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `version_name` varchar(200) NOT NULL DEFAULT '',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_read` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `storage_type` varchar(45) NOT NULL DEFAULT '',
+  `factSet` varchar(45) NOT NULL DEFAULT '',
+  `parent` int(10) unsigned DEFAULT NULL,
+  `max_fact_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=16301 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +127,7 @@ CREATE TABLE `__versions__` (
 
 LOCK TABLES `__versions__` WRITE;
 /*!40000 ALTER TABLE `__versions__` DISABLE KEYS */;
-INSERT INTO `__versions__` VALUES (12029,'RMAModel1','2007-10-09 18:45:48','0000-00-00 00:00:00','temp','RMAModel',NULL,NULL),(12041,'UserModModel','2007-10-09 19:16:53','0000-00-00 00:00:00','temp','ModifiabilityModel',NULL,NULL),(13250,'test','2007-12-14 18:57:47','0000-00-00 00:00:00','project','Project',NULL,NULL),(15314,'ctas_sample','2008-06-13 12:49:23','0000-00-00 00:00:00','project','Project',NULL,NULL),(15664,'Architecture1','2013-04-01 16:45:19','0000-00-00 00:00:00','temp','Design',15314,5237);
+INSERT INTO `__versions__` VALUES (12029,'RMAModel1','2007-10-09 18:45:48','0000-00-00 00:00:00','temp','RMAModel',NULL,NULL),(12041,'UserModModel','2007-10-09 19:16:53','0000-00-00 00:00:00','temp','ModifiabilityModel',NULL,NULL),(13250,'test','2007-12-14 18:57:47','0000-00-00 00:00:00','project','Project',NULL,NULL),(15314,'ctas_sample','2008-06-13 12:49:23','0000-00-00 00:00:00','project','Project',NULL,NULL),(16298,'test34','2014-07-15 15:12:42','0000-00-00 00:00:00','project','Project',NULL,NULL),(16300,'Architecture1','2014-07-15 15:12:43','0000-00-00 00:00:00','temp','Design',16298,5093);
 /*!40000 ALTER TABLE `__versions__` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,13 +139,13 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_arc_relation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_arc_relation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `source` varchar(20) default NULL,
-  `target` varchar(20) default NULL,
-  `probability` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(20) DEFAULT NULL,
+  `target` varchar(20) DEFAULT NULL,
+  `probability` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_arc_relation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -163,16 +169,16 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_module`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_module` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `costOfChange` double default NULL,
-  `complexity` double default NULL,
+  `costOfChange` double DEFAULT NULL,
+  `complexity` double DEFAULT NULL,
   `source` text,
-  `status` int(10) default NULL,
-  `id` int(10) default NULL,
-  PRIMARY KEY  (`uid`),
+  `status` int(10) DEFAULT NULL,
+  `id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_module` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -196,15 +202,15 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_moduledependencyrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_moduledependencyrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `source` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `probability` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `probability` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_moduledependencyrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -228,14 +234,14 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_node_responsibility`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_node_responsibility` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `name` text,
-  `cost` double default NULL,
-  `cumulativeprob` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `cost` double DEFAULT NULL,
+  `cumulativeprob` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_node_responsibility` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -259,18 +265,18 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_p_booleantest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_p_booleantest` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_p_booleantest` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,6 +285,7 @@ CREATE TABLE `changeimpactmodifiabilityrf_p_booleantest` (
 
 LOCK TABLES `changeimpactmodifiabilityrf_p_booleantest` WRITE;
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_p_booleantest` DISABLE KEYS */;
+INSERT INTO `changeimpactmodifiabilityrf_p_booleantest` VALUES (124,16298,'<Fact-13>','FALSE','<Fact-7>','User',''),(125,16298,'<Fact-14>','TRUE','<Fact-8>','User',''),(128,16300,'<Fact-13>','FALSE','<Fact-7>','User',''),(129,16300,'<Fact-14>','TRUE','<Fact-8>','User','');
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_p_booleantest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,18 +297,18 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_p_costofchange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_p_costofchange` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_p_costofchange` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33762 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39234 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +317,7 @@ CREATE TABLE `changeimpactmodifiabilityrf_p_costofchange` (
 
 LOCK TABLES `changeimpactmodifiabilityrf_p_costofchange` WRITE;
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_p_costofchange` DISABLE KEYS */;
-INSERT INTO `changeimpactmodifiabilityrf_p_costofchange` VALUES (32465,15314,'<Fact-258>',5.5,'<Fact-24>','ArchE','none'),(32466,15314,'<Fact-259>',5.5,'<Fact-20>','ArchE','none'),(32467,15314,'<Fact-260>',5.5,'<Fact-18>','ArchE','none'),(32468,15314,'<Fact-261>',5.5,'<Fact-16>','ArchE','none'),(32469,15314,'<Fact-262>',5.5,'<Fact-26>','ArchE','none'),(32470,15314,'<Fact-263>',5.5,'<Fact-21>','ArchE','none'),(32471,15314,'<Fact-264>',5.5,'<Fact-17>','ArchE','none'),(32472,15314,'<Fact-265>',5.5,'<Fact-15>','ArchE','none'),(32473,15314,'<Fact-266>',5.5,'<Fact-25>','ArchE','none'),(32474,15314,'<Fact-267>',5.5,'<Fact-23>','ArchE','none'),(32475,15314,'<Fact-268>',5.5,'<Fact-19>','ArchE','none'),(32476,15314,'<Fact-269>',5.5,'<Fact-22>','ArchE','none'),(32477,15314,'<Fact-270>',5.5,'<Fact-27>','ArchE','none'),(32478,15314,'<Fact-271>',5.5,'<Fact-28>','ArchE','none'),(33748,15664,'<Fact-126>',5.5,'<Fact-24>','ArchE','none'),(33749,15664,'<Fact-127>',5.5,'<Fact-20>','ArchE','none'),(33750,15664,'<Fact-128>',5.5,'<Fact-18>','ArchE','none'),(33751,15664,'<Fact-129>',5.5,'<Fact-16>','ArchE','none'),(33752,15664,'<Fact-130>',5.5,'<Fact-26>','ArchE','none'),(33753,15664,'<Fact-131>',5.5,'<Fact-21>','ArchE','none'),(33754,15664,'<Fact-132>',5.5,'<Fact-17>','ArchE','none'),(33755,15664,'<Fact-133>',5.5,'<Fact-15>','ArchE','none'),(33756,15664,'<Fact-134>',5.5,'<Fact-25>','ArchE','none'),(33757,15664,'<Fact-135>',5.5,'<Fact-23>','ArchE','none'),(33758,15664,'<Fact-136>',5.5,'<Fact-19>','ArchE','none'),(33759,15664,'<Fact-137>',5.5,'<Fact-22>','ArchE','none'),(33760,15664,'<Fact-138>',5.5,'<Fact-27>','ArchE','none'),(33761,15664,'<Fact-139>',5.5,'<Fact-28>','ArchE','none');
+INSERT INTO `changeimpactmodifiabilityrf_p_costofchange` VALUES (32465,15314,'<Fact-258>',5.5,'<Fact-24>','ArchE','none'),(32466,15314,'<Fact-259>',5.5,'<Fact-20>','ArchE','none'),(32467,15314,'<Fact-260>',5.5,'<Fact-18>','ArchE','none'),(32468,15314,'<Fact-261>',5.5,'<Fact-16>','ArchE','none'),(32469,15314,'<Fact-262>',5.5,'<Fact-26>','ArchE','none'),(32470,15314,'<Fact-263>',5.5,'<Fact-21>','ArchE','none'),(32471,15314,'<Fact-264>',5.5,'<Fact-17>','ArchE','none'),(32472,15314,'<Fact-265>',5.5,'<Fact-15>','ArchE','none'),(32473,15314,'<Fact-266>',5.5,'<Fact-25>','ArchE','none'),(32474,15314,'<Fact-267>',5.5,'<Fact-23>','ArchE','none'),(32475,15314,'<Fact-268>',5.5,'<Fact-19>','ArchE','none'),(32476,15314,'<Fact-269>',5.5,'<Fact-22>','ArchE','none'),(32477,15314,'<Fact-270>',5.5,'<Fact-27>','ArchE','none'),(32478,15314,'<Fact-271>',5.5,'<Fact-28>','ArchE','none'),(39225,16298,'<Fact-10>',2,'<Fact-7>','User',''),(39226,16298,'<Fact-11>',77,'<Fact-8>','User',''),(39227,16298,'<Fact-12>',2,'<Fact-9>','User',''),(39231,16300,'<Fact-10>',2,'<Fact-7>','User',''),(39232,16300,'<Fact-11>',77,'<Fact-8>','User',''),(39233,16300,'<Fact-12>',2,'<Fact-9>','User','');
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_p_costofchange` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,18 +329,18 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_p_probabilityincoming`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_p_probabilityincoming` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `value` text,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_p_probabilityincoming` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,18 +360,18 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_p_probabilityoutgoing`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_p_probabilityoutgoing` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `value` text NOT NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_p_probabilityoutgoing` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,18 +391,18 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_responsibilitydependencyrelati
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_responsibilitydependencyrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_responsibilitydependencyrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34607 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33132 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,7 +411,7 @@ CREATE TABLE `changeimpactmodifiabilityrf_responsibilitydependencyrelation` (
 
 LOCK TABLES `changeimpactmodifiabilityrf_responsibilitydependencyrelation` WRITE;
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_responsibilitydependencyrelation` DISABLE KEYS */;
-INSERT INTO `changeimpactmodifiabilityrf_responsibilitydependencyrelation` VALUES (33117,15314,'<Fact-226>','','User','<Fact-25>','<Fact-22>'),(33118,15314,'<Fact-227>','','User','<Fact-17>','<Fact-25>'),(33119,15314,'<Fact-228>','','User','<Fact-17>','<Fact-22>'),(33120,15314,'<Fact-229>','','User','<Fact-25>','<Fact-15>'),(33121,15314,'<Fact-230>','','User','<Fact-25>','<Fact-23>'),(33122,15314,'<Fact-231>','','User','<Fact-23>','<Fact-24>'),(33123,15314,'<Fact-232>','','User','<Fact-21>','<Fact-15>'),(33124,15314,'<Fact-233>','','User','<Fact-21>','<Fact-17>'),(33125,15314,'<Fact-234>','','User','<Fact-21>','<Fact-25>'),(33126,15314,'<Fact-235>','','User','<Fact-21>','<Fact-18>'),(33127,15314,'<Fact-236>','','User','<Fact-18>','<Fact-25>'),(33128,15314,'<Fact-237>','','User','<Fact-18>','<Fact-22>'),(33129,15314,'<Fact-238>','','User','<Fact-26>','<Fact-25>'),(33130,15314,'<Fact-239>','','User','<Fact-19>','<Fact-20>'),(33131,15314,'<Fact-240>','','User','<Fact-19>','<Fact-17>'),(34592,15664,'<Fact-88>','','User','<Fact-25>','<Fact-22>'),(34593,15664,'<Fact-89>','','User','<Fact-17>','<Fact-25>'),(34594,15664,'<Fact-90>','','User','<Fact-17>','<Fact-22>'),(34595,15664,'<Fact-91>','','User','<Fact-25>','<Fact-15>'),(34596,15664,'<Fact-92>','','User','<Fact-25>','<Fact-23>'),(34597,15664,'<Fact-93>','','User','<Fact-23>','<Fact-24>'),(34598,15664,'<Fact-94>','','User','<Fact-21>','<Fact-15>'),(34599,15664,'<Fact-95>','','User','<Fact-21>','<Fact-17>'),(34600,15664,'<Fact-96>','','User','<Fact-21>','<Fact-25>'),(34601,15664,'<Fact-97>','','User','<Fact-21>','<Fact-18>'),(34602,15664,'<Fact-98>','','User','<Fact-18>','<Fact-25>'),(34603,15664,'<Fact-99>','','User','<Fact-18>','<Fact-22>'),(34604,15664,'<Fact-100>','','User','<Fact-26>','<Fact-25>'),(34605,15664,'<Fact-101>','','User','<Fact-19>','<Fact-20>'),(34606,15664,'<Fact-102>','','User','<Fact-19>','<Fact-17>');
+INSERT INTO `changeimpactmodifiabilityrf_responsibilitydependencyrelation` VALUES (33117,15314,'<Fact-226>','','User','<Fact-25>','<Fact-22>'),(33118,15314,'<Fact-227>','','User','<Fact-17>','<Fact-25>'),(33119,15314,'<Fact-228>','','User','<Fact-17>','<Fact-22>'),(33120,15314,'<Fact-229>','','User','<Fact-25>','<Fact-15>'),(33121,15314,'<Fact-230>','','User','<Fact-25>','<Fact-23>'),(33122,15314,'<Fact-231>','','User','<Fact-23>','<Fact-24>'),(33123,15314,'<Fact-232>','','User','<Fact-21>','<Fact-15>'),(33124,15314,'<Fact-233>','','User','<Fact-21>','<Fact-17>'),(33125,15314,'<Fact-234>','','User','<Fact-21>','<Fact-25>'),(33126,15314,'<Fact-235>','','User','<Fact-21>','<Fact-18>'),(33127,15314,'<Fact-236>','','User','<Fact-18>','<Fact-25>'),(33128,15314,'<Fact-237>','','User','<Fact-18>','<Fact-22>'),(33129,15314,'<Fact-238>','','User','<Fact-26>','<Fact-25>'),(33130,15314,'<Fact-239>','','User','<Fact-19>','<Fact-20>'),(33131,15314,'<Fact-240>','','User','<Fact-19>','<Fact-17>');
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_responsibilitydependencyrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,19 +423,19 @@ DROP TABLE IF EXISTS `changeimpactmodifiabilityrf_responsibilitytomodulerelation
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `changeimpactmodifiabilityrf_responsibilitytomodulerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `source` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
   `parentType` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_changeimpactmodifiabilityrf_responsibilitytomodulerelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30193 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29145 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,7 +444,7 @@ CREATE TABLE `changeimpactmodifiabilityrf_responsibilitytomodulerelation` (
 
 LOCK TABLES `changeimpactmodifiabilityrf_responsibilitytomodulerelation` WRITE;
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_responsibilitytomodulerelation` DISABLE KEYS */;
-INSERT INTO `changeimpactmodifiabilityrf_responsibilitytomodulerelation` VALUES (29134,15314,'<Fact-247>',0,'ArchE','<Fact-241>','<Fact-19>','Module'),(29135,15314,'<Fact-248>',0,'ArchE','<Fact-241>','<Fact-15>','Module'),(29136,15314,'<Fact-249>',0,'ArchE','<Fact-242>','<Fact-23>','Module'),(29137,15314,'<Fact-250>',0,'ArchE','<Fact-242>','<Fact-20>','Module'),(29138,15314,'<Fact-251>',0,'ArchE','<Fact-242>','<Fact-25>','Module'),(29139,15314,'<Fact-252>',0,'ArchE','<Fact-242>','<Fact-18>','Module'),(29140,15314,'<Fact-253>',0,'ArchE','<Fact-242>','<Fact-24>','Module'),(29141,15314,'<Fact-254>',0,'ArchE','<Fact-242>','<Fact-22>','Module'),(29142,15314,'<Fact-255>',0,'ArchE','<Fact-242>','<Fact-17>','Module'),(29143,15314,'<Fact-256>',0,'ArchE','<Fact-243>','<Fact-26>','Module'),(29144,15314,'<Fact-257>',0,'ArchE','<Fact-243>','<Fact-21>','Module'),(30182,15664,'<Fact-115>',0,'ArchE','<Fact-109>','<Fact-19>','Module'),(30183,15664,'<Fact-116>',0,'ArchE','<Fact-109>','<Fact-15>','Module'),(30184,15664,'<Fact-117>',0,'ArchE','<Fact-110>','<Fact-23>','Module'),(30185,15664,'<Fact-118>',0,'ArchE','<Fact-110>','<Fact-20>','Module'),(30186,15664,'<Fact-119>',0,'ArchE','<Fact-110>','<Fact-25>','Module'),(30187,15664,'<Fact-120>',0,'ArchE','<Fact-110>','<Fact-18>','Module'),(30188,15664,'<Fact-121>',0,'ArchE','<Fact-110>','<Fact-24>','Module'),(30189,15664,'<Fact-122>',0,'ArchE','<Fact-110>','<Fact-22>','Module'),(30190,15664,'<Fact-123>',0,'ArchE','<Fact-110>','<Fact-17>','Module'),(30191,15664,'<Fact-124>',0,'ArchE','<Fact-111>','<Fact-26>','Module'),(30192,15664,'<Fact-125>',0,'ArchE','<Fact-111>','<Fact-21>','Module');
+INSERT INTO `changeimpactmodifiabilityrf_responsibilitytomodulerelation` VALUES (29134,15314,'<Fact-247>',0,'ArchE','<Fact-241>','<Fact-19>','Module'),(29135,15314,'<Fact-248>',0,'ArchE','<Fact-241>','<Fact-15>','Module'),(29136,15314,'<Fact-249>',0,'ArchE','<Fact-242>','<Fact-23>','Module'),(29137,15314,'<Fact-250>',0,'ArchE','<Fact-242>','<Fact-20>','Module'),(29138,15314,'<Fact-251>',0,'ArchE','<Fact-242>','<Fact-25>','Module'),(29139,15314,'<Fact-252>',0,'ArchE','<Fact-242>','<Fact-18>','Module'),(29140,15314,'<Fact-253>',0,'ArchE','<Fact-242>','<Fact-24>','Module'),(29141,15314,'<Fact-254>',0,'ArchE','<Fact-242>','<Fact-22>','Module'),(29142,15314,'<Fact-255>',0,'ArchE','<Fact-242>','<Fact-17>','Module'),(29143,15314,'<Fact-256>',0,'ArchE','<Fact-243>','<Fact-26>','Module'),(29144,15314,'<Fact-257>',0,'ArchE','<Fact-243>','<Fact-21>','Module');
 /*!40000 ALTER TABLE `changeimpactmodifiabilityrf_responsibilitytomodulerelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,20 +456,20 @@ DROP TABLE IF EXISTS `design_module`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_module` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` varchar(200) default NULL,
-  `costOfChange` double default NULL,
-  `complexity` double default NULL,
+  `id` varchar(200) DEFAULT NULL,
+  `costOfChange` double DEFAULT NULL,
+  `complexity` double DEFAULT NULL,
   `name` text,
-  `source` varchar(200) default NULL,
-  `status` int(10) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_design_module` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3410 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3246 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -471,7 +478,7 @@ CREATE TABLE `design_module` (
 
 LOCK TABLES `design_module` WRITE;
 /*!40000 ALTER TABLE `design_module` DISABLE KEYS */;
-INSERT INTO `design_module` VALUES (3243,15314,'<Fact-241>',NULL,2,0,'(M) View - A','ArchE',0),(3244,15314,'<Fact-242>',NULL,4,0,'(M) Model - B','ArchE',0),(3245,15314,'<Fact-243>',NULL,5,0,'(M) Controller - C','ArchE',0),(3407,15664,'<Fact-109>',NULL,2,0,'(M) View - A','ArchE',0),(3408,15664,'<Fact-110>',NULL,4,0,'(M) Model - B','ArchE',0),(3409,15664,'<Fact-111>',NULL,5,0,'(M) Controller - C','ArchE',0);
+INSERT INTO `design_module` VALUES (3243,15314,'<Fact-241>',NULL,2,0,'(M) View - A','ArchE',0),(3244,15314,'<Fact-242>',NULL,4,0,'(M) Model - B','ArchE',0),(3245,15314,'<Fact-243>',NULL,5,0,'(M) Controller - C','ArchE',0);
 /*!40000 ALTER TABLE `design_module` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,19 +490,19 @@ DROP TABLE IF EXISTS `design_moduledependencyrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_moduledependencyrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `source` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `probability` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `probability` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_design_moduledependencyrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5840 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5506 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,7 +511,7 @@ CREATE TABLE `design_moduledependencyrelation` (
 
 LOCK TABLES `design_moduledependencyrelation` WRITE;
 /*!40000 ALTER TABLE `design_moduledependencyrelation` DISABLE KEYS */;
-INSERT INTO `design_moduledependencyrelation` VALUES (5503,15314,'<Fact-244>',0,'ArchE','<Fact-242>','<Fact-241>',0),(5504,15314,'<Fact-245>',0,'ArchE','<Fact-243>','<Fact-241>',0),(5505,15314,'<Fact-246>',0,'ArchE','<Fact-243>','<Fact-242>',0),(5837,15664,'<Fact-112>',0,'ArchE','<Fact-110>','<Fact-109>',0),(5838,15664,'<Fact-113>',0,'ArchE','<Fact-111>','<Fact-109>',0),(5839,15664,'<Fact-114>',0,'ArchE','<Fact-111>','<Fact-110>',0);
+INSERT INTO `design_moduledependencyrelation` VALUES (5503,15314,'<Fact-244>',0,'ArchE','<Fact-242>','<Fact-241>',0),(5504,15314,'<Fact-245>',0,'ArchE','<Fact-243>','<Fact-241>',0),(5505,15314,'<Fact-246>',0,'ArchE','<Fact-243>','<Fact-242>',0);
 /*!40000 ALTER TABLE `design_moduledependencyrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,15 +523,15 @@ DROP TABLE IF EXISTS `design_moduleinterface`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_moduleinterface` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `encapsulationLevel` double default NULL,
+  `encapsulationLevel` double DEFAULT NULL,
   `name` text,
-  `source` varchar(200) default NULL,
-  `costOfChange` double default NULL,
-  `status` int(10) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `costOfChange` double DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_moduleinterface` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -548,14 +555,14 @@ DROP TABLE IF EXISTS `design_modulerefinementrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_modulerefinementrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_modulerefinementrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -579,21 +586,21 @@ DROP TABLE IF EXISTS `design_process`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_process` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `scenario` varchar(20) default NULL,
-  `stimulusType` varchar(200) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `stimulusType` varchar(200) DEFAULT NULL,
   `stimulusValue` text,
-  `taskType` varchar(200) default NULL,
+  `taskType` varchar(200) DEFAULT NULL,
   `taskValue` text,
   `executionTime` text,
   `latency` text,
   `time_blocked` text,
   `priority` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_process` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -618,15 +625,15 @@ DROP TABLE IF EXISTS `design_realizerelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_realizerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `childType` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `childType` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_realizerelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -650,12 +657,12 @@ DROP TABLE IF EXISTS `design_responsibility`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_responsibility` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `owner` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `owner` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_responsibility` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -679,15 +686,15 @@ DROP TABLE IF EXISTS `design_responsibilitytomodulerelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_responsibilitytomodulerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `parentType` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `parentType` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_responsibilitytomodulerelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -711,14 +718,14 @@ DROP TABLE IF EXISTS `design_sharedresource`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_sharedresource` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
   `name` text,
   `description` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_sharedresource` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -742,14 +749,14 @@ DROP TABLE IF EXISTS `design_sharedresourcerelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_sharedresourcerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `design_sharedresourcerelation_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -773,21 +780,21 @@ DROP TABLE IF EXISTS `design_thread`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_thread` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `scenario` varchar(20) default NULL,
-  `stimulusType` varchar(200) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `stimulusType` varchar(200) DEFAULT NULL,
   `stimulusValue` text,
-  `taskType` varchar(200) default NULL,
+  `taskType` varchar(200) DEFAULT NULL,
   `taskValue` text,
   `executionTime` text,
   `latency` text,
   `time_blocked` text,
   `priority` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_thread` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -811,22 +818,22 @@ DROP TABLE IF EXISTS `design_unitofconcurrency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_unitofconcurrency` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `task` varchar(20) default NULL,
-  `scenario` varchar(20) default NULL,
-  `responsibility` varchar(20) default NULL,
-  `MutualExclusion` varchar(200) default NULL,
-  `SharedResourceID` varchar(20) default NULL,
-  `taskType` varchar(200) default NULL,
+  `task` varchar(20) DEFAULT NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `responsibility` varchar(20) DEFAULT NULL,
+  `MutualExclusion` varchar(200) DEFAULT NULL,
+  `SharedResourceID` varchar(20) DEFAULT NULL,
+  `taskType` varchar(200) DEFAULT NULL,
   `taskValue` text,
   `executionTime` text,
   `latency` text,
   `priority` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_unitofconcurrency` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -850,7 +857,7 @@ DROP TABLE IF EXISTS `design_variationpoint`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_variationpoint` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
@@ -860,11 +867,11 @@ CREATE TABLE `design_variationpoint` (
   `condition` text,
   `alternatives` text,
   `howTo` text,
-  `cost` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `cost` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_variationpoint` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -888,16 +895,16 @@ DROP TABLE IF EXISTS `design_vpinputvalue`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_vpinputvalue` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
   `name` text,
   `value` text,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_vpinputvalue` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -921,14 +928,14 @@ DROP TABLE IF EXISTS `design_wrapper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `design_wrapper` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `encapsulationLevel` double default NULL,
+  `encapsulationLevel` double DEFAULT NULL,
   `name` text,
-  `source` varchar(200) default NULL,
-  `status` int(10) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_design_wrapper` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -952,15 +959,15 @@ DROP TABLE IF EXISTS `externalinteraction_responsibilitydependencyrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `externalinteraction_responsibilitydependencyrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varbinary(100) default NULL,
+  `scenario` varbinary(100) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varbinary(100) default NULL,
-  `child` varbinary(100) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varbinary(100) DEFAULT NULL,
+  `child` varbinary(100) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_externalinteraction_responsibilitydependencyrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -985,15 +992,15 @@ DROP TABLE IF EXISTS `externalinteraction_responsibilityinteractionrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `externalinteraction_responsibilityinteractionrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varbinary(100) default NULL,
+  `scenario` varbinary(100) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varbinary(100) default NULL,
-  `child` varbinary(100) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varbinary(100) DEFAULT NULL,
+  `child` varbinary(100) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_externalinteraction_responsibilityinteractionrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1017,15 +1024,15 @@ DROP TABLE IF EXISTS `externalinteraction_responsibilityreactionrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `externalinteraction_responsibilityreactionrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varbinary(100) default NULL,
+  `scenario` varbinary(100) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varbinary(100) default NULL,
-  `child` varbinary(100) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varbinary(100) DEFAULT NULL,
+  `child` varbinary(100) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_externalinteraction_responsibilityreactionrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1049,11 +1056,11 @@ DROP TABLE IF EXISTS `icmperformancerf_assemblyinstance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `icmperformancerf_assemblyinstance` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `icmFilename` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_icmperformancerf_assemblyinstance` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1077,18 +1084,18 @@ DROP TABLE IF EXISTS `icmperformancerf_p_executiontime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `icmperformancerf_p_executiontime` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_icmperformancerf_p_executiontime` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9017 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11487 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1097,7 +1104,7 @@ CREATE TABLE `icmperformancerf_p_executiontime` (
 
 LOCK TABLES `icmperformancerf_p_executiontime` WRITE;
 /*!40000 ALTER TABLE `icmperformancerf_p_executiontime` DISABLE KEYS */;
-INSERT INTO `icmperformancerf_p_executiontime` VALUES (107,12974,'<Fact-188>',1,'<Fact-59>','ArchE','none'),(108,12974,'<Fact-189>',1,'<Fact-33>','ArchE','none'),(8213,15314,'<Fact-170>',1,'<Fact-18>','ArchE','none'),(8214,15314,'<Fact-171>',1,'<Fact-21>','ArchE','none'),(8215,15314,'<Fact-172>',1,'<Fact-16>','ArchE','none'),(8216,15314,'<Fact-173>',1,'<Fact-24>','ArchE','none'),(8217,15314,'<Fact-174>',1,'<Fact-25>','ArchE','none'),(8218,15314,'<Fact-175>',1,'<Fact-26>','ArchE','none'),(8219,15314,'<Fact-176>',1,'<Fact-20>','ArchE','none'),(8220,15314,'<Fact-177>',1,'<Fact-17>','ArchE','none'),(8221,15314,'<Fact-178>',1,'<Fact-15>','ArchE','none'),(8222,15314,'<Fact-179>',1,'<Fact-23>','ArchE','none'),(8223,15314,'<Fact-180>',1,'<Fact-22>','ArchE','none'),(8224,15314,'<Fact-181>',1,'<Fact-19>','ArchE','none'),(9005,15664,'<Fact-202>',1,'<Fact-18>','ArchE','none'),(9006,15664,'<Fact-203>',1,'<Fact-21>','ArchE','none'),(9007,15664,'<Fact-204>',1,'<Fact-16>','ArchE','none'),(9008,15664,'<Fact-205>',1,'<Fact-24>','ArchE','none'),(9009,15664,'<Fact-206>',1,'<Fact-25>','ArchE','none'),(9010,15664,'<Fact-207>',1,'<Fact-26>','ArchE','none'),(9011,15664,'<Fact-208>',1,'<Fact-20>','ArchE','none'),(9012,15664,'<Fact-209>',1,'<Fact-17>','ArchE','none'),(9013,15664,'<Fact-210>',1,'<Fact-15>','ArchE','none'),(9014,15664,'<Fact-211>',1,'<Fact-23>','ArchE','none'),(9015,15664,'<Fact-212>',1,'<Fact-22>','ArchE','none'),(9016,15664,'<Fact-213>',1,'<Fact-19>','ArchE','none');
+INSERT INTO `icmperformancerf_p_executiontime` VALUES (107,12974,'<Fact-188>',1,'<Fact-59>','ArchE','none'),(108,12974,'<Fact-189>',1,'<Fact-33>','ArchE','none'),(8213,15314,'<Fact-170>',1,'<Fact-18>','ArchE','none'),(8214,15314,'<Fact-171>',1,'<Fact-21>','ArchE','none'),(8215,15314,'<Fact-172>',1,'<Fact-16>','ArchE','none'),(8216,15314,'<Fact-173>',1,'<Fact-24>','ArchE','none'),(8217,15314,'<Fact-174>',1,'<Fact-25>','ArchE','none'),(8218,15314,'<Fact-175>',1,'<Fact-26>','ArchE','none'),(8219,15314,'<Fact-176>',1,'<Fact-20>','ArchE','none'),(8220,15314,'<Fact-177>',1,'<Fact-17>','ArchE','none'),(8221,15314,'<Fact-178>',1,'<Fact-15>','ArchE','none'),(8222,15314,'<Fact-179>',1,'<Fact-23>','ArchE','none'),(8223,15314,'<Fact-180>',1,'<Fact-22>','ArchE','none'),(8224,15314,'<Fact-181>',1,'<Fact-19>','ArchE','none'),(11481,16298,'<Fact-15>',56,'<Fact-7>','User',''),(11482,16298,'<Fact-16>',77,'<Fact-8>','User',''),(11485,16300,'<Fact-15>',56,'<Fact-7>','User',''),(11486,16300,'<Fact-16>',77,'<Fact-8>','User','');
 /*!40000 ALTER TABLE `icmperformancerf_p_executiontime` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1109,14 +1116,14 @@ DROP TABLE IF EXISTS `icmperformancerf_p_taskpriority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `icmperformancerf_p_taskpriority` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` int(10) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` int(10) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_icmperformancerf_p_taskpriority` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1141,15 +1148,15 @@ DROP TABLE IF EXISTS `icmperformancerf_responsibilityinteractionrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `icmperformancerf_responsibilityinteractionrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varchar(20) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_icmperformancerf_responsibilityinteractionrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1173,18 +1180,18 @@ DROP TABLE IF EXISTS `icmperformancerf_responsibilityreactionrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `icmperformancerf_responsibilityreactionrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_icmperformancerf_responsibilityreactionrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2265 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1869 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1193,7 +1200,7 @@ CREATE TABLE `icmperformancerf_responsibilityreactionrelation` (
 
 LOCK TABLES `icmperformancerf_responsibilityreactionrelation` WRITE;
 /*!40000 ALTER TABLE `icmperformancerf_responsibilityreactionrelation` DISABLE KEYS */;
-INSERT INTO `icmperformancerf_responsibilityreactionrelation` VALUES (5,12974,'<Fact-131>',NULL,'User','<Fact-59>','<Fact-33>'),(1863,15314,'<Fact-103>','','User','<Fact-26>','<Fact-25>'),(1864,15314,'<Fact-104>','','User','<Fact-20>','<Fact-19>'),(1865,15314,'<Fact-105>','','User','<Fact-21>','<Fact-17>'),(1866,15314,'<Fact-106>','','User','<Fact-21>','<Fact-18>'),(1867,15314,'<Fact-107>','','User','<Fact-21>','<Fact-15>'),(1868,15314,'<Fact-108>','','User','<Fact-15>','<Fact-25>'),(2259,15664,'<Fact-196>','','User','<Fact-26>','<Fact-25>'),(2260,15664,'<Fact-197>','','User','<Fact-20>','<Fact-19>'),(2261,15664,'<Fact-198>','','User','<Fact-21>','<Fact-17>'),(2262,15664,'<Fact-199>','','User','<Fact-21>','<Fact-18>'),(2263,15664,'<Fact-200>','','User','<Fact-21>','<Fact-15>'),(2264,15664,'<Fact-201>','','User','<Fact-15>','<Fact-25>');
+INSERT INTO `icmperformancerf_responsibilityreactionrelation` VALUES (5,12974,'<Fact-131>',NULL,'User','<Fact-59>','<Fact-33>'),(1863,15314,'<Fact-103>','','User','<Fact-26>','<Fact-25>'),(1864,15314,'<Fact-104>','','User','<Fact-20>','<Fact-19>'),(1865,15314,'<Fact-105>','','User','<Fact-21>','<Fact-17>'),(1866,15314,'<Fact-106>','','User','<Fact-21>','<Fact-18>'),(1867,15314,'<Fact-107>','','User','<Fact-21>','<Fact-15>'),(1868,15314,'<Fact-108>','','User','<Fact-15>','<Fact-25>');
 /*!40000 ALTER TABLE `icmperformancerf_responsibilityreactionrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1203,16 +1210,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `leave_responsibilities`;
 /*!50001 DROP VIEW IF EXISTS `leave_responsibilities`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 /*!50001 CREATE TABLE `leave_responsibilities` (
-  `uid` int(10) unsigned,
-  `version` int(10) unsigned,
-  `fact-id` varchar(20),
-  `id` varchar(200),
-  `name` text,
-  `description` text,
-  `source` varchar(200),
-  `version_name` varchar(200)
+  `uid` tinyint NOT NULL,
+  `version` tinyint NOT NULL,
+  `fact-id` tinyint NOT NULL,
+  `id` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `description` tinyint NOT NULL,
+  `source` tinyint NOT NULL,
+  `version_name` tinyint NOT NULL
 ) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `main_dataflow`
@@ -1222,15 +1232,15 @@ DROP TABLE IF EXISTS `main_dataflow`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_dataflow` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `producer` varchar(20) default NULL,
-  `consumer` varchar(20) default NULL,
-  `dataitem` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `producer` varchar(20) DEFAULT NULL,
+  `consumer` varchar(20) DEFAULT NULL,
+  `dataitem` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_dataflow` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1254,13 +1264,13 @@ DROP TABLE IF EXISTS `main_dataitems`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_dataitems` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
-  `version` int(10) unsigned NOT NULL default '0',
-  `fact-id` varchar(20) NOT NULL default '',
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `version` int(10) unsigned NOT NULL DEFAULT '0',
+  `fact-id` varchar(20) NOT NULL DEFAULT '',
   `name` text,
   `description` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_main_dataitems_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1284,12 +1294,12 @@ DROP TABLE IF EXISTS `main_function`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_function` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_function` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1314,14 +1324,14 @@ DROP TABLE IF EXISTS `main_functionrefinementrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_functionrefinementrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_functionrefinementrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1346,16 +1356,16 @@ DROP TABLE IF EXISTS `main_leafresponsibilitydependencyrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_leafresponsibilitydependencyrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `incoming` double default NULL,
-  `outgoing` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `id` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `incoming` double DEFAULT NULL,
+  `outgoing` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_leafresponsibilitydependencyrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1379,19 +1389,19 @@ DROP TABLE IF EXISTS `main_p_analysisresult`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_p_analysisresult` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `quality` varchar(200) default NULL,
-  `reasoningFramework` varchar(200) default NULL,
-  `isSatisfied` varchar(200) default NULL,
-  `utility` double default NULL,
-  `value` double default NULL,
-  `oldValue` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `quality` varchar(200) DEFAULT NULL,
+  `reasoningFramework` varchar(200) DEFAULT NULL,
+  `isSatisfied` varchar(200) DEFAULT NULL,
+  `utility` double DEFAULT NULL,
+  `value` double DEFAULT NULL,
+  `oldValue` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_p_analysisresult` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1415,19 +1425,19 @@ DROP TABLE IF EXISTS `main_responsibilities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_responsibilities` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` varchar(200) default NULL,
+  `id` varchar(200) DEFAULT NULL,
   `name` text,
   `description` text,
-  `source` varchar(200) default NULL,
-  `status` int(10) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_main_responsibilities` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=70729 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=75969 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1436,7 +1446,7 @@ CREATE TABLE `main_responsibilities` (
 
 LOCK TABLES `main_responsibilities` WRITE;
 /*!40000 ALTER TABLE `main_responsibilities` DISABLE KEYS */;
-INSERT INTO `main_responsibilities` VALUES (67126,15314,'<Fact-15>','gen228','Show Itinerary','Show Itinerary','ArchE',0),(67127,15314,'<Fact-16>','gen227','Manage User Profile','Manage user Profile','ArchE',0),(67128,15314,'<Fact-17>','gen226','Create User Profile','Create user Profile','ArchE',0),(67129,15314,'<Fact-18>','gen225','Modify User Profile','Modify user Profile','ArchE',0),(67130,15314,'<Fact-19>','gen224','Attach to Model','Attach to Model','ArchE',0),(67131,15314,'<Fact-20>','gen223','Register Views','Register Views','ArchE',0),(67132,15314,'<Fact-21>','gen222','Handle User Interactions','Handle user Interactions','ArchE',0),(67133,15314,'<Fact-22>','gen220','Save Data','Save Data','ArchE',0),(67134,15314,'<Fact-23>','gen219','Query for Data','Query for Data','ArchE',0),(67135,15314,'<Fact-24>','gen241','Locate Service','Locate Service','ArchE',0),(67136,15314,'<Fact-25>','gen240','Manage Itinerary','Manage Itinerary','ArchE',0),(67137,15314,'<Fact-26>','gen558','Manage External Devices','Manage External Devices','ArchE',0),(70717,15664,'<Fact-15>','gen228','Show Itinerary','Show Itinerary','ArchE',0),(70718,15664,'<Fact-16>','gen227','Manage User Profile','Manage user Profile','ArchE',0),(70719,15664,'<Fact-17>','gen226','Create User Profile','Create user Profile','ArchE',0),(70720,15664,'<Fact-18>','gen225','Modify User Profile','Modify user Profile','ArchE',0),(70721,15664,'<Fact-19>','gen224','Attach to Model','Attach to Model','ArchE',0),(70722,15664,'<Fact-20>','gen223','Register Views','Register Views','ArchE',0),(70723,15664,'<Fact-21>','gen222','Handle User Interactions','Handle user Interactions','ArchE',0),(70724,15664,'<Fact-22>','gen220','Save Data','Save Data','ArchE',0),(70725,15664,'<Fact-23>','gen219','Query for Data','Query for Data','ArchE',0),(70726,15664,'<Fact-24>','gen241','Locate Service','Locate Service','ArchE',0),(70727,15664,'<Fact-25>','gen240','Manage Itinerary','Manage Itinerary','ArchE',0),(70728,15664,'<Fact-26>','gen558','Manage External Devices','Manage External Devices','ArchE',0);
+INSERT INTO `main_responsibilities` VALUES (67126,15314,'<Fact-15>','gen228','Show Itinerary','Show Itinerary','ArchE',0),(67127,15314,'<Fact-16>','gen227','Manage User Profile','Manage user Profile','ArchE',0),(67128,15314,'<Fact-17>','gen226','Create User Profile','Create user Profile','ArchE',0),(67129,15314,'<Fact-18>','gen225','Modify User Profile','Modify user Profile','ArchE',0),(67130,15314,'<Fact-19>','gen224','Attach to Model','Attach to Model','ArchE',0),(67131,15314,'<Fact-20>','gen223','Register Views','Register Views','ArchE',0),(67132,15314,'<Fact-21>','gen222','Handle User Interactions','Handle user Interactions','ArchE',0),(67133,15314,'<Fact-22>','gen220','Save Data','Save Data','ArchE',0),(67134,15314,'<Fact-23>','gen219','Query for Data','Query for Data','ArchE',0),(67135,15314,'<Fact-24>','gen241','Locate Service','Locate Service','ArchE',0),(67136,15314,'<Fact-25>','gen240','Manage Itinerary','Manage Itinerary','ArchE',0),(67137,15314,'<Fact-26>','gen558','Manage External Devices','Manage External Devices','ArchE',0),(75957,16298,'<Fact-7>','gen60','Nouvelle Resp','Desc Nouvelle Resp','User',0),(75958,16298,'<Fact-8>','gen76','Nouvelle Resp 2','Desc 2','User',0),(75959,16298,'<Fact-9>','gen62','test3','test3','User',0),(75960,16298,'<Fact-44>','gen30','asad',NULL,'User',0),(75965,16300,'<Fact-7>','gen60','Nouvelle Resp','Desc Nouvelle Resp','User',0),(75966,16300,'<Fact-8>','gen76','Nouvelle Resp 2','Desc 2','User',0),(75967,16300,'<Fact-9>','gen62','test3','test3','User',0),(75968,16300,'<Fact-44>','gen30','asad',NULL,'User',0);
 /*!40000 ALTER TABLE `main_responsibilities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1448,18 +1458,18 @@ DROP TABLE IF EXISTS `main_responsibilityrefinementrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_responsibilityrefinementrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_responsibilityrefinementrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17912 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17126 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1468,7 +1478,7 @@ CREATE TABLE `main_responsibilityrefinementrelation` (
 
 LOCK TABLES `main_responsibilityrefinementrelation` WRITE;
 /*!40000 ALTER TABLE `main_responsibilityrefinementrelation` DISABLE KEYS */;
-INSERT INTO `main_responsibilityrefinementrelation` VALUES (12855,13250,'<Fact-93>',NULL,'ArchE','<Fact-20>','<Fact-21>'),(12856,13250,'<Fact-94>',NULL,'ArchE','<Fact-20>','<Fact-22>'),(17124,15314,'<Fact-86>',NULL,'ArchE','<Fact-16>','<Fact-17>'),(17125,15314,'<Fact-87>',NULL,'ArchE','<Fact-16>','<Fact-18>'),(17910,15664,'<Fact-86>',NULL,'ArchE','<Fact-16>','<Fact-17>'),(17911,15664,'<Fact-87>',NULL,'ArchE','<Fact-16>','<Fact-18>');
+INSERT INTO `main_responsibilityrefinementrelation` VALUES (12855,13250,'<Fact-93>',NULL,'ArchE','<Fact-20>','<Fact-21>'),(12856,13250,'<Fact-94>',NULL,'ArchE','<Fact-20>','<Fact-22>'),(17124,15314,'<Fact-86>',NULL,'ArchE','<Fact-16>','<Fact-17>'),(17125,15314,'<Fact-87>',NULL,'ArchE','<Fact-16>','<Fact-18>');
 /*!40000 ALTER TABLE `main_responsibilityrefinementrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1480,18 +1490,18 @@ DROP TABLE IF EXISTS `main_responsibilitytoresponsibilityrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_responsibilitytoresponsibilityrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_responsibilitytoresponsibilityrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48525 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47535 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1500,7 +1510,7 @@ CREATE TABLE `main_responsibilitytoresponsibilityrelation` (
 
 LOCK TABLES `main_responsibilitytoresponsibilityrelation` WRITE;
 /*!40000 ALTER TABLE `main_responsibilitytoresponsibilityrelation` DISABLE KEYS */;
-INSERT INTO `main_responsibilitytoresponsibilityrelation` VALUES (34005,13250,'<Fact-78>','gen302','User','<Fact-23>','<Fact-24>'),(34006,13250,'<Fact-79>','gen301','User','<Fact-21>','<Fact-22>'),(34007,13250,'<Fact-80>','gen300','User','<Fact-21>','<Fact-26>'),(34008,13250,'<Fact-81>','gen299','User','<Fact-25>','<Fact-21>'),(34009,13250,'<Fact-82>','gen298','User','<Fact-25>','<Fact-29>'),(34010,13250,'<Fact-83>','gen297','User','<Fact-25>','<Fact-22>'),(34011,13250,'<Fact-84>','gen296','User','<Fact-25>','<Fact-19>'),(34012,13250,'<Fact-85>','gen294','User','<Fact-29>','<Fact-27>'),(34013,13250,'<Fact-86>','gen293','User','<Fact-29>','<Fact-26>'),(34014,13250,'<Fact-87>','gen292','User','<Fact-29>','<Fact-19>'),(34015,13250,'<Fact-88>','gen291','User','<Fact-22>','<Fact-29>'),(34016,13250,'<Fact-89>','gen289','User','<Fact-27>','<Fact-28>'),(34017,13250,'<Fact-90>','gen290','User','<Fact-22>','<Fact-26>'),(34018,13250,'<Fact-91>','gen872','User','<Fact-30>','<Fact-29>'),(34019,13250,'<Fact-92>','gen2123','User','<Fact-25>','<Fact-24>'),(47520,15314,'<Fact-71>','gen302','User','<Fact-19>','<Fact-20>'),(47521,15314,'<Fact-72>','gen301','User','<Fact-17>','<Fact-18>'),(47522,15314,'<Fact-73>','gen300','User','<Fact-17>','<Fact-22>'),(47523,15314,'<Fact-74>','gen299','User','<Fact-21>','<Fact-17>'),(47524,15314,'<Fact-75>','gen298','User','<Fact-21>','<Fact-25>'),(47525,15314,'<Fact-76>','gen297','User','<Fact-21>','<Fact-18>'),(47526,15314,'<Fact-77>','gen296','User','<Fact-21>','<Fact-15>'),(47527,15314,'<Fact-78>','gen294','User','<Fact-25>','<Fact-23>'),(47528,15314,'<Fact-79>','gen293','User','<Fact-25>','<Fact-22>'),(47529,15314,'<Fact-80>','gen292','User','<Fact-25>','<Fact-15>'),(47530,15314,'<Fact-81>','gen291','User','<Fact-18>','<Fact-25>'),(47531,15314,'<Fact-82>','gen289','User','<Fact-23>','<Fact-24>'),(47532,15314,'<Fact-83>','gen290','User','<Fact-18>','<Fact-22>'),(47533,15314,'<Fact-84>','gen872','User','<Fact-26>','<Fact-25>'),(47534,15314,'<Fact-85>','gen2123','User','<Fact-21>','<Fact-20>'),(48510,15664,'<Fact-71>','gen302','User','<Fact-19>','<Fact-20>'),(48511,15664,'<Fact-72>','gen301','User','<Fact-17>','<Fact-18>'),(48512,15664,'<Fact-73>','gen300','User','<Fact-17>','<Fact-22>'),(48513,15664,'<Fact-74>','gen299','User','<Fact-21>','<Fact-17>'),(48514,15664,'<Fact-75>','gen298','User','<Fact-21>','<Fact-25>'),(48515,15664,'<Fact-76>','gen297','User','<Fact-21>','<Fact-18>'),(48516,15664,'<Fact-77>','gen296','User','<Fact-21>','<Fact-15>'),(48517,15664,'<Fact-78>','gen294','User','<Fact-25>','<Fact-23>'),(48518,15664,'<Fact-79>','gen293','User','<Fact-25>','<Fact-22>'),(48519,15664,'<Fact-80>','gen292','User','<Fact-25>','<Fact-15>'),(48520,15664,'<Fact-81>','gen291','User','<Fact-18>','<Fact-25>'),(48521,15664,'<Fact-82>','gen289','User','<Fact-23>','<Fact-24>'),(48522,15664,'<Fact-83>','gen290','User','<Fact-18>','<Fact-22>'),(48523,15664,'<Fact-84>','gen872','User','<Fact-26>','<Fact-25>'),(48524,15664,'<Fact-85>','gen2123','User','<Fact-21>','<Fact-20>');
+INSERT INTO `main_responsibilitytoresponsibilityrelation` VALUES (34005,13250,'<Fact-78>','gen302','User','<Fact-23>','<Fact-24>'),(34006,13250,'<Fact-79>','gen301','User','<Fact-21>','<Fact-22>'),(34007,13250,'<Fact-80>','gen300','User','<Fact-21>','<Fact-26>'),(34008,13250,'<Fact-81>','gen299','User','<Fact-25>','<Fact-21>'),(34009,13250,'<Fact-82>','gen298','User','<Fact-25>','<Fact-29>'),(34010,13250,'<Fact-83>','gen297','User','<Fact-25>','<Fact-22>'),(34011,13250,'<Fact-84>','gen296','User','<Fact-25>','<Fact-19>'),(34012,13250,'<Fact-85>','gen294','User','<Fact-29>','<Fact-27>'),(34013,13250,'<Fact-86>','gen293','User','<Fact-29>','<Fact-26>'),(34014,13250,'<Fact-87>','gen292','User','<Fact-29>','<Fact-19>'),(34015,13250,'<Fact-88>','gen291','User','<Fact-22>','<Fact-29>'),(34016,13250,'<Fact-89>','gen289','User','<Fact-27>','<Fact-28>'),(34017,13250,'<Fact-90>','gen290','User','<Fact-22>','<Fact-26>'),(34018,13250,'<Fact-91>','gen872','User','<Fact-30>','<Fact-29>'),(34019,13250,'<Fact-92>','gen2123','User','<Fact-25>','<Fact-24>'),(47520,15314,'<Fact-71>','gen302','User','<Fact-19>','<Fact-20>'),(47521,15314,'<Fact-72>','gen301','User','<Fact-17>','<Fact-18>'),(47522,15314,'<Fact-73>','gen300','User','<Fact-17>','<Fact-22>'),(47523,15314,'<Fact-74>','gen299','User','<Fact-21>','<Fact-17>'),(47524,15314,'<Fact-75>','gen298','User','<Fact-21>','<Fact-25>'),(47525,15314,'<Fact-76>','gen297','User','<Fact-21>','<Fact-18>'),(47526,15314,'<Fact-77>','gen296','User','<Fact-21>','<Fact-15>'),(47527,15314,'<Fact-78>','gen294','User','<Fact-25>','<Fact-23>'),(47528,15314,'<Fact-79>','gen293','User','<Fact-25>','<Fact-22>'),(47529,15314,'<Fact-80>','gen292','User','<Fact-25>','<Fact-15>'),(47530,15314,'<Fact-81>','gen291','User','<Fact-18>','<Fact-25>'),(47531,15314,'<Fact-82>','gen289','User','<Fact-23>','<Fact-24>'),(47532,15314,'<Fact-83>','gen290','User','<Fact-18>','<Fact-22>'),(47533,15314,'<Fact-84>','gen872','User','<Fact-26>','<Fact-25>'),(47534,15314,'<Fact-85>','gen2123','User','<Fact-21>','<Fact-20>');
 /*!40000 ALTER TABLE `main_responsibilitytoresponsibilityrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1512,14 +1522,14 @@ DROP TABLE IF EXISTS `main_scenariorefinementrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_scenariorefinementrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_scenariorefinementrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1543,43 +1553,43 @@ DROP TABLE IF EXISTS `main_scenarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_scenarios` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
   `description` text,
-  `quality` varchar(200) default NULL,
+  `quality` varchar(200) DEFAULT NULL,
   `stimulusText` text,
-  `stimulusType` varchar(200) default NULL,
-  `stimulusUnit` varchar(200) default NULL,
-  `stimulusValue` double default NULL,
+  `stimulusType` varchar(200) DEFAULT NULL,
+  `stimulusUnit` varchar(200) DEFAULT NULL,
+  `stimulusValue` double DEFAULT NULL,
   `sourceText` text,
-  `sourceType` varchar(200) default NULL,
-  `sourceUnit` varchar(200) default NULL,
-  `sourceValue` double default NULL,
+  `sourceType` varchar(200) DEFAULT NULL,
+  `sourceUnit` varchar(200) DEFAULT NULL,
+  `sourceValue` double DEFAULT NULL,
   `artifactText` text,
-  `artifactType` varchar(200) default NULL,
-  `artifactUnit` varchar(200) default NULL,
-  `artifactValue` double default NULL,
+  `artifactType` varchar(200) DEFAULT NULL,
+  `artifactUnit` varchar(200) DEFAULT NULL,
+  `artifactValue` double DEFAULT NULL,
   `environmentText` text,
-  `environmentType` varchar(200) default NULL,
-  `environmentUnit` varchar(200) default NULL,
-  `environmentValue` double default NULL,
+  `environmentType` varchar(200) DEFAULT NULL,
+  `environmentUnit` varchar(200) DEFAULT NULL,
+  `environmentValue` double DEFAULT NULL,
   `responseText` text,
-  `responseType` varchar(200) default NULL,
-  `responseUnit` varchar(200) default NULL,
-  `responseValue` double default NULL,
+  `responseType` varchar(200) DEFAULT NULL,
+  `responseUnit` varchar(200) DEFAULT NULL,
+  `responseValue` double DEFAULT NULL,
   `measureText` text,
-  `measureType` varchar(200) default NULL,
-  `measureUnit` varchar(200) default NULL,
-  `measureValue` double default NULL,
+  `measureType` varchar(200) DEFAULT NULL,
+  `measureUnit` varchar(200) DEFAULT NULL,
+  `measureValue` double DEFAULT NULL,
   `state` text,
-  `reasoningFramework` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `reasoningFramework` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_main_scenarios` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28511 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27755 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1588,7 +1598,7 @@ CREATE TABLE `main_scenarios` (
 
 LOCK TABLES `main_scenarios` WRITE;
 /*!40000 ALTER TABLE `main_scenarios` DISABLE KEYS */;
-INSERT INTO `main_scenarios` VALUES (27747,15314,'<Fact-7>','gen237','P1 - The system has to manage the external devices under normal load and handle the operations in under 5 seconds.','ICMPerformance','external devices','periodic','milliseconds',40,'external devices','System',NULL,NULL,'system','System',NULL,NULL,'normal','NormalCondition',NULL,NULL,'handles the operation','TaskLatency',NULL,NULL,'under 5 seconds','WorstCase','msec',15,NULL,'ICMPerformanceRF'),(27748,15314,'<Fact-8>','gen244','P2 - A view wishes to attach to the model under normal conditions and do so in under 1 second.','ICMPerformance','attach to model','periodic','milliseconds',42,'view','System',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'view is attached to model','TaskLatency',NULL,NULL,'in under 1 second','WorstCase','msec',39,NULL,'ICMPerformanceRF'),(27749,15314,'<Fact-9>','gen248','P3 - The user modifies their profile under normal conditions and the profile is modified in under 5 seconds.','ICMPerformance','modify profile','periodic','milliseconds',64,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'profile is modified','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',18,NULL,'ICMPerformanceRF'),(27750,15314,'<Fact-10>','gen252','P4 - The user asks to show the itinerary under normal conditions and the itinerary is shown in under 5 seconds.','ICMPerformance','show itinerary','periodic','milliseconds',55,'user','External',NULL,NULL,'system','System',NULL,NULL,'Normal conditions','NormalCondition',NULL,NULL,'itinerary is shown','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',16,NULL,'ICMPerformanceRF'),(27751,15314,'<Fact-11>','gen256','P5 - The user asks to save the current data on the screen under normal conditions and the data is saved in under 10 seconds.','ICMPerformance','save data','periodic','milliseconds',18,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'data is saved','TaskLatency',NULL,NULL,'in under 10 seconds','WorstCase','msec',4,NULL,'ICMPerformanceRF'),(27752,15314,'<Fact-12>','gen309','M1 - Adding a new feature requires to change the storage format. The implementation of the new format has to be done within 3.5 days','ChangeImpactModifiability','Adding a new feature',NULL,NULL,NULL,NULL,'developer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'The implementation of the new format has to be done',NULL,NULL,NULL,'within 3.5 days','CostConstraint','days',3,NULL,'ChangeImpactModifiabilityRF'),(27753,15314,'<Fact-13>','gen318','M2 - A new variable to the user profile has to be added within 5 days of effort','ChangeImpactModifiability',NULL,NULL,NULL,NULL,NULL,'endUser',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Type response measure here','CostConstraint','days',15,NULL,'ChangeImpactModifiabilityRF'),(27754,15314,'<Fact-14>','gen433','M3 - The driver for a new external device has to be added by a developer within 10 days','ChangeImpactModifiability','Adding a new device',NULL,NULL,NULL,NULL,'developer',NULL,NULL,'The driver for a new external device',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'has to be added',NULL,NULL,NULL,'within 10 days','CostConstraint','days',5.5,NULL,'ChangeImpactModifiabilityRF'),(28503,15664,'<Fact-7>','gen237','P1 - The system has to manage the external devices under normal load and handle the operations in under 5 seconds.','ICMPerformance','external devices','periodic','milliseconds',40,'external devices','System',NULL,NULL,'system','System',NULL,NULL,'normal','NormalCondition',NULL,NULL,'handles the operation','TaskLatency',NULL,NULL,'under 5 seconds','WorstCase','msec',15,NULL,'ICMPerformanceRF'),(28504,15664,'<Fact-8>','gen244','P2 - A view wishes to attach to the model under normal conditions and do so in under 1 second.','ICMPerformance','attach to model','periodic','milliseconds',42,'view','System',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'view is attached to model','TaskLatency',NULL,NULL,'in under 1 second','WorstCase','msec',39,NULL,'ICMPerformanceRF'),(28505,15664,'<Fact-9>','gen248','P3 - The user modifies their profile under normal conditions and the profile is modified in under 5 seconds.','ICMPerformance','modify profile','periodic','milliseconds',64,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'profile is modified','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',18,NULL,'ICMPerformanceRF'),(28506,15664,'<Fact-10>','gen252','P4 - The user asks to show the itinerary under normal conditions and the itinerary is shown in under 5 seconds.','ICMPerformance','show itinerary','periodic','milliseconds',55,'user','External',NULL,NULL,'system','System',NULL,NULL,'Normal conditions','NormalCondition',NULL,NULL,'itinerary is shown','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',16,NULL,'ICMPerformanceRF'),(28507,15664,'<Fact-11>','gen256','P5 - The user asks to save the current data on the screen under normal conditions and the data is saved in under 10 seconds.','ICMPerformance','save data','periodic','milliseconds',18,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'data is saved','TaskLatency',NULL,NULL,'in under 10 seconds','WorstCase','msec',4,NULL,'ICMPerformanceRF'),(28508,15664,'<Fact-12>','gen309','M1 - Adding a new feature requires to change the storage format. The implementation of the new format has to be done within 3.5 days','ChangeImpactModifiability','Adding a new feature',NULL,NULL,NULL,NULL,'developer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'The implementation of the new format has to be done',NULL,NULL,NULL,'within 3.5 days','CostConstraint','days',3,NULL,'ChangeImpactModifiabilityRF'),(28509,15664,'<Fact-13>','gen318','M2 - A new variable to the user profile has to be added within 5 days of effort','ChangeImpactModifiability',NULL,NULL,NULL,NULL,NULL,'endUser',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Type response measure here','CostConstraint','days',15,NULL,'ChangeImpactModifiabilityRF'),(28510,15664,'<Fact-14>','gen433','M3 - The driver for a new external device has to be added by a developer within 10 days','ChangeImpactModifiability','Adding a new device',NULL,NULL,NULL,NULL,'developer',NULL,NULL,'The driver for a new external device',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'has to be added',NULL,NULL,NULL,'within 10 days','CostConstraint','days',5.5,NULL,'ChangeImpactModifiabilityRF');
+INSERT INTO `main_scenarios` VALUES (27747,15314,'<Fact-7>','gen237','P1 - The system has to manage the external devices under normal load and handle the operations in under 5 seconds.','ICMPerformance','external devices','periodic','milliseconds',40,'external devices','System',NULL,NULL,'system','System',NULL,NULL,'normal','NormalCondition',NULL,NULL,'handles the operation','TaskLatency',NULL,NULL,'under 5 seconds','WorstCase','msec',15,NULL,'ICMPerformanceRF'),(27748,15314,'<Fact-8>','gen244','P2 - A view wishes to attach to the model under normal conditions and do so in under 1 second.','ICMPerformance','attach to model','periodic','milliseconds',42,'view','System',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'view is attached to model','TaskLatency',NULL,NULL,'in under 1 second','WorstCase','msec',39,NULL,'ICMPerformanceRF'),(27749,15314,'<Fact-9>','gen248','P3 - The user modifies their profile under normal conditions and the profile is modified in under 5 seconds.','ICMPerformance','modify profile','periodic','milliseconds',64,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'profile is modified','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',18,NULL,'ICMPerformanceRF'),(27750,15314,'<Fact-10>','gen252','P4 - The user asks to show the itinerary under normal conditions and the itinerary is shown in under 5 seconds.','ICMPerformance','show itinerary','periodic','milliseconds',55,'user','External',NULL,NULL,'system','System',NULL,NULL,'Normal conditions','NormalCondition',NULL,NULL,'itinerary is shown','TaskLatency',NULL,NULL,'in under 5 seconds','WorstCase','msec',16,NULL,'ICMPerformanceRF'),(27751,15314,'<Fact-11>','gen256','P5 - The user asks to save the current data on the screen under normal conditions and the data is saved in under 10 seconds.','ICMPerformance','save data','periodic','milliseconds',18,'user','External',NULL,NULL,'system','System',NULL,NULL,'normal conditions','NormalCondition',NULL,NULL,'data is saved','TaskLatency',NULL,NULL,'in under 10 seconds','WorstCase','msec',4,NULL,'ICMPerformanceRF'),(27752,15314,'<Fact-12>','gen309','M1 - Adding a new feature requires to change the storage format. The implementation of the new format has to be done within 3.5 days','ChangeImpactModifiability','Adding a new feature',NULL,NULL,NULL,NULL,'developer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'The implementation of the new format has to be done',NULL,NULL,NULL,'within 3.5 days','CostConstraint','days',3,NULL,'ChangeImpactModifiabilityRF'),(27753,15314,'<Fact-13>','gen318','M2 - A new variable to the user profile has to be added within 5 days of effort','ChangeImpactModifiability',NULL,NULL,NULL,NULL,NULL,'endUser',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Type response measure here','CostConstraint','days',15,NULL,'ChangeImpactModifiabilityRF'),(27754,15314,'<Fact-14>','gen433','M3 - The driver for a new external device has to be added by a developer within 10 days','ChangeImpactModifiability','Adding a new device',NULL,NULL,NULL,NULL,'developer',NULL,NULL,'The driver for a new external device',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'has to be added',NULL,NULL,NULL,'within 10 days','CostConstraint','days',5.5,NULL,'ChangeImpactModifiabilityRF');
 /*!40000 ALTER TABLE `main_scenarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1600,15 +1610,15 @@ DROP TABLE IF EXISTS `main_sequencerelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_sequencerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varchar(20) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_main_sequencerelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1632,19 +1642,19 @@ DROP TABLE IF EXISTS `main_translationrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `main_translationrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parentType` varchar(200) default NULL,
+  `parentType` varchar(200) DEFAULT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_main_translationrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=108358 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101622 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1653,7 +1663,7 @@ CREATE TABLE `main_translationrelation` (
 
 LOCK TABLES `main_translationrelation` WRITE;
 /*!40000 ALTER TABLE `main_translationrelation` DISABLE KEYS */;
-INSERT INTO `main_translationrelation` VALUES (101593,15314,'<Fact-40>','Functionality',NULL,'ArchE','<Fact-27>','<Fact-15>'),(101594,15314,'<Fact-41>','Functionality',NULL,'ArchE','<Fact-28>','<Fact-16>'),(101595,15314,'<Fact-42>','Functionality',NULL,'ArchE','<Fact-29>','<Fact-17>'),(101596,15314,'<Fact-43>','Functionality',NULL,'ArchE','<Fact-30>','<Fact-18>'),(101597,15314,'<Fact-44>','Functionality',NULL,'ArchE','<Fact-31>','<Fact-19>'),(101598,15314,'<Fact-45>','Functionality',NULL,'ArchE','<Fact-32>','<Fact-20>'),(101599,15314,'<Fact-46>','Functionality',NULL,'ArchE','<Fact-33>','<Fact-21>'),(101600,15314,'<Fact-47>','Functionality',NULL,'ArchE','<Fact-34>','<Fact-22>'),(101601,15314,'<Fact-48>','Functionality',NULL,'ArchE','<Fact-35>','<Fact-23>'),(101602,15314,'<Fact-49>','Functionality',NULL,'ArchE','<Fact-36>','<Fact-24>'),(101603,15314,'<Fact-50>','Functionality',NULL,'ArchE','<Fact-37>','<Fact-25>'),(101604,15314,'<Fact-51>','Functionality',NULL,'ArchE','<Fact-38>','<Fact-26>'),(101605,15314,'<Fact-52>','Scenario',NULL,'User','<Fact-14>','<Fact-26>'),(101606,15314,'<Fact-53>','Scenario',NULL,'User','<Fact-7>','<Fact-26>'),(101607,15314,'<Fact-54>','Scenario',NULL,'User','<Fact-12>','<Fact-23>'),(101608,15314,'<Fact-55>','Scenario',NULL,'User','<Fact-12>','<Fact-22>'),(101609,15314,'<Fact-56>','Scenario',NULL,'User','<Fact-13>','<Fact-17>'),(101610,15314,'<Fact-57>','Scenario',NULL,'User','<Fact-13>','<Fact-18>'),(101611,15314,'<Fact-58>','Scenario',NULL,'User','<Fact-9>','<Fact-21>'),(101612,15314,'<Fact-59>','Scenario',NULL,'User','<Fact-11>','<Fact-17>'),(101613,15314,'<Fact-60>','Scenario',NULL,'User','<Fact-7>','<Fact-25>'),(101614,15314,'<Fact-61>','Scenario',NULL,'User','<Fact-8>','<Fact-20>'),(101615,15314,'<Fact-62>','Scenario',NULL,'User','<Fact-8>','<Fact-19>'),(101616,15314,'<Fact-63>','Scenario',NULL,'User','<Fact-9>','<Fact-17>'),(101617,15314,'<Fact-64>','Scenario',NULL,'User','<Fact-9>','<Fact-18>'),(101618,15314,'<Fact-65>','Scenario',NULL,'User','<Fact-10>','<Fact-21>'),(101619,15314,'<Fact-66>','Scenario',NULL,'User','<Fact-10>','<Fact-15>'),(101620,15314,'<Fact-67>','Scenario',NULL,'User','<Fact-10>','<Fact-25>'),(101621,15314,'<Fact-68>','Scenario',NULL,'User','<Fact-11>','<Fact-22>'),(108329,15664,'<Fact-40>','Functionality',NULL,'ArchE','<Fact-27>','<Fact-15>'),(108330,15664,'<Fact-41>','Functionality',NULL,'ArchE','<Fact-28>','<Fact-16>'),(108331,15664,'<Fact-42>','Functionality',NULL,'ArchE','<Fact-29>','<Fact-17>'),(108332,15664,'<Fact-43>','Functionality',NULL,'ArchE','<Fact-30>','<Fact-18>'),(108333,15664,'<Fact-44>','Functionality',NULL,'ArchE','<Fact-31>','<Fact-19>'),(108334,15664,'<Fact-45>','Functionality',NULL,'ArchE','<Fact-32>','<Fact-20>'),(108335,15664,'<Fact-46>','Functionality',NULL,'ArchE','<Fact-33>','<Fact-21>'),(108336,15664,'<Fact-47>','Functionality',NULL,'ArchE','<Fact-34>','<Fact-22>'),(108337,15664,'<Fact-48>','Functionality',NULL,'ArchE','<Fact-35>','<Fact-23>'),(108338,15664,'<Fact-49>','Functionality',NULL,'ArchE','<Fact-36>','<Fact-24>'),(108339,15664,'<Fact-50>','Functionality',NULL,'ArchE','<Fact-37>','<Fact-25>'),(108340,15664,'<Fact-51>','Functionality',NULL,'ArchE','<Fact-38>','<Fact-26>'),(108341,15664,'<Fact-52>','Scenario',NULL,'User','<Fact-14>','<Fact-26>'),(108342,15664,'<Fact-53>','Scenario',NULL,'User','<Fact-7>','<Fact-26>'),(108343,15664,'<Fact-54>','Scenario',NULL,'User','<Fact-12>','<Fact-23>'),(108344,15664,'<Fact-55>','Scenario',NULL,'User','<Fact-12>','<Fact-22>'),(108345,15664,'<Fact-56>','Scenario',NULL,'User','<Fact-13>','<Fact-17>'),(108346,15664,'<Fact-57>','Scenario',NULL,'User','<Fact-13>','<Fact-18>'),(108347,15664,'<Fact-58>','Scenario',NULL,'User','<Fact-9>','<Fact-21>'),(108348,15664,'<Fact-59>','Scenario',NULL,'User','<Fact-11>','<Fact-17>'),(108349,15664,'<Fact-60>','Scenario',NULL,'User','<Fact-7>','<Fact-25>'),(108350,15664,'<Fact-61>','Scenario',NULL,'User','<Fact-8>','<Fact-20>'),(108351,15664,'<Fact-62>','Scenario',NULL,'User','<Fact-8>','<Fact-19>'),(108352,15664,'<Fact-63>','Scenario',NULL,'User','<Fact-9>','<Fact-17>'),(108353,15664,'<Fact-64>','Scenario',NULL,'User','<Fact-9>','<Fact-18>'),(108354,15664,'<Fact-65>','Scenario',NULL,'User','<Fact-10>','<Fact-21>'),(108355,15664,'<Fact-66>','Scenario',NULL,'User','<Fact-10>','<Fact-15>'),(108356,15664,'<Fact-67>','Scenario',NULL,'User','<Fact-10>','<Fact-25>'),(108357,15664,'<Fact-68>','Scenario',NULL,'User','<Fact-11>','<Fact-22>');
+INSERT INTO `main_translationrelation` VALUES (101593,15314,'<Fact-40>','Functionality',NULL,'ArchE','<Fact-27>','<Fact-15>'),(101594,15314,'<Fact-41>','Functionality',NULL,'ArchE','<Fact-28>','<Fact-16>'),(101595,15314,'<Fact-42>','Functionality',NULL,'ArchE','<Fact-29>','<Fact-17>'),(101596,15314,'<Fact-43>','Functionality',NULL,'ArchE','<Fact-30>','<Fact-18>'),(101597,15314,'<Fact-44>','Functionality',NULL,'ArchE','<Fact-31>','<Fact-19>'),(101598,15314,'<Fact-45>','Functionality',NULL,'ArchE','<Fact-32>','<Fact-20>'),(101599,15314,'<Fact-46>','Functionality',NULL,'ArchE','<Fact-33>','<Fact-21>'),(101600,15314,'<Fact-47>','Functionality',NULL,'ArchE','<Fact-34>','<Fact-22>'),(101601,15314,'<Fact-48>','Functionality',NULL,'ArchE','<Fact-35>','<Fact-23>'),(101602,15314,'<Fact-49>','Functionality',NULL,'ArchE','<Fact-36>','<Fact-24>'),(101603,15314,'<Fact-50>','Functionality',NULL,'ArchE','<Fact-37>','<Fact-25>'),(101604,15314,'<Fact-51>','Functionality',NULL,'ArchE','<Fact-38>','<Fact-26>'),(101605,15314,'<Fact-52>','Scenario',NULL,'User','<Fact-14>','<Fact-26>'),(101606,15314,'<Fact-53>','Scenario',NULL,'User','<Fact-7>','<Fact-26>'),(101607,15314,'<Fact-54>','Scenario',NULL,'User','<Fact-12>','<Fact-23>'),(101608,15314,'<Fact-55>','Scenario',NULL,'User','<Fact-12>','<Fact-22>'),(101609,15314,'<Fact-56>','Scenario',NULL,'User','<Fact-13>','<Fact-17>'),(101610,15314,'<Fact-57>','Scenario',NULL,'User','<Fact-13>','<Fact-18>'),(101611,15314,'<Fact-58>','Scenario',NULL,'User','<Fact-9>','<Fact-21>'),(101612,15314,'<Fact-59>','Scenario',NULL,'User','<Fact-11>','<Fact-17>'),(101613,15314,'<Fact-60>','Scenario',NULL,'User','<Fact-7>','<Fact-25>'),(101614,15314,'<Fact-61>','Scenario',NULL,'User','<Fact-8>','<Fact-20>'),(101615,15314,'<Fact-62>','Scenario',NULL,'User','<Fact-8>','<Fact-19>'),(101616,15314,'<Fact-63>','Scenario',NULL,'User','<Fact-9>','<Fact-17>'),(101617,15314,'<Fact-64>','Scenario',NULL,'User','<Fact-9>','<Fact-18>'),(101618,15314,'<Fact-65>','Scenario',NULL,'User','<Fact-10>','<Fact-21>'),(101619,15314,'<Fact-66>','Scenario',NULL,'User','<Fact-10>','<Fact-15>'),(101620,15314,'<Fact-67>','Scenario',NULL,'User','<Fact-10>','<Fact-25>'),(101621,15314,'<Fact-68>','Scenario',NULL,'User','<Fact-11>','<Fact-22>');
 /*!40000 ALTER TABLE `main_translationrelation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1665,17 +1675,17 @@ DROP TABLE IF EXISTS `modifiabilitylearn_modifiabilitylearnvalues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilitylearn_modifiabilitylearnvalues` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `name` varchar(200) default NULL,
-  `value` double default NULL,
-  `history1` double default NULL,
-  `history2` double default NULL,
-  `history3` double default NULL,
-  `history4` double default NULL,
-  `history5` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `name` varchar(200) DEFAULT NULL,
+  `value` double DEFAULT NULL,
+  `history1` double DEFAULT NULL,
+  `history2` double DEFAULT NULL,
+  `history3` double DEFAULT NULL,
+  `history4` double DEFAULT NULL,
+  `history5` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilitylearn_modifiabilitylearnvalues` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1699,13 +1709,13 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_arc_relation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_arc_relation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `source` varchar(20) default NULL,
-  `target` varchar(20) default NULL,
-  `probability` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(20) DEFAULT NULL,
+  `target` varchar(20) DEFAULT NULL,
+  `probability` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_arc_relation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1729,13 +1739,13 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_node_affected`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_node_affected` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varchar(20) default NULL,
-  `responsibilityId` varchar(20) default NULL,
-  `nodeId` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `scenario` varchar(20) DEFAULT NULL,
+  `responsibilityId` varchar(20) DEFAULT NULL,
+  `nodeId` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_node_affected` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1759,14 +1769,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_node_responsibility`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_node_responsibility` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `name` text,
-  `cost` double default NULL,
-  `cumulativeprob` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `cost` double DEFAULT NULL,
+  `cumulativeprob` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_node_responsibility` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1790,14 +1800,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_abstractiontranslator`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_abstractiontranslator` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_p_abstractiontranslator` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1821,14 +1831,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_costofchange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_costofchange` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_p_costofchange` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1852,14 +1862,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_encapsulationlevel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_encapsulationlevel` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `modifiabilityreasoningframeworks_p_encapsulationlevel_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1883,14 +1893,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_interfacerouter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_interfacerouter` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_p_interfacerouter` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1914,14 +1924,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_preparedforchange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_preparedforchange` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `modifiabilityreasoningframeworks_p_preparedforchange_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1945,14 +1955,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_probabilityincoming`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_probabilityincoming` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `modifiabilityreasoningframeworks_p_probabilityincoming_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -1976,14 +1986,14 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_p_probabilityoutgoing`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_p_probabilityoutgoing` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `modifiabilityreasoningframeworks_p_probabilityoutgoing_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2007,12 +2017,12 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_response_measures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_response_measures` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varchar(20) default NULL,
-  `responseMeasure` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `scenario` varchar(20) DEFAULT NULL,
+  `responseMeasure` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_modifiabilityreasoningframeworks_response_measures` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2036,13 +2046,13 @@ DROP TABLE IF EXISTS `modifiabilityreasoningframeworks_tactics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modifiabilityreasoningframeworks_tactics` (
-  `type` varchar(30) NOT NULL default '',
+  `type` varchar(30) NOT NULL DEFAULT '',
   `node_id` int(10) unsigned NOT NULL,
   `version` int(10) unsigned NOT NULL,
-  `sol_num` int(10) unsigned NOT NULL default '0',
+  `sol_num` int(10) unsigned NOT NULL DEFAULT '0',
   `ToolName` varchar(100) NOT NULL,
-  `loc_id` int(10) unsigned default NULL,
-  PRIMARY KEY  (`type`,`node_id`,`version`)
+  `loc_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`type`,`node_id`,`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2064,15 +2074,15 @@ DROP TABLE IF EXISTS `patterns_dependency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_dependency` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `pattern` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_dependency` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2096,15 +2106,15 @@ DROP TABLE IF EXISTS `patterns_interfacerealization`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_interfacerealization` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `pattern` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_interfacerealization` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2128,15 +2138,15 @@ DROP TABLE IF EXISTS `patterns_isarelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_isarelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `pattern` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_isarelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2160,13 +2170,13 @@ DROP TABLE IF EXISTS `patterns_pattern`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_pattern` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `group` text,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_pattern` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2190,17 +2200,17 @@ DROP TABLE IF EXISTS `patterns_patternconnector`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_patternconnector` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `type` text,
-  `owner` varchar(20) default NULL,
+  `owner` varchar(20) DEFAULT NULL,
   `valueAbs` text,
   `valueFactor` text,
-  `pattern` varchar(20) default NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_patternconnector` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2224,13 +2234,13 @@ DROP TABLE IF EXISTS `patterns_patterncontainer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_patterncontainer` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `pattern` varchar(20) default NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_patterncontainer` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2254,13 +2264,13 @@ DROP TABLE IF EXISTS `patterns_patternelement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_patternelement` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `pattern` varchar(20) default NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_patternelement` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2284,13 +2294,13 @@ DROP TABLE IF EXISTS `patterns_patternelementinterface`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_patternelementinterface` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `pattern` varchar(20) default NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_patternelementinterface` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2314,16 +2324,16 @@ DROP TABLE IF EXISTS `patterns_patternitemproperty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_patternitemproperty` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `owner` varchar(20) default NULL,
+  `owner` varchar(20) DEFAULT NULL,
   `valueAbs` text,
   `valueFactor` text,
-  `pattern` varchar(20) default NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_patternitemproperty` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2347,15 +2357,15 @@ DROP TABLE IF EXISTS `patterns_refinement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patterns_refinement` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  `pattern` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  `pattern` varchar(20) DEFAULT NULL,
   `name` text,
   `description` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_patterns_refinement` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2379,14 +2389,14 @@ DROP TABLE IF EXISTS `performancereasoningframeworks_p_executiontime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `performancereasoningframeworks_p_executiontime` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_performancereasoningframeworks_p_executiontime` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2410,14 +2420,14 @@ DROP TABLE IF EXISTS `performancereasoningframeworks_p_mutualexclusion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `performancereasoningframeworks_p_mutualexclusion` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_performancereasoningframeworks_p_mutualexclusion` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2441,14 +2451,14 @@ DROP TABLE IF EXISTS `performancereasoningframeworks_p_sharedresourceasked`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `performancereasoningframeworks_p_sharedresourceasked` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_performancereasoningframeworks_p_sharedresourceasked` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2472,13 +2482,13 @@ DROP TABLE IF EXISTS `planner_c_addfunction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `planner_c_addfunction` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `functionID` text,
   `description` text,
   `state` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_planner_c_addfunction` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2502,14 +2512,14 @@ DROP TABLE IF EXISTS `planner_c_addresponsibilityrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `planner_c_addresponsibilityrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
   `type` text,
   `state` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_planner_c_addresponsibilityrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2533,38 +2543,38 @@ DROP TABLE IF EXISTS `planner_c_addscenario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `planner_c_addscenario` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `description` text,
-  `quality` varchar(200) default NULL,
+  `quality` varchar(200) DEFAULT NULL,
   `stimulusText` text,
-  `stimulusType` varchar(200) default NULL,
-  `stimulusUnit` varchar(200) default NULL,
-  `stimulusValue` double default NULL,
+  `stimulusType` varchar(200) DEFAULT NULL,
+  `stimulusUnit` varchar(200) DEFAULT NULL,
+  `stimulusValue` double DEFAULT NULL,
   `sourceText` text,
-  `sourceType` varchar(200) default NULL,
-  `sourceUnit` varchar(200) default NULL,
-  `sourceValue` double default NULL,
+  `sourceType` varchar(200) DEFAULT NULL,
+  `sourceUnit` varchar(200) DEFAULT NULL,
+  `sourceValue` double DEFAULT NULL,
   `artifactText` text,
-  `artifactType` varchar(200) default NULL,
-  `artifactUnit` varchar(200) default NULL,
-  `artifactValue` double default NULL,
+  `artifactType` varchar(200) DEFAULT NULL,
+  `artifactUnit` varchar(200) DEFAULT NULL,
+  `artifactValue` double DEFAULT NULL,
   `environmentText` text,
-  `environmentType` varchar(200) default NULL,
-  `environmentUnit` varchar(200) default NULL,
-  `environmentValue` double default NULL,
+  `environmentType` varchar(200) DEFAULT NULL,
+  `environmentUnit` varchar(200) DEFAULT NULL,
+  `environmentValue` double DEFAULT NULL,
   `responseText` text,
-  `responseType` varchar(200) default NULL,
-  `responseUnit` varchar(200) default NULL,
-  `responseValue` double default NULL,
+  `responseType` varchar(200) DEFAULT NULL,
+  `responseUnit` varchar(200) DEFAULT NULL,
+  `responseValue` double DEFAULT NULL,
   `measureText` text,
-  `measureType` varchar(200) default NULL,
-  `measureUnit` varchar(200) default NULL,
-  `measureValue` double default NULL,
+  `measureType` varchar(200) DEFAULT NULL,
+  `measureUnit` varchar(200) DEFAULT NULL,
+  `measureValue` double DEFAULT NULL,
   `state` text,
-  `reasoningFramework` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `reasoningFramework` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_planner_c_addscenario` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2589,14 +2599,14 @@ DROP TABLE IF EXISTS `planner_c_addtranslationrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `planner_c_addtranslationrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
   `type` text,
   `state` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_planner_c_addtranslationrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2620,16 +2630,16 @@ DROP TABLE IF EXISTS `rmamodel_p_latency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmamodel_p_latency` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `utilization` text,
   `value` text,
   `time_blocked` text,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
   `status` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_rmamodel_p_latency` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2654,22 +2664,22 @@ DROP TABLE IF EXISTS `rmamodel_subtask`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmamodel_subtask` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `task` varchar(20) default NULL,
-  `scenario` varchar(20) default NULL,
-  `responsibility` varchar(20) default NULL,
-  `MutualExclusion` varchar(200) default NULL,
-  `SharedResourceID` varchar(20) default NULL,
-  `taskType` varchar(200) default NULL,
+  `task` varchar(20) DEFAULT NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `responsibility` varchar(20) DEFAULT NULL,
+  `MutualExclusion` varchar(200) DEFAULT NULL,
+  `SharedResourceID` varchar(20) DEFAULT NULL,
+  `taskType` varchar(200) DEFAULT NULL,
   `taskValue` text,
   `executionTime` text,
   `latency` text,
   `priority` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_rmamodel_subtask` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2694,21 +2704,21 @@ DROP TABLE IF EXISTS `rmamodel_task`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmamodel_task` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  `scenario` varchar(20) default NULL,
-  `stimulusType` varchar(200) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `stimulusType` varchar(200) DEFAULT NULL,
   `stimulusValue` text,
-  `taskType` varchar(200) default NULL,
+  `taskType` varchar(200) DEFAULT NULL,
   `taskValue` text,
   `executionTime` text,
   `latency` text,
   `time_blocked` text,
   `priority` text,
-  `source` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_rmamodel_task` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2733,14 +2743,14 @@ DROP TABLE IF EXISTS `rmaperformancerf_p_executiontime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_p_executiontime` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` double default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` double DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_p_executiontime` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2764,14 +2774,14 @@ DROP TABLE IF EXISTS `rmaperformancerf_p_shared`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_p_shared` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` varchar(200) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` varchar(200) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_p_shared` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2795,14 +2805,14 @@ DROP TABLE IF EXISTS `rmaperformancerf_p_taskpriority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_p_taskpriority` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `value` int(10) default NULL,
-  `owner` varchar(20) default NULL,
-  `source` varchar(200) default NULL,
-  `status` varchar(200) default NULL,
-  PRIMARY KEY  (`uid`),
+  `value` int(10) DEFAULT NULL,
+  `owner` varchar(20) DEFAULT NULL,
+  `source` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_p_taskpriority` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2826,15 +2836,15 @@ DROP TABLE IF EXISTS `rmaperformancerf_resource`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_resource` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `name` text,
   `source` text,
-  `status` int(10) default NULL,
+  `status` int(10) DEFAULT NULL,
   `shared` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_resource` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2859,14 +2869,14 @@ DROP TABLE IF EXISTS `rmaperformancerf_resourceusagerelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_resourceusagerelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `source` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_resourceusagerelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2891,16 +2901,16 @@ DROP TABLE IF EXISTS `rmaperformancerf_thread`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_thread` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `name` text,
-  `period` double default NULL,
+  `period` double DEFAULT NULL,
   `source` text,
-  `status` int(10) default NULL,
+  `status` int(10) DEFAULT NULL,
   `scenario` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_thread` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2924,14 +2934,14 @@ DROP TABLE IF EXISTS `rmaperformancerf_threadtouocrelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_threadtouocrelation` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `source` text,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_threadtouocrelation` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2955,16 +2965,16 @@ DROP TABLE IF EXISTS `rmaperformancerf_unitofconcurrency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rmaperformancerf_unitofconcurrency` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `id` int(10) default NULL,
+  `id` int(10) DEFAULT NULL,
   `name` text,
-  `executionTime` double default NULL,
+  `executionTime` double DEFAULT NULL,
   `source` text,
-  `status` int(10) default NULL,
+  `status` int(10) DEFAULT NULL,
   `responsibility` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `version` (`version`),
   KEY `fact-id` (`fact-id`),
   CONSTRAINT `FK_rmaperformancerf_unitofconcurrency` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -2988,26 +2998,26 @@ DROP TABLE IF EXISTS `seeker_evaluationresult`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seeker_evaluationresult` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `scenario` varchar(20) default NULL,
-  `tacticScenario` varchar(20) default NULL,
-  `reasoningFramework` varchar(200) default NULL,
-  `tactic` varchar(200) default NULL,
+  `scenario` varchar(20) DEFAULT NULL,
+  `tacticScenario` varchar(20) DEFAULT NULL,
+  `reasoningFramework` varchar(200) DEFAULT NULL,
+  `tactic` varchar(200) DEFAULT NULL,
   `tacticDescription` text,
-  `result` double default NULL,
-  `utility` double default NULL,
-  `change` double default NULL,
-  `relevance` double default NULL,
-  `tacticId` varchar(200) default NULL,
-  `index` int(10) default NULL,
-  `nresult` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `result` double DEFAULT NULL,
+  `utility` double DEFAULT NULL,
+  `change` double DEFAULT NULL,
+  `relevance` double DEFAULT NULL,
+  `tacticId` varchar(200) DEFAULT NULL,
+  `index` int(10) DEFAULT NULL,
+  `nresult` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_seeker_evaluationresult` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3027,12 +3037,12 @@ DROP TABLE IF EXISTS `tactics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tactics` (
-  `type` varchar(30) NOT NULL default '',
+  `type` varchar(30) NOT NULL DEFAULT '',
   `node_id` int(10) unsigned NOT NULL,
-  `name` int(10) unsigned default NULL,
-  `version` int(10) unsigned NOT NULL default '0',
-  `level` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`type`,`node_id`,`version`)
+  `name` int(10) unsigned DEFAULT NULL,
+  `version` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`type`,`node_id`,`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3053,13 +3063,13 @@ DROP TABLE IF EXISTS `test_interface`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_interface` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
   `moduleName` text,
-  `costOfChange` double NOT NULL default '0',
-  PRIMARY KEY  (`uid`),
+  `costOfChange` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_interface` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3083,12 +3093,12 @@ DROP TABLE IF EXISTS `test_leave_dependencies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_leave_dependencies` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `parent` text,
   `child` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_leave_dependencies` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3112,13 +3122,13 @@ DROP TABLE IF EXISTS `test_model_arcs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_model_arcs` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `parent` text,
   `child` text,
-  `probability` double default NULL,
-  PRIMARY KEY  (`uid`),
+  `probability` double DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_model_arcs` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3142,12 +3152,12 @@ DROP TABLE IF EXISTS `test_model_nodes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_model_nodes` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `node` text,
   `costOfChange` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_model_nodes` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3171,12 +3181,12 @@ DROP TABLE IF EXISTS `test_model_nodes_affected`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_model_nodes_affected` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `parent` text,
   `child` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_model_nodes_affected` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3201,12 +3211,12 @@ DROP TABLE IF EXISTS `test_module`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_module` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
-  `costOfChange` double default NULL,
+  `costOfChange` double DEFAULT NULL,
   `name` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_module` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3230,13 +3240,13 @@ DROP TABLE IF EXISTS `test_module_dependencies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_module_dependencies` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `parent` text,
   `child` text,
   `childType` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_module_dependencies` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3260,13 +3270,13 @@ DROP TABLE IF EXISTS `test_module_responsibilities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_module_responsibilities` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `module` text,
   `responsibility` text,
-  `type` varchar(50) default NULL,
-  PRIMARY KEY  (`uid`),
+  `type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_module_responsibilities` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3290,11 +3300,11 @@ DROP TABLE IF EXISTS `test_responsibilities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_responsibilities` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_responsibilities` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3318,12 +3328,12 @@ DROP TABLE IF EXISTS `test_responsibility_refinement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_responsibility_refinement` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `parent` text,
   `child` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `FK_test_responsibility_refinement` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3346,10 +3356,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `v_factset`;
 /*!50001 DROP VIEW IF EXISTS `v_factset`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 /*!50001 CREATE TABLE `v_factset` (
-  `factType` varchar(255),
-  `setName` varchar(45)
+  `factType` tinyint NOT NULL,
+  `setName` tinyint NOT NULL
 ) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `variabilityreasoningframework_variabilitymechanismresponsibility`
@@ -3359,14 +3372,14 @@ DROP TABLE IF EXISTS `variabilityreasoningframework_variabilitymechanismresponsi
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `variabilityreasoningframework_variabilitymechanismresponsibility` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `id` text,
-  `source` varchar(200) default NULL,
-  `parent` varchar(20) default NULL,
-  `child` varchar(20) default NULL,
-  PRIMARY KEY  (`uid`),
+  `source` varchar(200) DEFAULT NULL,
+  `parent` varchar(20) DEFAULT NULL,
+  `child` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `variabilityrf_variabilitymechanismresponsibility_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3390,12 +3403,12 @@ DROP TABLE IF EXISTS `variabilityreasoningframework_vpconfiguration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `variabilityreasoningframework_vpconfiguration` (
-  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `version` int(10) unsigned NOT NULL,
   `fact-id` varchar(20) NOT NULL,
   `name` text,
   `inputs` text,
-  PRIMARY KEY  (`uid`),
+  PRIMARY KEY (`uid`),
   KEY `fact-id` (`fact-id`),
   KEY `version` (`version`),
   CONSTRAINT `variabilityreasoningframework_vpconfiguration_ibfk_1` FOREIGN KEY (`version`) REFERENCES `__versions__` (`ID`) ON DELETE CASCADE
@@ -3415,21 +3428,39 @@ UNLOCK TABLES;
 -- Final view structure for view `leave_responsibilities`
 --
 
-/*!50001 DROP TABLE `leave_responsibilities`*/;
+/*!50001 DROP TABLE IF EXISTS `leave_responsibilities`*/;
 /*!50001 DROP VIEW IF EXISTS `leave_responsibilities`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `leave_responsibilities` AS select `res`.`uid` AS `uid`,`res`.`version` AS `version`,`res`.`fact-id` AS `fact-id`,`res`.`id` AS `id`,`res`.`name` AS `name`,`res`.`description` AS `description`,`res`.`source` AS `source`,`v`.`version_name` AS `version_name` from ((`main_responsibilities` `res` join `__versions__` `v` on((`v`.`ID` = `res`.`version`))) left join `main_responsibilityrefinementrelation` `d` on(((`res`.`version` = `d`.`version`) and (`res`.`fact-id` = `d`.`parent`)))) where isnull(`d`.`parent`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `v_factset`
 --
 
-/*!50001 DROP TABLE `v_factset`*/;
+/*!50001 DROP TABLE IF EXISTS `v_factset`*/;
 /*!50001 DROP VIEW IF EXISTS `v_factset`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_factset` AS select `__factsets__`.`factType` AS `factType`,`__factsets__`.`setName` AS `setName` from `__factsets__` order by `__factsets__`.`group`,`__factsets__`.`ID` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -3440,4 +3471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-01 12:53:24
+-- Dump completed on 2014-07-15 11:17:21
